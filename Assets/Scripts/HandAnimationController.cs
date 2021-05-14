@@ -44,6 +44,8 @@ public class HandAnimationController : MonoBehaviour
         List<InputDevice> inputDevices = new List<InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(inputDeviceCharacteristics, inputDevices);
 
+        //TODO: Error when no input device was found
+
         return inputDevices[0];
     }
 
