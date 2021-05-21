@@ -1,42 +1,52 @@
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class ConnectionController : WaterObjectController
 {
+
+    //TODO: REMOVE DEBUG
 
     #region DEBUG
 
     [SerializeField]
-    private TextMeshProUGUI debugText = null;
+    protected TextMeshProUGUI debugText = null;
+
+    protected void DEBUG(string message)
+    {
+        if (debugText)
+        {
+            debugText.text = message;
+        }
+    }
 
     #endregion
 
     #region Serialized Fields
 
     [SerializeField]
-    private bool waterPressureViaConnection = true;
+    protected bool waterPressureViaConnection = true;
 
     [SerializeField]
-    private HoseTypes connectionSize = HoseTypes.C;
+    protected HoseTypes connectionSize = HoseTypes.C;
 
+    [SerializeField]
+    protected bool isMovable = false;
+    
     #endregion
 
     #region Public Attributes
 
     public bool WaterPressureViaConnection { set { waterPressureViaConnection = value; } }
 
-    public bool IsOpen { get; private set; } = true;
+    public bool IsOpen { get; protected set; } = true;
 
     #endregion
 
-    #region Private Attributes
+    #region Protected Attributes
 
-    private ConnectionController connectedObject = null;
+    protected ConnectionController connectedObject = null;
 
-    private bool isClearing = false;
-
-    private Rigidbody rigidBody;
+    protected bool isClearing = false;
 
     #endregion
 
@@ -44,28 +54,29 @@ public class ConnectionController : WaterObjectController
 
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        //DEBUG("Not Connected");
     }
+
 
     private void Update()
     {
         UpdateWaterPressure();
-        if (debugText)
-        {
-            debugText.text = "In: " + InputWaterPressure.ToString() + ", Out: " + OutputWaterPressure.ToString();
-        }
+        DEBUG(transform.parent.name + ", " + gameObject.name + ": " + InputWaterPressure);//(connectedObject ? connectedObject.transform.parent.name + ", " + connectedObject.gameObject.name : "null"));
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (connectedObject == null && collision.collider.CompareTag("Connection"))
+        if (connectedObject == null && other.CompareTag("Connection"))
         {
-            ConnectionController connection = collision.collider.GetComponent<ConnectionController>();
+            ConnectionController connection = other.GetComponent<ConnectionController>();
             if (connection.connectedObject == null || connection.connectedObject == this)
             {
                 connectedObject = connection.connectionSize == connectionSize ? connection : null;
-                transform.position = connectedObject.transform.position;
-                rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                if (isMovable)
+                {    
+                    transform.position = connectedObject.transform.position;
+                }
+                //DEBUG("Connected");
             }
         }
     }
@@ -93,19 +104,24 @@ public class ConnectionController : WaterObjectController
         {
             InputWaterPressure = waterPressure;
             OutputWaterPressure = waterPressure;
+            //DEBUG(transform.parent.name + ", " + gameObject.name + ": " + waterPressure);
         }
     }
 
-    public void ClearConnection()
+    public virtual void ClearConnection()
     {
         if (!isClearing && connectedObject != null)
         {
             isClearing = true;
             connectedObject.ClearConnection();
             connectedObject = null;
-            rigidBody.constraints = RigidbodyConstraints.None;
         }
         isClearing = false;
+    }
+
+    public bool CheckOnTriggerEnter(ConnectionController connection, HoseTypes connectionType)
+    {
+        return connectionSize == connectionType && (connectedObject == null || connectedObject == connection);
     }
 
     #endregion

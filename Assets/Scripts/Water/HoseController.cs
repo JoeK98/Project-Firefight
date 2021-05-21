@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteAlways]
 public class HoseController : WaterObjectController
 {
     [SerializeField]
@@ -15,7 +16,7 @@ public class HoseController : WaterObjectController
     private float pressureLoss = 0.0f;
 
     [SerializeField]
-    private ConnectionController[] connections = new ConnectionController[2];
+    private HoseConnectionController[] connections = new HoseConnectionController[2];
 
     private int inputConnectionIndex = -1;
 

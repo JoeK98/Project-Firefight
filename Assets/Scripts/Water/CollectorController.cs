@@ -1,8 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectorController : WaterObjectController
 {
+    [SerializeField]
+    private ConnectionController[] inputConnections = new ConnectionController[2];
+
+    [SerializeField]
+    private ConnectionController outputConnection = null;
+
 
     private void Update()
     {
@@ -11,6 +16,14 @@ public class CollectorController : WaterObjectController
 
     protected override void UpdateWaterPressure()
     {
-        throw new System.NotImplementedException();
+        float inputWaterPressure = 0.0f;
+        foreach(ConnectionController input in inputConnections)
+        {
+            inputWaterPressure += input.OutputWaterPressure;
+        }
+        InputWaterPressure = inputWaterPressure;
+        OutputWaterPressure = InputWaterPressure;
+
+        outputConnection.UpdateWaterPressure(OutputWaterPressure);
     }
 }
