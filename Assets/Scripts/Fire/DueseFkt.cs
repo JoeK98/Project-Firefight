@@ -20,10 +20,10 @@ public class DueseFkt : MonoBehaviour
     void Update()
     {
        
-        if(Input.GetButton("SecondaryIndexTrigger"))
+        /*if(Input.GetButton("SecondaryIndexTrigger"))
         {
             HitFire();
-        }
+        }*/
 
     }
 
