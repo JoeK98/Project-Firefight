@@ -1,21 +1,33 @@
 using UnityEngine;
 
+/// <summary>
+/// Controls the Jet pipe
+/// <author> Joe Koelbel </author>
+/// </summary>
 public class JetPipeController : WaterObjectController
 {
+    /// <summary>
+    /// Jet pipe increases pressure (we use therefor a multiplier)
+    /// </summary>
     private const float JET_PIPE_MULTIPLIER = 1.5f;
 
+    /// <summary>
+    /// The input connection of the jet pipe
+    /// </summary>
     [SerializeField]
     private ConnectionController inputConnection = null;
 
-    // Update is called once per frame
-    void Update()
+    // TODO: REMOVE WHEN WATER PARTICLES ARE WORKING
+    [SerializeField]
+    private Renderer debugRenderer = null;
+    protected override void Update()
     {
         UpdateWaterPressure();
 
         //TODO: Only for testing purpose:
         if (OutputWaterPressure > 0.5f)
         {
-            GetComponent<Renderer>().material.color = Color.green;
+            debugRenderer.materials[2].color = Color.green;
         }
     }
 

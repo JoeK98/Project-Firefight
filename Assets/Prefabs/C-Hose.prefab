@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3680168619806127712}
   - component: {fileID: 4838588551260005722}
   - component: {fileID: 7438080213728375087}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Connector (1)
   m_TagString: Connection
   m_Icon: {fileID: 0}
@@ -344,8 +344,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 5, y: 0.1, z: 1}
-  - {x: 3, y: 0.1, z: 1}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 7645326928928764177}
   - component: {fileID: 6397574143226622931}
   - component: {fileID: 3168767761875216151}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Connector
   m_TagString: Connection
   m_Icon: {fileID: 0}

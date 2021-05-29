@@ -1,6 +1,10 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Controls a connection
+/// <author> Joe Koelbel </author>
+/// </summary>
 public class ConnectionController : WaterObjectController
 {
 
@@ -23,12 +27,21 @@ public class ConnectionController : WaterObjectController
 
     #region Serialized Fields
 
+    /// <summary>
+    /// Flag whether the water pressure is updated via the connected ConnectionController
+    /// </summary>
     [SerializeField]
     protected bool waterPressureViaConnection = true;
 
+    /// <summary>
+    /// The size of the connection
+    /// </summary>
     [SerializeField]
     protected HoseTypes connectionSize = HoseTypes.C;
 
+    /// <summary>
+    /// Flag whether the connection is movable (TODO: not implemented yet)
+    /// </summary>
     [SerializeField]
     protected bool isMovable = false;
     
@@ -36,42 +49,54 @@ public class ConnectionController : WaterObjectController
 
     #region Public Attributes
 
-    public bool WaterPressureViaConnection { set { waterPressureViaConnection = value; } }
-
+    /// <summary>
+    /// Flag whether the connection is open
+    /// </summary>
     public bool IsOpen { get; protected set; } = true;
 
     #endregion
 
     #region Protected Attributes
 
+    /// <summary>
+    /// The connected connection
+    /// </summary>
     protected ConnectionController connectedObject = null;
 
+    /// <summary>
+    /// Flag whether the connection is being cleared (TODO: not implemented yet)
+    /// </summary>
     protected bool isClearing = false;
 
     #endregion
 
     #region MonoBehaviour implementation
 
+    //TODO: REMOVE DEBUG
     private void Start()
     {
         //DEBUG("Not Connected");
     }
 
-
-    private void Update()
+    //TODO: REMOVE DEBUG
+    protected override void Update()
     {
         UpdateWaterPressure();
         DEBUG(transform.parent.name + ", " + gameObject.name + ": " + InputWaterPressure);//(connectedObject ? connectedObject.transform.parent.name + ", " + connectedObject.gameObject.name : "null"));
     }
 
+    /// <summary>
+    /// Check if a connection can be build to a colliding trigger
+    /// </summary>
+    /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
         if (connectedObject == null && other.CompareTag("Connection"))
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
-            if (connection.connectedObject == null || connection.connectedObject == this)
+            if ((connection.connectedObject == null || connection.connectedObject == this) && connection.connectionSize == connectionSize)
             {
-                connectedObject = connection.connectionSize == connectionSize ? connection : null;
+                connectedObject = connection;
                 if (isMovable)
                 {    
                     transform.position = connectedObject.transform.position;
@@ -98,6 +123,11 @@ public class ConnectionController : WaterObjectController
 
     #region Public Methods
 
+    /// <summary>
+    /// If the water pressure is not updated via the connection
+    /// then it can be Updated manually
+    /// </summary>
+    /// <param name="waterPressure"></param>
     public void UpdateWaterPressure(float waterPressure)
     {
         if (!waterPressureViaConnection)
@@ -108,6 +138,9 @@ public class ConnectionController : WaterObjectController
         }
     }
 
+    /// <summary>
+    /// Disconnect two ConnectionControllers
+    /// </summary>
     public virtual void ClearConnection()
     {
         if (!isClearing && connectedObject != null)
@@ -119,9 +152,16 @@ public class ConnectionController : WaterObjectController
         isClearing = false;
     }
 
-    public bool CheckOnTriggerEnter(ConnectionController connection, HoseTypes connectionType)
+    /// <summary>
+    /// Check whether two connections are compatible
+    /// Needed for HoseConnectionControllers since C# does not allow access 
+    /// to protected Members of an Instance of the base class (e.g. connectionSize) 
+    /// </summary>
+    /// <param name="connection"> the other ConnectionController </param>
+    /// <returns> true if the connections are compatible else false </returns>
+    public bool CheckOnTriggerEnter(ConnectionController connection)
     {
-        return connectionSize == connectionType && (connectedObject == null || connectedObject == connection);
+        return connection.connectionSize == connectionSize && (connectedObject == null || connectedObject == connection);
     }
 
     #endregion
