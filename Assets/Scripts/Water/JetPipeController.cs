@@ -23,6 +23,8 @@ public class JetPipeController : WaterObjectController
     // TODO: REMOVE WHEN WATER PARTICLES ARE WORKING
     [SerializeField]
     private Renderer debugRenderer = null;
+
+    private int dmg = 2;
     protected override void Update()
     {
         UpdateWaterPressure();
@@ -55,9 +57,14 @@ public class JetPipeController : WaterObjectController
         lineRenderer.SetPosition(1, origin + direction * 10.0f);
         Ray ray = new Ray(origin, direction);
 
-        if (Physics.Raycast(ray, out RaycastHit raycastHit) && raycastHit.collider.CompareTag("Fire"))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 20, 1<<3))
         {
-            raycastHit.collider.GetComponent<FireRules>().fireHP -= 2;
+            FireRules frcollider = raycastHit.collider.GetComponent<FireRules>();
+
+            if (frcollider != null)
+            {
+                frcollider.fireHP -= dmg;
+            }
         }
     }
 }

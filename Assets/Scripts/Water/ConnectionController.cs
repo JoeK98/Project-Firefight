@@ -82,7 +82,7 @@ public class ConnectionController : WaterObjectController
     protected override void Update()
     {
         UpdateWaterPressure();
-        DEBUG(transform.parent.name + ", " + gameObject.name + ": " + InputWaterPressure);//(connectedObject ? connectedObject.transform.parent.name + ", " + connectedObject.gameObject.name : "null"));
+        //DEBUG(transform.parent.name + ", " + gameObject.name + ": " + InputWaterPressure);//(connectedObject ? connectedObject.transform.parent.name + ", " + connectedObject.gameObject.name : "null"));
     }
 
     /// <summary>
