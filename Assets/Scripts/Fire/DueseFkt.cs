@@ -1,44 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.XR;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class DueseFkt : MonoBehaviour
 {
-
-    [System.Serializable]
-    public class ButtonPressedEvent : UnityEvent { }
-    [System.Serializable]
-    public class ButtonReleasedEvent : UnityEvent { }
-
-    public ButtonPressedEvent OnButtonPressed;
-    public ButtonReleasedEvent OnButtonReleased;
-
-    bool pressed = false;
- 
+    private int dmg = 2;
     void Update()
     {
-       
-        /*if(Input.GetButton("SecondaryIndexTrigger"))
-        {
-            HitFire();
-        }*/
-
+        
     }
 
     // Update is called once per frame
-    void HitFire()
+    public void HitFire()
     {
         Vector3 origin = transform.position;
-        Vector3 direction = transform.right;
+        Vector3 direction = transform.forward;
 
         Debug.DrawRay(origin, direction * 10f, Color.blue);
         Ray ray = new Ray(origin, direction);
 
-        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 20, 1<<3))
         {
-            raycastHit.collider.GetComponent<FireRules>().fireHP -= 2;
+           FireRules frcollider = raycastHit.collider.GetComponent<FireRules>();
+            
+           if(frcollider != null)
+            {
+                frcollider.fireHP -= dmg;
+            }
+            
         }
 
     }
