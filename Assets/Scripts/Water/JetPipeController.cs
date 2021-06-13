@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// Controls the Jet pipe
-/// <author> Joe Koelbel </author>
+/// <author> Joe Koelbel, Vincent Holtorf </author>
 /// </summary>
 public class JetPipeController : WaterObjectController
 {
@@ -17,6 +17,9 @@ public class JetPipeController : WaterObjectController
     [SerializeField]
     private ConnectionController inputConnection = null;
 
+    /// <summary>
+    /// The line renderer that is water
+    /// </summary>
     [SerializeField]
     private LineRenderer lineRenderer = null;
 
@@ -24,19 +27,30 @@ public class JetPipeController : WaterObjectController
     [SerializeField]
     private Renderer debugRenderer = null;
 
+    /// <summary>
+    /// How much hp the fire loses on a hit
+    /// </summary>
     private int dmg = 2;
+
+    /// <summary>
+    /// Flag whether the pipe is open
+    /// </summary>
+    private bool isActivated = false;
+
     protected override void Update()
     {
         UpdateWaterPressure();
 
         //TODO: Only for testing purpose:
-        if (OutputWaterPressure > 0.5f)
+        if (isActivated && OutputWaterPressure > 0.5f)
         {
-            
-
-            debugRenderer.materials[2].color = Color.green;
+            lineRenderer.enabled = true;
 
             HitFire();
+        }
+        else
+        {
+            lineRenderer.enabled = false;
         }
     }
 
@@ -47,6 +61,10 @@ public class JetPipeController : WaterObjectController
         OutputWaterPressure = InputWaterPressure * JET_PIPE_MULTIPLIER;
     }
 
+    /// <summary>
+    /// Cast a ray and check if it hits a fire object
+    /// If it hits remove hp from the fire
+    /// </summary>
     private void HitFire()
     {
         Vector3 origin = transform.position;
@@ -66,5 +84,23 @@ public class JetPipeController : WaterObjectController
                 frcollider.fireHP -= dmg;
             }
         }
+    }
+
+    /// <summary>
+    /// Callback for the Activated Event of the XR Interactable
+    /// </summary>
+    public void OnActivate()
+    {
+        isActivated = true;
+        debugRenderer.materials[2].color = Color.magenta;
+    }
+
+    /// <summary>
+    /// Callback for the Deactivated Event of the XR Interactable
+    /// </summary>
+    public void OnDeactivate()
+    {
+        isActivated = false;
+        debugRenderer.materials[2].color = Color.cyan;
     }
 }
