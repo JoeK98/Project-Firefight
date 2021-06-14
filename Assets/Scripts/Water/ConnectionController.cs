@@ -141,12 +141,12 @@ public class ConnectionController : WaterObjectController
     /// <summary>
     /// Disconnect two ConnectionControllers
     /// </summary>
-    public virtual void ClearConnection()
+    public virtual void OnClearConnection()
     {
         if (!isClearing && connectedObject != null)
         {
             isClearing = true;
-            connectedObject.ClearConnection();
+            connectedObject.OnClearConnection();
             connectedObject = null;
         }
         isClearing = false;

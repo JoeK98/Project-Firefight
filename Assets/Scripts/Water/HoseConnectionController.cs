@@ -46,12 +46,16 @@ public class HoseConnectionController : ConnectionController
         }
     }
 
-    public override void ClearConnection()
+    public override void OnClearConnection()
     {
         if (!isClearing && connectedObject != null)
         {
             rigidBody.constraints = RigidbodyConstraints.None;
+            isClearing = true;
+            connectedObject.OnClearConnection();
+            connectedObject = null;
         }
         isClearing = false;
     }
+
 }
