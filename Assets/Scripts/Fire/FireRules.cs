@@ -1,37 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FireRules : MonoBehaviour
 {
+    private const float FIRE_LOWER_BORDER = 0.0f;
 
-    public float fireHP = 0.0f;
-    public float fireEvolution = 0.75f;
+    private float fireHP = 0.0f;
     private Material fireMaterial;
+
     [SerializeField]
-    private List<FireRules> neighbour;
+    private float particleDamage = 1.0f;
+
+    [SerializeField]
+    private float fireUpperBorder = 1000.0f;
+
+    [SerializeField]
+    private float fireMultiplicator = 2.0f;
+
+    [SerializeField]
+    private List<FireRules> neighbours;
+
     [SerializeField]
     private FireStates state = FireStates.NONE;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         fireMaterial = GetComponent<Renderer>().material;
-   
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CheckState();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         state = FireStates.ONFIRE;
+        fireHP += 0.001f;
     }
 
-    void CheckState()
+    private void CheckState()
     {
         switch (state)
         {
@@ -39,30 +51,38 @@ public class FireRules : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
             case FireStates.ONFIRE:
-                if (fireHP <= 100 && fireHP >= 0)
+                if (fireHP < fireUpperBorder && fireHP >= FIRE_LOWER_BORDER)
                 {
-                    fireHP += fireEvolution * Time.deltaTime * 10;
-                    fireMaterial.color = new Color(0.01f*fireHP,0f,0f);
+                    fireHP = Mathf.Clamp(fireHP + fireMultiplicator * Time.deltaTime, FIRE_LOWER_BORDER, fireUpperBorder);
+                    fireMaterial.color = new Color(1.0f / fireUpperBorder * fireHP, 0.0f, 0.0f);
                 }
 
-                if (fireHP >= 100)
+                else if (fireHP >= fireUpperBorder)
                 {
-                    int neighbourIndex = Random.Range(0, neighbour.Count);
-                    neighbour[neighbourIndex].gameObject.SetActive(true);
+                    int neighbourIndex = Random.Range(0, neighbours.Count);
+                    neighbours[neighbourIndex].gameObject.SetActive(true);
                 }
 
-                if (fireHP < 0)
+                else if (fireHP <= FIRE_LOWER_BORDER)
                 {
                     state = FireStates.PUTOUT;
                 }
                 break;
             case FireStates.PUTOUT:
-                if (fireHP < 0)
+                if (fireHP <= FIRE_LOWER_BORDER)
                 {
                     fireMaterial.color = Color.blue;
                 }
                 break;
         }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        //TODO: Potential for better performance when saving the Particle System
+        int numCollisions = ParticlePhysicsExtensions.GetCollisionEvents(other.GetComponent<ParticleSystem>(), gameObject, new List<ParticleCollisionEvent>());  //ps.GetCollisionEvents(other, new List<ParticleCollisionEvent>());
+
+        fireHP -= numCollisions * particleDamage;
     }
 
 }

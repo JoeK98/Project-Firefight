@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115306399490020}
   state: 0
 --- !u!1 &3712115306358981800
@@ -221,9 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307370337666}
   - {fileID: 3712115306542488055}
   state: 0
@@ -335,9 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115306669998958}
   - {fileID: 3712115306347285409}
   - {fileID: 3712115307141639945}
@@ -450,9 +456,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115307830245294}
   - {fileID: 3712115306358981814}
@@ -565,9 +573,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115306399490020}
   - {fileID: 3712115307830245294}
@@ -680,9 +690,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115306399490020}
   - {fileID: 3712115307599433187}
@@ -859,9 +871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115307599433187}
   - {fileID: 3712115306358981814}
@@ -974,9 +988,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307370337666}
   - {fileID: 3712115307141639945}
   state: 0
@@ -1088,9 +1104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115307370337666}
   - {fileID: 3712115306669998958}
   - {fileID: 3712115307141639945}
@@ -1204,9 +1222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireHP: 0
-  fireEvolution: 1
-  neighbour:
+  debugText: {fileID: 0}
+  particleDamage: 1
+  fireUpperBorder: 1000
+  fireMultiplicator: 25
+  neighbours:
   - {fileID: 3712115306669998958}
   - {fileID: 3712115306542488055}
   state: 0
