@@ -5,17 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayForest()
+    /// <summary>
+    /// Changed the actuelle Scene from Menue to the Forest Level
+    /// </summary>
+    public void OnPlayForest()
     {
         SceneManager.LoadScene("ForestScene");
     }
 
-    public void PlayCity()
+    /// <summary>
+    /// Changed the actuelle Scene from Menue to the City Level
+    /// </summary>
+    public void OnPlayCity()
     {
         SceneManager.LoadScene("CityScene");
     }
 
-    public void QuitGame()
+    /// <summary>
+    /// End the Application
+    /// </summary>
+    public void OnQuitGame()
     {
         Debug.Log("Quit");
         Application.Quit();
