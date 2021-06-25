@@ -34,7 +34,7 @@ public class HoseConnectionController : ConnectionController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (connectedObject == null && other.CompareTag("Connection"))
+        if (connectedObject == null && other.gameObject.layer == LayerMask.NameToLayer("Connection"))//other.CompareTag("Connection"))
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
             if (connection.CheckOnTriggerEnter(this))
