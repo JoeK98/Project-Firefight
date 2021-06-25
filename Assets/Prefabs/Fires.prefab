@@ -108,10 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115306399490020}
   state: 0
@@ -223,10 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307370337666}
   - {fileID: 3712115306542488055}
@@ -339,10 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115306669998958}
   - {fileID: 3712115306347285409}
@@ -456,10 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115307830245294}
@@ -573,10 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115306399490020}
@@ -690,10 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115306399490020}
@@ -871,10 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307768976709}
   - {fileID: 3712115307599433187}
@@ -988,10 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307370337666}
   - {fileID: 3712115307141639945}
@@ -1104,10 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115307370337666}
   - {fileID: 3712115306669998958}
@@ -1222,10 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f74dec02401e046b7248deee68c31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
-  particleDamage: 1
-  fireUpperBorder: 1000
-  fireMultiplicator: 25
+  fireRulesVariables: {fileID: 11400000, guid: a5ae8a9af120fa94d8e9920c3b2f4c55, type: 2}
   neighbours:
   - {fileID: 3712115306669998958}
   - {fileID: 3712115306542488055}
