@@ -39,12 +39,6 @@ public class FireRules : MonoBehaviour
         sparksEmission = sparksParticleSystem.emission;
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        CheckState();
-    }
-
     private void OnEnable()
     {
         state = FireStates.ONFIRE;
@@ -52,7 +46,8 @@ public class FireRules : MonoBehaviour
         UpdateVisuals();
     }
 
-    private void CheckState()
+    // Update is called once per frame
+    private void Update()
     {
         switch (state)
         {
@@ -66,22 +61,23 @@ public class FireRules : MonoBehaviour
                     UpdateVisuals();
                 }
 
+                // TODO: This will enable one neighbour per frame (might enable all at once or use a cooldown)
                 else if (fireHP >= fireRulesVariables.fireUpperBorder)
                 {
                     int neighbourIndex = Random.Range(0, neighbours.Count);
                     neighbours[neighbourIndex].gameObject.SetActive(true);
                 }
 
-                else if (fireHP <= fireRulesVariables.fireLowerBorder)
+                /*else if (fireHP <= fireRulesVariables.fireLowerBorder)
                 {
                     state = FireStates.PUTOUT;
-                }
+                }*/
                 break;
             case FireStates.PUTOUT:
-                if (fireHP <= fireRulesVariables.fireLowerBorder)
+                /*if (fireHP <= fireRulesVariables.fireLowerBorder)
                 {
                     fireMaterial.color = Color.blue;
-                }
+                }*/
                 break;
         }
     }
@@ -98,9 +94,17 @@ public class FireRules : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         //TODO: Potential for better performance when saving the Particle System
-        int numCollisions = ParticlePhysicsExtensions.GetCollisionEvents(other.GetComponent<ParticleSystem>(), gameObject, new List<ParticleCollisionEvent>());  //ps.GetCollisionEvents(other, new List<ParticleCollisionEvent>());
+        int numCollisions = ParticlePhysicsExtensions.GetCollisionEvents(other.GetComponent<ParticleSystem>(), gameObject, new List<ParticleCollisionEvent>());
 
         fireHP = Mathf.Clamp(fireHP - numCollisions * fireRulesVariables.particleDamage, fireRulesVariables.fireLowerBorder - ERROR_MARGIN, fireRulesVariables.fireUpperBorder);
+
+        if (fireHP < fireRulesVariables.fireLowerBorder)
+        {
+            state = FireStates.PUTOUT;
+            UpdateVisuals();
+            smokeParticleSystem.Stop();
+            sparksParticleSystem.Stop();
+        }
     }
 
 }
