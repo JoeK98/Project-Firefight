@@ -17,11 +17,13 @@ public class FireRules : MonoBehaviour
 
     private float fireHP = 0.0f;
     private Material fireMaterial;
+    private int alphaID;
 
     // Start is called before the first frame update
     private void Start()
     {
         fireMaterial = GetComponent<Renderer>().material;
+        alphaID = Shader.PropertyToID("Vector1_4341703ff49e4488933ac95a1c03527f");
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class FireRules : MonoBehaviour
     {
         state = FireStates.ONFIRE;
         fireHP = fireRulesVariables.fireLowerBorder + 0.001f;
+        SetFireAlpha();
     }
 
     private void CheckState()
@@ -47,7 +50,8 @@ public class FireRules : MonoBehaviour
                 if (fireHP < fireRulesVariables.fireUpperBorder && fireHP >= fireRulesVariables.fireLowerBorder)
                 {
                     fireHP = Mathf.Clamp(fireHP + fireRulesVariables.fireMultiplicator * Time.deltaTime, fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder + ERROR_MARGIN);
-                    fireMaterial.color = new Color(fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f), 0.0f, 0.0f);
+                    SetFireAlpha();
+                    //fireMaterial.color = new Color(fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f), 0.0f, 0.0f);
                 }
 
                 else if (fireHP >= fireRulesVariables.fireUpperBorder)
@@ -68,6 +72,11 @@ public class FireRules : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void SetFireAlpha()
+    {
+        fireMaterial.SetFloat(alphaID, fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f));
     }
 
     private void OnParticleCollision(GameObject other)
