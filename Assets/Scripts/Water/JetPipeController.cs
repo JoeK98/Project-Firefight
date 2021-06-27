@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 /// <summary>
 /// Controls the Jet pipe

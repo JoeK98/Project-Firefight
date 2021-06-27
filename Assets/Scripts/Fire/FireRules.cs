@@ -15,6 +15,16 @@ public class FireRules : MonoBehaviour
     [SerializeField]
     private FireStates state = FireStates.NONE;
 
+    [SerializeField]
+    private ParticleSystem smokeParticleSystem = null;
+
+    [SerializeField]
+    private ParticleSystem sparksParticleSystem = null;
+
+    private ParticleSystem.EmissionModule smokeEmission;
+
+    private ParticleSystem.EmissionModule sparksEmission;
+
     private float fireHP = 0.0f;
     private Material fireMaterial;
     private int alphaID;
@@ -24,6 +34,9 @@ public class FireRules : MonoBehaviour
     {
         fireMaterial = GetComponent<Renderer>().material;
         alphaID = Shader.PropertyToID("Vector1_4341703ff49e4488933ac95a1c03527f");
+
+        smokeEmission = smokeParticleSystem.emission;
+        sparksEmission = sparksParticleSystem.emission;
     }
 
     // Update is called once per frame
@@ -36,7 +49,7 @@ public class FireRules : MonoBehaviour
     {
         state = FireStates.ONFIRE;
         fireHP = fireRulesVariables.fireLowerBorder + 0.001f;
-        SetFireAlpha();
+        UpdateVisuals();
     }
 
     private void CheckState()
@@ -50,8 +63,7 @@ public class FireRules : MonoBehaviour
                 if (fireHP < fireRulesVariables.fireUpperBorder && fireHP >= fireRulesVariables.fireLowerBorder)
                 {
                     fireHP = Mathf.Clamp(fireHP + fireRulesVariables.fireMultiplicator * Time.deltaTime, fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder + ERROR_MARGIN);
-                    SetFireAlpha();
-                    //fireMaterial.color = new Color(fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f), 0.0f, 0.0f);
+                    UpdateVisuals();
                 }
 
                 else if (fireHP >= fireRulesVariables.fireUpperBorder)
@@ -74,9 +86,13 @@ public class FireRules : MonoBehaviour
         }
     }
 
-    private void SetFireAlpha()
+    private void UpdateVisuals()
     {
-        fireMaterial.SetFloat(alphaID, fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f));
+        float multiplier = fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f);
+
+        fireMaterial.SetFloat(alphaID, multiplier);
+        smokeEmission.rateOverTime = multiplier * fireRulesVariables.maxSmokeParticles;
+        sparksEmission.rateOverTime = multiplier * fireRulesVariables.maxSparkParticles;
     }
 
     private void OnParticleCollision(GameObject other)

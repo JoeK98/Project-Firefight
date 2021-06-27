@@ -16,3 +16,5 @@ MonoBehaviour:
   fireUpperBorder: 10000
   fireLowerBorder: 0
   fireMultiplicator: 350
+  maxSmokeParticles: 50
+  maxSparkParticles: 50

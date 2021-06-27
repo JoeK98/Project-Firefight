@@ -989,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connection: {fileID: 1829859973}
+  _tutManger: {fileID: 0}
 --- !u!1001 &583427065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2568,6 +2569,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 13523038}
     m_Modifications:
+    - target: {fileID: 977102946936226761, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694654087941708441, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519609590246937167, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992621041891382344, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994847754325036245, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3712115306347285411, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2657,6 +2678,62 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3712115307830245280, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714396455293242648, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106351078728321823, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693938561348116364, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002562201796455087, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398357772985136612, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673094172036437638, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827960098442292404, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102696394401828822, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6570746765175899868, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874578595565368319, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225755029982426039, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7237975599522451720, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100872098912070375, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113516993491355736, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

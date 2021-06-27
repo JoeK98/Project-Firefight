@@ -30,4 +30,16 @@ public class FireRulesSO : ScriptableObject
     /// </summary>
     [Tooltip("How many HP a fire gains per second")]
     public float fireMultiplicator;
+
+    /// <summary>
+    /// Maximal RateOverTime value of smoke particle system
+    /// </summary>
+    [Tooltip("Maximal RateOverTime value of smoke particle system")]
+    public int maxSmokeParticles;
+
+    /// <summary>
+    /// Maximal RateOverTime value of spark particle system
+    /// </summary>
+    [Tooltip("Maximal RateOverTime value of spark particle system")]
+    public int maxSparkParticles;
 }
