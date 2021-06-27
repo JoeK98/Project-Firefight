@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fire
   - Connection
+  - TubeB
+  - TubeC
   layers:
   - Default
   - TransparentFX

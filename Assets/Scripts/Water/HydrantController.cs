@@ -24,6 +24,12 @@ public class HydrantController : WaterObjectController
     [SerializeField]
     private ConnectionController connection = null;
 
+    /// <summary>
+    /// Connection with the Tutorial Manager
+    /// </summary>
+    [SerializeField][Tooltip("For the TMpro nr.6")]
+    private TutorialManager _tutManger;
+
     #endregion
 
     #region Private Attributes
@@ -49,6 +55,7 @@ public class HydrantController : WaterObjectController
 
     /// <summary>
     /// Close / Open the hydrant when touched with a hydrant key
+    /// Increase the Tutorial Progress when Open the Hydrant
     /// </summary>
     /// <param name="collision"> collision between the hydrant and another collider </param>
     private void OnCollisionEnter(Collision collision)
@@ -56,6 +63,7 @@ public class HydrantController : WaterObjectController
         if (collision.collider.CompareTag("HydrantKey"))
         {
             isOpen = !isOpen;
+            _tutManger.TutProgress += 1;
         }
     }
 
