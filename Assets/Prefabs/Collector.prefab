@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 7300178254805556004}
   - {fileID: 7300178255172686438}
   outputConnection: {fileID: 7300178255032789209}
+  rigidBody: {fileID: 7300178254265150049}
 --- !u!65 &7300178254265150063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -251,8 +252,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7300178254805556002}
-  m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0.049, y: 0, z: 0.0359}
+  m_LocalRotation: {x: 0, y: -0.9914449, z: 0, w: 0.13052626}
+  m_LocalPosition: {x: 0.0505, y: 0, z: 0.0416}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.05}
   m_Children: []
   m_Father: {fileID: 7300178254265150060}
@@ -273,7 +274,8 @@ MonoBehaviour:
   debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 1
-  isMovable: 0
+  isMovable: 1
+  parentObject: {fileID: 0}
 --- !u!33 &7300178254805556005
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -334,8 +336,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.66094494}
+  m_Center: {x: 2.0150548e-11, y: 0, z: 0.16952804}
 --- !u!1 &7300178255032789191
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7300178255032789191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0657}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0522}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children: []
   m_Father: {fileID: 7300178254265150060}
@@ -385,7 +387,8 @@ MonoBehaviour:
   debugText: {fileID: 0}
   waterPressureViaConnection: 0
   connectionSize: 0
-  isMovable: 0
+  isMovable: 1
+  parentObject: {fileID: 7300178254265150051}
 --- !u!33 &7300178255032789210
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -446,8 +449,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.58444935}
-  m_Center: {x: 0, y: 0, z: 0.20777532}
+  m_Size: {x: 1, y: 1, z: 0.43485638}
+  m_Center: {x: 0, y: 0, z: 0.07479609}
 --- !u!1 &7300178255172686444
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,8 +478,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7300178255172686444}
-  m_LocalRotation: {x: 0, y: -0.13052624, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -0.049, y: 0, z: 0.0359}
+  m_LocalRotation: {x: 0, y: 0.9914449, z: 0, w: 0.13052626}
+  m_LocalPosition: {x: -0.0505, y: 0, z: 0.0417}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.05}
   m_Children: []
   m_Father: {fileID: 7300178254265150060}
@@ -497,7 +500,8 @@ MonoBehaviour:
   debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 1
-  isMovable: 0
+  isMovable: 1
+  parentObject: {fileID: 0}
 --- !u!33 &7300178255172686439
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -558,8 +562,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.6474582}
+  m_Center: {x: 3.4287018e-10, y: 0, z: 0.17627113}
 --- !u!1001 &7300178254059029297
 PrefabInstance:
   m_ObjectHideFlags: 0
