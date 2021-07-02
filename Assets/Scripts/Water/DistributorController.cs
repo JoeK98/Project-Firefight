@@ -4,7 +4,8 @@ using UnityEngine;
 /// Class that controls a distributor
 /// <author> Joe Koelbel </author>
 /// </summary>
-public class DistributorController : WaterObjectController
+[RequireComponent(typeof(Rigidbody))]
+public class DistributorController : ParentWaterObject
 {
     /// <summary>
     /// The input connection
@@ -17,6 +18,32 @@ public class DistributorController : WaterObjectController
     /// </summary>
     [SerializeField]
     private ConnectionController[] outputConnections = new ConnectionController[3];
+
+    [SerializeField]
+    private Rigidbody rigidBody = null;
+
+    private Vector3 targetPosition;
+
+    private Quaternion targetRotation;
+
+    private bool setTransform = false;
+
+    private void Start()
+    {
+        if (!rigidBody)
+        {
+            rigidBody = GetComponent<Rigidbody>();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (setTransform)
+        {
+            transform.position = targetPosition;
+            transform.rotation = targetRotation;
+        }
+    }
 
     protected override void UpdateWaterPressure()
     {
@@ -38,6 +65,58 @@ public class DistributorController : WaterObjectController
         foreach (ConnectionController outputConnection in outputConnections)
         {
             outputConnection.UpdateWaterPressure(OutputWaterPressure);
+        }
+    }
+
+    public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection)
+    {
+        setTransform = true;
+
+        Quaternion rotation = targetTransform.rotation * Quaternion.Inverse(currentConnectionTransform.rotation);
+        Vector3 movement = targetTransform.position - currentConnectionTransform.position;
+
+
+
+        //transform.position += movement;
+        transform.rotation = rotation * transform.rotation;
+        transform.Rotate(transform.up, 180.0f);
+
+        transform.position += movement;
+
+        targetPosition = transform.position;
+        targetRotation = transform.rotation;
+
+
+
+        if (fixedConnection)
+        {
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+            foreach (ConnectionController outputConnection in outputConnections)
+            {
+                outputConnection.Fixate();
+            }
+
+            inputConnection.Fixate();
+        }
+
+    }
+
+    public override void OnClearConnection(bool wasFixedConnection)
+    {
+        // Assert that only one connection can be connected to fixated connection
+        if (wasFixedConnection)
+        {
+            setTransform = false;
+
+            rigidBody.constraints = RigidbodyConstraints.None;
+
+            foreach (ConnectionController outputConnection in outputConnections)
+            {
+                outputConnection.UnFixate();
+            }
+
+            inputConnection.UnFixate();
         }
     }
 }

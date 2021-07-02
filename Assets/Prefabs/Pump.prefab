@@ -48,7 +48,7 @@ MonoBehaviour:
   waterPressureViaConnection: 0
   connectionSize: 1
   isMovable: 0
-  parentObject: {fileID: 6886695307034250022}
+  parentObject: {fileID: 0}
 --- !u!65 &7045754511725171348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2351511378655237628}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.5009439}
@@ -161,7 +161,7 @@ MonoBehaviour:
   waterPressureViaConnection: 1
   connectionSize: 0
   isMovable: 0
-  parentObject: {fileID: 6886695307034250022}
+  parentObject: {fileID: 0}
 --- !u!65 &2855663827916650040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5374473107578383495}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.503075}
@@ -223,7 +223,7 @@ MonoBehaviour:
   waterPressureViaConnection: 0
   connectionSize: 1
   isMovable: 0
-  parentObject: {fileID: 6886695307034250022}
+  parentObject: {fileID: 0}
 --- !u!65 &8885593194579923764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6061648456547531457}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.5009439}

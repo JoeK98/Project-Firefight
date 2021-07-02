@@ -44,6 +44,9 @@ public class ConnectionController : WaterObjectController
     /// </summary>
     [SerializeField]
     protected bool isMovable = false;
+
+    [SerializeField]
+    protected ParentWaterObject parentObject = null;
     
     #endregion
 
@@ -64,25 +67,41 @@ public class ConnectionController : WaterObjectController
     protected ConnectionController connectedObject = null;
 
     /// <summary>
-    /// Flag whether the connection is being cleared (TODO: not implemented yet)
+    /// Flag whether the connection is being cleared
+    /// Used to stop Recursive calls
     /// </summary>
     protected bool isClearing = false;
+
+    /// <summary>
+    /// Flag whether the connection is fixating
+    /// Used to stop Recursive calls
+    /// </summary>
+    protected bool isFixating = false;
+
+    /// <summary>
+    /// Flag whether the connection is unfixating
+    /// Used to stop Recursive calls
+    /// </summary>
+    protected bool isUnfixating = false;
+
+    protected bool isConnectedToFixed = false;
+
+    protected bool isFixated = false;
+
+    protected int layer;
 
     #endregion
 
     #region MonoBehaviour implementation
 
-    //TODO: REMOVE DEBUG
     private void Start()
     {
-        //DEBUG("Not Connected");
+        layer = LayerMask.NameToLayer("Connection");
     }
 
-    //TODO: REMOVE DEBUG
     protected override void Update()
     {
         UpdateWaterPressure();
-        //DEBUG(transform.parent.name + ", " + gameObject.name + ": " + InputWaterPressure);//(connectedObject ? connectedObject.transform.parent.name + ", " + connectedObject.gameObject.name : "null"));
     }
 
     /// <summary>
@@ -91,17 +110,21 @@ public class ConnectionController : WaterObjectController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (connectedObject == null && other.gameObject.layer == LayerMask.NameToLayer("Connection")) //other.CompareTag("Connection"))
+        if (connectedObject == null && other.gameObject.layer == layer)
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
             if ((connection.connectedObject == null || connection.connectedObject == this) && connection.connectionSize == connectionSize)
             {
                 connectedObject = connection;
-                if (isMovable)
-                {    
-                    transform.position = connectedObject.transform.position;
+                if (isMovable && !isFixated)
+                {
+                    isConnectedToFixed = !connection.isMovable || connection.isFixated;
+
+                    if (parentObject)
+                    {
+                        parentObject.AdjustTransformOnConnection(transform, other.transform, isConnectedToFixed);
+                    }
                 }
-                //DEBUG("Connected");
             }
         }
     }
@@ -134,7 +157,6 @@ public class ConnectionController : WaterObjectController
         {
             InputWaterPressure = waterPressure;
             OutputWaterPressure = waterPressure;
-            //DEBUG(transform.parent.name + ", " + gameObject.name + ": " + waterPressure);
         }
     }
 
@@ -148,6 +170,8 @@ public class ConnectionController : WaterObjectController
             isClearing = true;
             connectedObject.OnClearConnection();
             connectedObject = null;
+            parentObject.OnClearConnection(isConnectedToFixed);
+            isConnectedToFixed = false;
         }
         isClearing = false;
     }
@@ -162,6 +186,28 @@ public class ConnectionController : WaterObjectController
     public bool CheckOnTriggerEnter(ConnectionController connection)
     {
         return connection.connectionSize == connectionSize && (connectedObject == null || connectedObject == connection);
+    }
+
+    public void Fixate()
+    {
+        if (!isFixating)
+        {
+            isFixating = true;
+            connectedObject?.Fixate();
+            isFixated = true;
+        }
+        isFixating = false;
+    }
+
+    public void UnFixate()
+    {
+        if (!isUnfixating)
+        {
+            isUnfixating = true;
+            connectedObject?.UnFixate();
+            isFixated = false;
+        }
+        isUnfixating = false;
     }
 
     #endregion

@@ -4,7 +4,8 @@ using UnityEngine;
 /// Class the controls a collector
 /// <author> Joe Koelbel </author>
 /// </summary>
-public class CollectorController : WaterObjectController
+[RequireComponent(typeof(Rigidbody))]
+public class CollectorController : ParentWaterObject
 {
     /// <summary>
     /// Array including all input connections
@@ -17,6 +18,32 @@ public class CollectorController : WaterObjectController
     /// </summary>
     [SerializeField]
     private ConnectionController outputConnection = null;
+
+    [SerializeField]
+    private Rigidbody rigidBody = null;
+
+    private Vector3 targetPosition;
+
+    private Quaternion targetRotation;
+
+    private bool setTransform = false;
+
+    private void Start()
+    {
+        if (!rigidBody)
+        {
+            rigidBody = GetComponent<Rigidbody>();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (setTransform)
+        {
+            transform.position = targetPosition;
+            transform.rotation = targetRotation;
+        }
+    }
 
     protected override void UpdateWaterPressure()
     {
@@ -31,5 +58,57 @@ public class CollectorController : WaterObjectController
 
         // Manually Update the pressure of the output connection
         outputConnection.UpdateWaterPressure(OutputWaterPressure);
+    }
+
+    public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection)
+    {
+        setTransform = true;
+
+        Quaternion rotation = targetTransform.rotation * Quaternion.Inverse(currentConnectionTransform.rotation);
+        Vector3 movement = targetTransform.position - currentConnectionTransform.position;
+
+        
+
+        //transform.position += movement;
+        transform.rotation = rotation * transform.rotation;
+        transform.Rotate(transform.up, 180.0f);
+
+        transform.position += movement;
+
+        targetPosition = transform.position;
+        targetRotation = transform.rotation;
+
+        
+
+        if (fixedConnection)
+        {
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+            foreach (ConnectionController inputConnection in inputConnections)
+            {
+                inputConnection.Fixate();
+            }
+
+            outputConnection.Fixate();
+        }
+
+    }
+
+    public override void OnClearConnection(bool wasFixedConnection)
+    {
+        // Assert that only one connection can be connected to fixated connection
+        if (wasFixedConnection)
+        {
+            setTransform = false;
+
+            rigidBody.constraints = RigidbodyConstraints.None;
+
+            foreach (ConnectionController inputConnection in inputConnections)
+            {
+                inputConnection.UnFixate();
+            }
+
+            outputConnection.UnFixate();
+        }
     }
 }

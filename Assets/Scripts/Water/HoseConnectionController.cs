@@ -19,6 +19,12 @@ public class HoseConnectionController : ConnectionController
     /// </summary>
     private Rigidbody rigidBody = null;
 
+    private Vector3 targetPosition;
+
+    private Quaternion targetRotation;
+
+    private bool setTransform = false;
+
     /// <summary>
     /// Start is called before the first frame update
     /// Search for the Rigidbody
@@ -26,6 +32,16 @@ public class HoseConnectionController : ConnectionController
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        layer = LayerMask.NameToLayer("Connection");
+    }
+
+    private void LateUpdate()
+    {
+        if (setTransform)
+        {
+            transform.position = targetPosition;
+            transform.rotation = targetRotation;
+        }
     }
 
     /// <summary>
@@ -34,13 +50,17 @@ public class HoseConnectionController : ConnectionController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (connectedObject == null && other.gameObject.layer == LayerMask.NameToLayer("Connection"))//other.CompareTag("Connection"))
+        if (connectedObject == null && other.gameObject.layer == layer)
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
             if (connection.CheckOnTriggerEnter(this))
             {
                 connectedObject = connection;
-                transform.position = connectedObject.transform.position;
+                setTransform = true;
+                targetPosition = connectedObject.transform.position;
+                targetRotation = connectedObject.transform.rotation;
+                transform.position = targetPosition;
+                transform.rotation = targetRotation;
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
@@ -54,6 +74,7 @@ public class HoseConnectionController : ConnectionController
             isClearing = true;
             connectedObject.OnClearConnection();
             connectedObject = null;
+            setTransform = false;
         }
         isClearing = false;
     }
