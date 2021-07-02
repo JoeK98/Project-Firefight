@@ -8,6 +8,7 @@ TagManager:
   - Connection
   - TubeB
   - TubeC
+  - HydrantKey
   layers:
   - Default
   - TransparentFX
