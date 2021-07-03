@@ -37,7 +37,7 @@ public class HydrantController : WaterObjectController
     /// <summary>
     /// Flag whether the hydrant is open or not
     /// </summary>
-    private bool isOpen = true;//false;
+    private bool isOpen = false;
 
     #endregion
 
@@ -57,10 +57,10 @@ public class HydrantController : WaterObjectController
     /// Close / Open the hydrant when touched with a hydrant key
     /// Increase the Tutorial Progress when Open the Hydrant
     /// </summary>
-    /// <param name="collision"> collision between the hydrant and another collider </param>
-    private void OnCollisionEnter(Collision collision)
+    /// <param name="other"> collider that entered the trigger </param>
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("HydrantKey"))
+        if (other.CompareTag("HydrantKey"))
         {
             isOpen = !isOpen;
             _tutManger.TutProgress += 1;
