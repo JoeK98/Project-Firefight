@@ -22,12 +22,6 @@ public class DistributorController : ParentWaterObject
     [SerializeField]
     private Rigidbody rigidBody = null;
 
-    private Vector3 targetPosition;
-
-    private Quaternion targetRotation;
-
-    private bool setTransform = false;
-
     private void Start()
     {
         if (!rigidBody)
@@ -68,38 +62,24 @@ public class DistributorController : ParentWaterObject
         }
     }
 
-    public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection)
+    public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection, bool isHose)
     {
-        setTransform = true;
-
-        Quaternion rotation = targetTransform.rotation * Quaternion.Inverse(currentConnectionTransform.rotation);
-        Vector3 movement = targetTransform.position - currentConnectionTransform.position;
-
-
-
-        //transform.position += movement;
-        transform.rotation = rotation * transform.rotation;
-        transform.Rotate(transform.up, 180.0f);
-
-        transform.position += movement;
-
-        targetPosition = transform.position;
-        targetRotation = transform.rotation;
-
-
-
-        if (fixedConnection)
+        if (!isHose)
         {
-            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            base.AdjustTransformOnConnection(currentConnectionTransform, targetTransform, fixedConnection, isHose);
 
-            foreach (ConnectionController outputConnection in outputConnections)
+            if (fixedConnection)
             {
-                outputConnection.Fixate();
+                rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+                foreach (ConnectionController outputConnection in outputConnections)
+                {
+                    outputConnection.Fixate();
+                }
+
+                inputConnection.Fixate();
             }
-
-            inputConnection.Fixate();
         }
-
     }
 
     public override void OnClearConnection(bool wasFixedConnection)

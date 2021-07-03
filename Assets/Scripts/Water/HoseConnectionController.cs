@@ -56,11 +56,16 @@ public class HoseConnectionController : ConnectionController
             if (connection.CheckOnTriggerEnter(this))
             {
                 connectedObject = connection;
+
                 setTransform = true;
-                targetPosition = connectedObject.transform.position;
-                targetRotation = connectedObject.transform.rotation;
-                transform.position = targetPosition;
-                transform.rotation = targetRotation;
+
+                transform.position = connectedObject.transform.position;
+                transform.rotation = connectedObject.transform.rotation;
+                transform.Rotate(transform.up, 180.0f);
+
+                targetPosition = transform.position;
+                targetRotation = transform.rotation;
+                
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
             }
         }

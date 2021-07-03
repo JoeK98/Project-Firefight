@@ -122,7 +122,7 @@ public class ConnectionController : WaterObjectController
 
                     if (parentObject)
                     {
-                        parentObject.AdjustTransformOnConnection(transform, other.transform, isConnectedToFixed);
+                        parentObject.AdjustTransformOnConnection(transform, other.transform, isConnectedToFixed, connectedObject.GetType() == typeof(HoseConnectionController));
                     }
                 }
             }

@@ -24,12 +24,6 @@ public class JetPipeController : ParentWaterObject
     [SerializeField]
     private Rigidbody rigidBody = null;
 
-    private Vector3 targetPosition;
-
-    private Quaternion targetRotation;
-
-    private bool setTransform = false;
-
     private void Start()
     {
         if (!rigidBody)
@@ -54,23 +48,13 @@ public class JetPipeController : ParentWaterObject
         OutputWaterPressure = InputWaterPressure * JET_PIPE_MULTIPLIER;
     }
 
-    public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection)
+    public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection, bool isHose)
     {
         // Only do something when connecting to a fixated object
         // When not connecting to such an object, let the other object adjust
         if (fixedConnection)
         {
-            setTransform = true;
-
-            Quaternion rotation = targetTransform.rotation * Quaternion.Inverse(currentConnectionTransform.rotation);
-            Vector3 movement = targetTransform.position - currentConnectionTransform.position;
-
-            transform.position = transform.position + movement;
-            transform.rotation = rotation * transform.rotation;
-            transform.Rotate(transform.up, 180.0f);
-
-            targetPosition = transform.position;
-            targetRotation = transform.rotation;
+            base.AdjustTransformOnConnection(currentConnectionTransform, targetTransform, fixedConnection, isHose);
 
             rigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
