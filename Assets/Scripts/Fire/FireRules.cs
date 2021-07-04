@@ -30,7 +30,7 @@ public class FireRules : MonoBehaviour
     private int alphaID;
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         fireMaterial = GetComponent<Renderer>().material;
         alphaID = Shader.PropertyToID("Vector1_4341703ff49e4488933ac95a1c03527f");
@@ -87,8 +87,8 @@ public class FireRules : MonoBehaviour
         float multiplier = fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f);
 
         fireMaterial.SetFloat(alphaID, multiplier);
-        smokeEmission.rateOverTime = multiplier * fireRulesVariables.maxSmokeParticles;
-        sparksEmission.rateOverTime = multiplier * fireRulesVariables.maxSparkParticles;
+        smokeEmission.rateOverTime = new ParticleSystem.MinMaxCurve(multiplier * fireRulesVariables.maxSmokeParticles);
+        sparksEmission.rateOverTime = new ParticleSystem.MinMaxCurve(multiplier * fireRulesVariables.maxSparkParticles);
     }
 
     private void OnParticleCollision(GameObject other)
