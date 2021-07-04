@@ -894,6 +894,28 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2305711042683453090, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
   m_PrefabInstance: {fileID: 583427065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &583427067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 468650296365525669, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
+  m_PrefabInstance: {fileID: 583427065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &583427068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8398947976482970944, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
+  m_PrefabInstance: {fileID: 583427065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &589410573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3294,7 +3316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 583427067}
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
@@ -3351,7 +3373,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_TeleportationProvider: {fileID: 0}
+  m_TeleportationProvider: {fileID: 583427068}
   m_MatchOrientation: 0
   m_TeleportTrigger: 0
 --- !u!65 &1951185001

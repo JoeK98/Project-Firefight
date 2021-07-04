@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -22,12 +23,16 @@ public class DistributorController : ParentWaterObject
     [SerializeField]
     private Rigidbody rigidBody = null;
 
+    private bool[] isOpenOutputConnection; 
+
     private void Start()
     {
         if (!rigidBody)
         {
             rigidBody = GetComponent<Rigidbody>();
         }
+
+        isOpenOutputConnection = new bool[outputConnections.Length];
     }
 
     private void LateUpdate()
@@ -43,23 +48,30 @@ public class DistributorController : ParentWaterObject
     {
         // The input water pressure is the output water pressure of the input connection
         InputWaterPressure = inputConnection.OutputWaterPressure;
+        OutputWaterPressure = InputWaterPressure;
 
         // The output water pressure is the input water pressure divided by the amount of open output connections
-        int openOutputConnections = 0;
-        foreach (ConnectionController outputConnection in outputConnections)
+        List<int> openOutputConnectionIndices = new List<int>();
+        for (int i = 0; i < isOpenOutputConnection.Length; i++)
         {
-            if (outputConnection.IsOpen)
+            if (isOpenOutputConnection[i])
             {
-                openOutputConnections++;
+                openOutputConnectionIndices.Add(i);
             }
         }
-        OutputWaterPressure = openOutputConnections == 0 ? 0.0f : InputWaterPressure / openOutputConnections;
+
+
+        float outputPressurePerOpenedConnection = OutputWaterPressure / openOutputConnectionIndices.Count;
 
         // Update the water pressures of the output connections manually
-        foreach (ConnectionController outputConnection in outputConnections)
+        foreach (int outputIndex in openOutputConnectionIndices)
+        {
+            outputConnections[outputIndex].UpdateWaterPressure(outputPressurePerOpenedConnection);
+        }
+        /*foreach (ConnectionController outputConnection in outputConnections)
         {
             outputConnection.UpdateWaterPressure(OutputWaterPressure);
-        }
+        }*/
     }
 
     public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection, bool isHose)
@@ -98,5 +110,10 @@ public class DistributorController : ParentWaterObject
 
             inputConnection.UnFixate();
         }
+    }
+
+    public void OnToggleConnection(int index)
+    {
+        isOpenOutputConnection[index] = !isOpenOutputConnection[index];
     }
 }

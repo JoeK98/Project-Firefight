@@ -50,15 +50,6 @@ public class ConnectionController : WaterObjectController
     
     #endregion
 
-    #region Public Attributes
-
-    /// <summary>
-    /// Flag whether the connection is open
-    /// </summary>
-    public bool IsOpen { get; protected set; } = true;
-
-    #endregion
-
     #region Protected Attributes
 
     /// <summary>
