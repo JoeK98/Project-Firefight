@@ -25,7 +25,8 @@ public class FireRules : MonoBehaviour
 
     private ParticleSystem.EmissionModule sparksEmission;
 
-    private float fireHP = 0.0f;
+    //TODO: Delete Serializiefilde after blanacing 
+    [SerializeField]private float fireHP = 0.0f;
     private Material fireMaterial;
     private int alphaID;
 
