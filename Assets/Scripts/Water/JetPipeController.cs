@@ -5,7 +5,7 @@ using UnityEngine;
 /// <author> Joe Koelbel, Vincent Holtorf </author>
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class JetPipeController : ParentWaterObject
+public class JetPipeController : MovableParentWaterObject
 {
     /// <summary>
     /// Jet pipe increases pressure (we use therefor a multiplier)

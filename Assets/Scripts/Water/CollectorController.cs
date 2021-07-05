@@ -5,7 +5,7 @@ using UnityEngine;
 /// <author> Joe Koelbel </author>
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class CollectorController : ParentWaterObject
+public class CollectorController : MovableParentWaterObject
 {
     /// <summary>
     /// Array including all input connections

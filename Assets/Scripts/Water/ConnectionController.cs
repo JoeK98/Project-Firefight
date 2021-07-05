@@ -46,7 +46,7 @@ public class ConnectionController : WaterObjectController
     protected bool isMovable = false;
 
     [SerializeField]
-    protected ParentWaterObject parentObject = null;
+    protected MovableParentWaterObject parentObject = null;
     
     #endregion
 

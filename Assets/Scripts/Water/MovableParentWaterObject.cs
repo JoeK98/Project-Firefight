@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class ParentWaterObject : WaterObjectController
+public abstract class MovableParentWaterObject : WaterObjectController
 {
 
     protected bool setTransform = false;
@@ -25,8 +25,6 @@ public abstract class ParentWaterObject : WaterObjectController
     }
 
 
-    public virtual void OnClearConnection(bool wasFixedConnection)
-    {
-        // For some Objects nothing happens
-    }
+    public abstract void OnClearConnection(bool wasFixedConnection);
+
 }

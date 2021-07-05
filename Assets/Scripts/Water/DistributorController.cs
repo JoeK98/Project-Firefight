@@ -6,7 +6,7 @@ using UnityEngine;
 /// <author> Joe Koelbel </author>
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class DistributorController : ParentWaterObject
+public class DistributorController : MovableParentWaterObject
 {
     /// <summary>
     /// The input connection
