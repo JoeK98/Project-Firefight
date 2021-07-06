@@ -39,5 +39,16 @@ public class SetupManager : MonoBehaviour
         Physics.IgnoreLayerCollision(collisionLayer1, collisionLayer3);
         // Disable collisions between connection and opener colliders
         Physics.IgnoreLayerCollision(collisionLayer2, collisionLayer3);
+
+        // TODO: Set display refresh rate
+        if (!Unity.XR.Oculus.Performance.TrySetDisplayRefreshRate(120.0f))
+        {
+            // This should only happen if the exoerimental setting for 120Hz support is turned off in the Quest 2 settings
+            if (!Unity.XR.Oculus.Performance.TrySetDisplayRefreshRate(90.0f))
+            {
+                // Usually this should not happen when playing on Quest 2 since 90Hz should always be available
+                Unity.XR.Oculus.Performance.TrySetDisplayRefreshRate(80.0f);
+            }
+        }
     }
 }
