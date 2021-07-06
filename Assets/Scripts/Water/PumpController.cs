@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +20,15 @@ public class PumpController : WaterObjectController
     [SerializeField]
     private ConnectionController[] outputConnections = new ConnectionController[2];
 
+    [SerializeField]
+    private Transform[] outputOpener = new Transform[2];
+
+    [SerializeField]
+    private float openingClosingAnimationLength = 1.0f;
+
     private bool[] isOpenOutputConnection;
+
+    private bool[] isOpeningOrClosing;
 
     // TODO: Multiplier changeable by lever or buttons
     /// <summary>
@@ -29,7 +38,9 @@ public class PumpController : WaterObjectController
 
     private void Start()
     {
-        isOpenOutputConnection = new bool[outputConnections.Length];
+        int length = outputConnections.Length;
+        isOpenOutputConnection = new bool[length];
+        isOpeningOrClosing = new bool[length];
     }
 
     protected override void UpdateWaterPressure()
@@ -55,14 +66,38 @@ public class PumpController : WaterObjectController
         {
             outputConnections[outputIndex].UpdateWaterPressure(outputPressurePerOpenedConnection);
         }
-        /*foreach (ConnectionController outputConnection in outputConnections)
-        {
-            outputConnection.UpdateWaterPressure(OutputWaterPressure);
-        }*/
     }
 
     public void OnToggleConnection(int index)
     {
-        isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+        if (!isOpeningOrClosing[index])
+        {
+            isOpeningOrClosing[index] = true;
+            isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+            StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
+        }
+    }
+
+    private IEnumerator RotateOpener(int index, bool isOpen)
+    {
+        float rotationPerSecond = (isOpen ? -360.0f : 360.0f) / openingClosingAnimationLength;
+
+        float wholeAnimationTime = 0.0f;
+
+        while (wholeAnimationTime < openingClosingAnimationLength)
+        {
+            float animationTime = Time.deltaTime;
+            wholeAnimationTime += animationTime;
+
+            if (wholeAnimationTime > openingClosingAnimationLength)
+            {
+                animationTime -= wholeAnimationTime % openingClosingAnimationLength;
+            }
+            outputOpener[index].Rotate(0.0f, 0.0f, rotationPerSecond * animationTime, Space.Self);
+
+            yield return null;
+        }
+
+        isOpeningOrClosing[index] = false;
     }
 }

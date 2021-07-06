@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Controls the Jet pipe
@@ -21,6 +22,12 @@ public class JetPipeController : MovableParentWaterObject
     private ConnectionController inputConnection = null;
 
     [SerializeField]
+    private Transform openerLever = null;
+
+    [SerializeField]
+    private float openingClosingAnimationLength = 0.1f;
+
+    [SerializeField]
     private ParticleSystem waterParticleSystem = null;
 
     [SerializeField]
@@ -32,13 +39,29 @@ public class JetPipeController : MovableParentWaterObject
     [SerializeField, Tooltip("Audiosource from the JetPipe")]
     private AudioSource waterSound;
 
+    private Queue<IEnumerator> rotationQueue = new Queue<IEnumerator>();
+
+    private bool isOpeningOrClosing = false;
+
+    private Quaternion initialRotationOfOpener;
+
     private void Start()
     {
         if (!rigidBody)
         {
             rigidBody = GetComponent<Rigidbody>();
         }
+        initialRotationOfOpener = openerLever.localRotation;
+    }
 
+    protected override void Update()
+    {
+        UpdateWaterPressure();
+
+        if (!isOpeningOrClosing && rotationQueue.Count > 0)
+        {
+            StartCoroutine(rotationQueue.Dequeue());
+        }
     }
 
     private void LateUpdate()
@@ -88,6 +111,8 @@ public class JetPipeController : MovableParentWaterObject
         {
             waterParticleSystem.Stop();
         }
+
+        rotationQueue.Enqueue(RotateOpener(true));
     }
 
     /// <summary>
@@ -97,6 +122,8 @@ public class JetPipeController : MovableParentWaterObject
     {
         waterParticleSystem.Stop();
         waterSound.Stop();
+
+        rotationQueue.Enqueue(RotateOpener(false));
     }
 
     public override void OnClearConnection(bool wasFixedConnection)
@@ -109,5 +136,34 @@ public class JetPipeController : MovableParentWaterObject
 
             inputConnection.UnFixate();
         }
+    }
+
+    private IEnumerator RotateOpener(bool isOpen)
+    {
+        float rotationPerSecond = (isOpen ? -90.0f : 90.0f) / openingClosingAnimationLength;
+
+        float wholeAnimationTime = 0.0f;
+
+        while (wholeAnimationTime < openingClosingAnimationLength)
+        {
+            float animationTime = Time.deltaTime;
+            wholeAnimationTime += animationTime;
+
+            if (wholeAnimationTime > openingClosingAnimationLength)
+            {
+                animationTime -= wholeAnimationTime % openingClosingAnimationLength;
+            }
+            openerLever.Rotate(0.0f, rotationPerSecond * animationTime, 0.0f, Space.Self);
+
+            yield return null;
+        }
+
+        // Reset the rotation to its initial value to fix small errors occuring during rotations
+        /*if (!isOpen)
+        {
+            openerLever.localRotation = initialRotationOfOpener;
+        }*/
+
+        isOpeningOrClosing = false;
     }
 }

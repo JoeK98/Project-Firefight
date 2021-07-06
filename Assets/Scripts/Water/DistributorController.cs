@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,9 +22,17 @@ public class DistributorController : MovableParentWaterObject
     private ConnectionController[] outputConnections = new ConnectionController[3];
 
     [SerializeField]
+    private Transform[] outputOpener = new Transform[3];
+
+    [SerializeField]
+    private float openingClosingAnimationLength = 1.0f;
+
+    [SerializeField]
     private Rigidbody rigidBody = null;
 
-    private bool[] isOpenOutputConnection; 
+    private bool[] isOpenOutputConnection;
+
+    private bool[] isOpeningOrClosing;
 
     private void Start()
     {
@@ -32,7 +41,9 @@ public class DistributorController : MovableParentWaterObject
             rigidBody = GetComponent<Rigidbody>();
         }
 
-        isOpenOutputConnection = new bool[outputConnections.Length];
+        int length = outputConnections.Length;
+        isOpenOutputConnection = new bool[length];
+        isOpeningOrClosing = new bool[length];
     }
 
     private void LateUpdate()
@@ -114,6 +125,54 @@ public class DistributorController : MovableParentWaterObject
 
     public void OnToggleConnection(int index)
     {
-        isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+        if (!isOpeningOrClosing[index])
+        {
+            isOpeningOrClosing[index] = true;
+            isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+            StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
+        }
+    }
+
+    /*private IEnumerator RotateOpener(int index, bool isOpen, Vector3 upVector)
+    {
+        float time = 0.0f;
+
+        Quaternion start = outputOpener[index].rotation;
+        Quaternion target = Quaternion.AngleAxis(isOpen ? 90.0f : -90.0f, upVector) * start;
+
+        do
+        {
+            time += Time.deltaTime / openingClosingAnimationLength;
+
+            outputOpener[index].rotation = Quaternion.Lerp(start, target, time);
+
+            yield return null;
+        }
+        while (time < 1.0f);
+
+        isOpeningOrClosing[index] = false;
+    }*/
+
+    private IEnumerator RotateOpener(int index, bool isOpen)
+    {
+        float rotationPerSecond = (isOpen ? 90.0f : -90.0f) / openingClosingAnimationLength;
+
+        float wholeAnimationTime = 0.0f;
+
+        while (wholeAnimationTime < openingClosingAnimationLength)
+        {
+            float animationTime = Time.deltaTime;
+            wholeAnimationTime += animationTime;
+
+            if (wholeAnimationTime > openingClosingAnimationLength)
+            {
+                animationTime -= wholeAnimationTime % openingClosingAnimationLength;
+            }
+            outputOpener[index].Rotate(0.0f, rotationPerSecond * animationTime, 0.0f, Space.Self);
+
+            yield return null;
+        }
+
+        isOpeningOrClosing[index] = false;
     }
 }
