@@ -374,6 +374,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tutorialNumber: 17
   _tutManger: {fileID: 830176907}
+--- !u!82 &32374353 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1352800547043902682, guid: 835fa0aaf40802d4b9cb90983870a646, type: 3}
+  m_PrefabInstance: {fileID: 1021348880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &51570312
 GameObject:
   m_ObjectHideFlags: 0
@@ -5517,6 +5522,10 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6110501939720560661, guid: 835fa0aaf40802d4b9cb90983870a646, type: 3}
+      propertyPath: waterSound
+      value: 
+      objectReference: {fileID: 32374353}
     - target: {fileID: 6110501939720560662, guid: 835fa0aaf40802d4b9cb90983870a646, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -8695,7 +8704,7 @@ MonoBehaviour:
   pools:
   - tag: pylon
     pylonPrefab: {fileID: 986723624729967299, guid: f784f87afddb7cb478b27f514752509d, type: 3}
-    size: 100
+    size: 10
 --- !u!114 &1741738476
 MonoBehaviour:
   m_ObjectHideFlags: 0

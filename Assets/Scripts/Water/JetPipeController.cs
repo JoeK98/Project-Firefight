@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using System.Collections;
 
 /// <summary>
 /// Controls the Jet pipe
@@ -24,12 +26,19 @@ public class JetPipeController : MovableParentWaterObject
     [SerializeField]
     private Rigidbody rigidBody = null;
 
+    /// <summary>
+    /// The connection for the Audiosound
+    /// </summary>
+    [SerializeField, Tooltip("Audiosource from the JetPipe")]
+    private AudioSource waterSound;
+
     private void Start()
     {
         if (!rigidBody)
         {
             rigidBody = GetComponent<Rigidbody>();
         }
+
     }
 
     private void LateUpdate()
@@ -63,14 +72,17 @@ public class JetPipeController : MovableParentWaterObject
     }
 
 
+
     /// <summary>
     /// Callback for the Activated Event of the XR Interactable
     /// </summary>
     public void OnActivate()
     {
+
         if (OutputWaterPressure > 0.5f)
         {
             waterParticleSystem.Play();
+            waterSound.Play();
         }
         else
         {
@@ -84,6 +96,7 @@ public class JetPipeController : MovableParentWaterObject
     public void OnDeactivate()
     {
         waterParticleSystem.Stop();
+        waterSound.Stop();
     }
 
     public override void OnClearConnection(bool wasFixedConnection)
