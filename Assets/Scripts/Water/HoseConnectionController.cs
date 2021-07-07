@@ -59,16 +59,21 @@ public class HoseConnectionController : ConnectionController
 
                 setTransform = true;
 
-                transform.position = connectedObject.transform.position;
-                transform.rotation = connectedObject.transform.rotation;
-                transform.Rotate(transform.up, 180.0f);
+                MoveAccordingly(connectedObject.transform);
 
-                targetPosition = transform.position;
-                targetRotation = transform.rotation;
-                
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
+    }
+
+    protected override void MoveAccordingly(Transform other)
+    {
+        transform.position = other.position;
+        transform.rotation = other.rotation;
+        transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+
+        targetPosition = transform.position;
+        targetRotation = transform.rotation;
     }
 
     public override void OnClearConnection()

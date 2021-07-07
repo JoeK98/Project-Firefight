@@ -18,7 +18,7 @@ public abstract class MovableParentWaterObject : WaterObjectController
 
         transform.position = transform.position + movement;
         transform.rotation = rotation * transform.rotation;
-        transform.Rotate(transform.up, 180.0f);
+        transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
 
         targetPosition = transform.position;
         targetRotation = transform.rotation;

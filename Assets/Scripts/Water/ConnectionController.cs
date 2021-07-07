@@ -79,6 +79,10 @@ public class ConnectionController : WaterObjectController
 
     protected bool isFixated = false;
 
+    protected Vector3 lastPosition;
+
+    protected Quaternion lastRotation;
+
     protected int layer;
 
     #endregion
@@ -88,11 +92,24 @@ public class ConnectionController : WaterObjectController
     private void Start()
     {
         layer = LayerMask.NameToLayer("Connection");
+
+        lastPosition = transform.position;
+        lastRotation = transform.rotation;
     }
 
     protected override void Update()
     {
         UpdateWaterPressure();
+
+        // Wenn nicht fixiert, verbunden mit anderer Connection und bewegt, dann bewege die andere Verbindung entsprechend
+        if (!isFixated && connectedObject && (!lastPosition.Equals(transform.position) || !lastRotation.Equals(transform.rotation)))
+        {
+            connectedObject.MoveAccordingly(transform);
+        }
+
+        lastPosition = transform.position;
+        lastRotation = transform.rotation;
+
     }
 
     /// <summary>
@@ -131,9 +148,16 @@ public class ConnectionController : WaterObjectController
             InputWaterPressure = connectedObject.OutputWaterPressure;
             OutputWaterPressure = InputWaterPressure;
         }
+
+        DEBUG(transform.parent.name + ": " + gameObject.name + ": " + InputWaterPressure.ToString() + ", " + OutputWaterPressure.ToString());
     }
 
     #endregion
+
+    protected virtual void MoveAccordingly(Transform other)
+    {
+
+    }
 
     #region Public Methods
 
