@@ -74,6 +74,11 @@ public class PumpController : WaterObjectController
         {
             isOpeningOrClosing[index] = true;
             isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+            if (!isOpenOutputConnection[index])
+            {
+                outputConnections[index].UpdateWaterPressure(0.0f);
+            }
+
             StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
         }
     }

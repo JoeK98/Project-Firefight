@@ -11,11 +11,6 @@ using System.Collections.Generic;
 public class JetPipeController : MovableParentWaterObject
 {
     /// <summary>
-    /// Jet pipe increases pressure (we use therefor a multiplier)
-    /// </summary>
-    private const float JET_PIPE_MULTIPLIER = 1.5f;
-
-    /// <summary>
     /// The input connection of the jet pipe
     /// </summary>
     [SerializeField]
@@ -43,15 +38,12 @@ public class JetPipeController : MovableParentWaterObject
 
     private bool isOpeningOrClosing = false;
 
-    private Quaternion initialRotationOfOpener;
-
     private void Start()
     {
         if (!rigidBody)
         {
             rigidBody = GetComponent<Rigidbody>();
         }
-        initialRotationOfOpener = openerLever.localRotation;
     }
 
     protected override void Update()
@@ -77,7 +69,7 @@ public class JetPipeController : MovableParentWaterObject
     {
         InputWaterPressure = inputConnection.OutputWaterPressure;
 
-        OutputWaterPressure = InputWaterPressure * JET_PIPE_MULTIPLIER;
+        OutputWaterPressure = InputWaterPressure;
     }
 
     public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection, bool isHose)
@@ -157,12 +149,6 @@ public class JetPipeController : MovableParentWaterObject
 
             yield return null;
         }
-
-        // Reset the rotation to its initial value to fix small errors occuring during rotations
-        /*if (!isOpen)
-        {
-            openerLever.localRotation = initialRotationOfOpener;
-        }*/
 
         isOpeningOrClosing = false;
     }

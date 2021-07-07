@@ -92,7 +92,7 @@ public class HoseController : WaterObjectController
             InputWaterPressure = connections[inputConnectionIndex].OutputWaterPressure;
 
             // The output water pressure is the input water pressure minus the pressure loss
-            OutputWaterPressure = InputWaterPressure - pressureLoss;
+            OutputWaterPressure = Mathf.Clamp(InputWaterPressure - pressureLoss, 0.0f, float.MaxValue);
 
             // Update the water pressure of the output connection manually
             connections[(inputConnectionIndex + 1) % connections.Length].UpdateWaterPressure(OutputWaterPressure);

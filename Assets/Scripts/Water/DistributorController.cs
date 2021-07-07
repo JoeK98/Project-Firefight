@@ -129,29 +129,14 @@ public class DistributorController : MovableParentWaterObject
         {
             isOpeningOrClosing[index] = true;
             isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+            if (!isOpenOutputConnection[index])
+            {
+                outputConnections[index].UpdateWaterPressure(0.0f);
+            }
+
             StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
         }
     }
-
-    /*private IEnumerator RotateOpener(int index, bool isOpen, Vector3 upVector)
-    {
-        float time = 0.0f;
-
-        Quaternion start = outputOpener[index].rotation;
-        Quaternion target = Quaternion.AngleAxis(isOpen ? 90.0f : -90.0f, upVector) * start;
-
-        do
-        {
-            time += Time.deltaTime / openingClosingAnimationLength;
-
-            outputOpener[index].rotation = Quaternion.Lerp(start, target, time);
-
-            yield return null;
-        }
-        while (time < 1.0f);
-
-        isOpeningOrClosing[index] = false;
-    }*/
 
     private IEnumerator RotateOpener(int index, bool isOpen)
     {
