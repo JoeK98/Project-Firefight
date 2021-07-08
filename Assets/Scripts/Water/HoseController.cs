@@ -1,14 +1,10 @@
 using UnityEngine;
 
-
-// TODO: REMOVE [ExecuteAlways] (Only neccessary for LineRenderer in Edit Mode)
-
-
 /// <summary>
 /// Class that controls a hose
 /// <author> Joe Koelbel </author>
 /// </summary>
-[ExecuteAlways]
+[ExecuteAlways] // to update the line renderer in edit and play mode
 public class HoseController : WaterObjectController
 {
     /// <summary>
@@ -17,9 +13,9 @@ public class HoseController : WaterObjectController
     [SerializeField]
     private HoseTypes hoseType = HoseTypes.C;
 
-    // TODO: Remove when Model is ready
     [SerializeField]
     private LineRenderer lineRenderer = null;
+
     [SerializeField]
     private Transform[] lineEnds = new Transform[2];
 
@@ -48,6 +44,9 @@ public class HoseController : WaterObjectController
     {
         switch (hoseType)
         {
+            case HoseTypes.A:
+                pressureLoss = 0.0f;
+                break;
             case HoseTypes.B:
                 pressureLoss = 0.2f;
                 break;
@@ -55,11 +54,11 @@ public class HoseController : WaterObjectController
                 pressureLoss = 0.35f;
                 break;
             default:
+                Debug.LogError("This should never happen!");
                 break;
         }
     }
 
-    // TODO: Remove when hose is not a line renderer anymore
     protected override void Update()
     {
         lineRenderer.SetPosition(0, lineEnds[0].position);

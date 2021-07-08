@@ -4,7 +4,6 @@ using UnityEngine;
 /// Class the controls a collector
 /// <author> Joe Koelbel </author>
 /// </summary>
-[RequireComponent(typeof(Rigidbody))]
 public class CollectorController : MovableParentWaterObject
 {
     /// <summary>
@@ -18,26 +17,6 @@ public class CollectorController : MovableParentWaterObject
     /// </summary>
     [SerializeField]
     private ConnectionController outputConnection = null;
-
-    [SerializeField]
-    private Rigidbody rigidBody = null;
-
-    private void Start()
-    {
-        if (!rigidBody)
-        {
-            rigidBody = GetComponent<Rigidbody>();
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (setTransform)
-        {
-            transform.position = targetPosition;
-            transform.rotation = targetRotation;
-        }
-    }
 
     protected override void UpdateWaterPressure()
     {

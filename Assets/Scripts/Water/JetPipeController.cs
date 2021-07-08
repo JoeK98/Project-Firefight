@@ -7,7 +7,6 @@ using System.Collections.Generic;
 /// Controls the Jet pipe
 /// <author> Joe Koelbel, Vincent Holtorf </author>
 /// </summary>
-[RequireComponent(typeof(Rigidbody))]
 public class JetPipeController : MovableParentWaterObject
 {
     /// <summary>
@@ -25,9 +24,6 @@ public class JetPipeController : MovableParentWaterObject
     [SerializeField]
     private ParticleSystem waterParticleSystem = null;
 
-    [SerializeField]
-    private Rigidbody rigidBody = null;
-
     /// <summary>
     /// The connection for the Audiosound
     /// </summary>
@@ -38,14 +34,6 @@ public class JetPipeController : MovableParentWaterObject
 
     private bool isOpeningOrClosing = false;
 
-    private void Start()
-    {
-        if (!rigidBody)
-        {
-            rigidBody = GetComponent<Rigidbody>();
-        }
-    }
-
     protected override void Update()
     {
         UpdateWaterPressure();
@@ -53,15 +41,6 @@ public class JetPipeController : MovableParentWaterObject
         if (!isOpeningOrClosing && rotationQueue.Count > 0)
         {
             StartCoroutine(rotationQueue.Dequeue());
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (setTransform)
-        {
-            transform.position = targetPosition;
-            transform.rotation = targetRotation;
         }
     }
 

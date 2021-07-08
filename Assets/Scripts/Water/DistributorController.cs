@@ -6,7 +6,6 @@ using UnityEngine;
 /// Class that controls a distributor
 /// <author> Joe Koelbel </author>
 /// </summary>
-[RequireComponent(typeof(Rigidbody))]
 public class DistributorController : MovableParentWaterObject
 {
     /// <summary>
@@ -27,32 +26,17 @@ public class DistributorController : MovableParentWaterObject
     [SerializeField]
     private float openingClosingAnimationLength = 1.0f;
 
-    [SerializeField]
-    private Rigidbody rigidBody = null;
-
     private bool[] isOpenOutputConnection;
 
     private bool[] isOpeningOrClosing;
 
-    private void Start()
+    protected override void Start()
     {
-        if (!rigidBody)
-        {
-            rigidBody = GetComponent<Rigidbody>();
-        }
+        base.Start();
 
         int length = outputConnections.Length;
         isOpenOutputConnection = new bool[length];
         isOpeningOrClosing = new bool[length];
-    }
-
-    private void LateUpdate()
-    {
-        if (setTransform)
-        {
-            transform.position = targetPosition;
-            transform.rotation = targetRotation;
-        }
     }
 
     protected override void UpdateWaterPressure()
