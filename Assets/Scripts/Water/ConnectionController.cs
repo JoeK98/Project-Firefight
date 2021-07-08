@@ -185,7 +185,10 @@ public class ConnectionController : WaterObjectController
             isClearing = true;
             connectedObject.OnClearConnection();
             connectedObject = null;
-            parentObject?.OnClearConnection(isConnectedToFixed);
+            if (parentObject) // ? (No null propagation) should not be used for unity objects
+            {
+                parentObject.OnClearConnection(isConnectedToFixed);
+            }
             isConnectedToFixed = false;
         }
         isClearing = false;
@@ -200,7 +203,7 @@ public class ConnectionController : WaterObjectController
     /// <returns> true if the connections are compatible else false </returns>
     public bool CheckOnTriggerEnter(ConnectionController connection)
     {
-        return connection.connectionSize == connectionSize && (connectedObject == null || connectedObject == connection);
+        return connection.connectionSize == connectionSize && (!connectedObject || connectedObject == connection);
     }
 
     public void Fixate()
@@ -208,7 +211,10 @@ public class ConnectionController : WaterObjectController
         if (!isFixating)
         {
             isFixating = true;
-            connectedObject?.Fixate();
+            if (connectedObject) // ? (No null propagation) should not be used for unity objects
+            {
+                connectedObject.Fixate();
+            }
             isFixated = true;
         }
         isFixating = false;
@@ -219,7 +225,10 @@ public class ConnectionController : WaterObjectController
         if (!isUnfixating)
         {
             isUnfixating = true;
-            connectedObject?.UnFixate();
+            if (connectedObject) // ? (No null propagation) should not be used for unity objects
+            {
+                connectedObject.UnFixate();
+            }
             isFixated = false;
         }
         isUnfixating = false;
