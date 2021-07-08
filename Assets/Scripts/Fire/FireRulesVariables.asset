@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84793605ac455924a9e07f7ad0b8db65, type: 3}
   m_Name: FireRulesVariables
   m_EditorClassIdentifier: 
-  particleDamage: 0.3
+  particleDamage: 0.45
   fireUpperBorder: 10000
   fireLowerBorder: 0
   fireMultiplicator: 150

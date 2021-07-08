@@ -30,6 +30,10 @@ public class FireRules : MonoBehaviour
     private Material fireMaterial;
     private int alphaID;
 
+    public FireStates State { get => state; set => state = value; }
+
+    public FireSound fSound;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -42,7 +46,7 @@ public class FireRules : MonoBehaviour
 
     private void OnEnable()
     {
-        state = FireStates.ONFIRE;
+        State = FireStates.ONFIRE;
         fireHP = fireRulesVariables.fireLowerBorder + 0.001f;
         UpdateVisuals();
     }
@@ -50,7 +54,7 @@ public class FireRules : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        switch (state)
+        switch (State)
         {
             case FireStates.NONE:
                 gameObject.SetActive(false);
@@ -79,6 +83,7 @@ public class FireRules : MonoBehaviour
                 {
                     fireMaterial.color = Color.blue;
                 }*/
+                fSound.MusicController();
                 break;
         }
     }
@@ -101,7 +106,7 @@ public class FireRules : MonoBehaviour
 
         if (fireHP < fireRulesVariables.fireLowerBorder)
         {
-            state = FireStates.PUTOUT;
+            State = FireStates.PUTOUT;
             UpdateVisuals();
             smokeParticleSystem.Stop();
             sparksParticleSystem.Stop();
