@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3712115307233734359}
   - component: {fileID: 1738263658}
   - component: {fileID: 1738263659}
+  - component: {fileID: 1183959476518061712}
   m_Layer: 3
   m_Name: Fires
   m_TagString: Untagged
@@ -86,7 +87,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 135
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.9990845
   MaxDistance: 200
   Pan2D: 0
   rolloffMode: 0
@@ -152,7 +153,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.813
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -176,6 +177,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSound: {fileID: 1738263658}
   fM: {fileID: 3712115307233734359}
+--- !u!114 &1183959476518061712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712115307233734345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tutorialNumber: 0
+  _tutManger: {fileID: 0}
 --- !u!1001 &256735271264557469
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -37,6 +37,14 @@ public class TutorialConnectionControler : MonoBehaviour
                 _tutManger.ChangeTask();
             }
         }
+        else if (other.gameObject.CompareTag("HydrantKey"))
+        {
+            if (_tutorialNumber == _tutManger.TutProgress)
+            {
+                _tutManger.TutProgress += 1;
+                _tutManger.ChangeTask();
+            }
+        }
     }
 
     //Interactable Event from the XR-Interactable Toolkit

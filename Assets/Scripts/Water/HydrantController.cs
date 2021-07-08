@@ -63,7 +63,6 @@ public class HydrantController : WaterObjectController
         if (other.CompareTag("HydrantKey"))
         {
             isOpen = !isOpen;
-            _tutManger.TutProgress += 1;
         }
     }
 

@@ -149,7 +149,7 @@ public class ConnectionController : WaterObjectController
             OutputWaterPressure = InputWaterPressure;
         }
 
-        DEBUG(transform.parent.name + ": " + gameObject.name + ": " + InputWaterPressure.ToString() + ", " + OutputWaterPressure.ToString());
+        //DEBUG(transform.parent.name + ": " + gameObject.name + ": " + InputWaterPressure.ToString() + ", " + OutputWaterPressure.ToString());
     }
 
     #endregion
@@ -185,7 +185,7 @@ public class ConnectionController : WaterObjectController
             isClearing = true;
             connectedObject.OnClearConnection();
             connectedObject = null;
-            parentObject.OnClearConnection(isConnectedToFixed);
+            parentObject?.OnClearConnection(isConnectedToFixed);
             isConnectedToFixed = false;
         }
         isClearing = false;

@@ -20,10 +20,4 @@ public class TutorialManager : MonoBehaviour
 
     }
 
-    // Nur zum testen um den Progress höher zu schalten
-    public void TutDebug()
-    {
-        _tutProgress++;
-    }
-
 }
