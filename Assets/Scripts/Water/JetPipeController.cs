@@ -145,7 +145,7 @@ public class JetPipeController : MovableParentWaterObject
             {
                 animationTime -= wholeAnimationTime % openingClosingAnimationLength;
             }
-            openerLever.Rotate(0.0f, rotationPerSecond * animationTime, 0.0f, Space.Self);
+            openerLever.Rotate(0.0f, 0.0f, rotationPerSecond * animationTime, Space.Self);
 
             yield return null;
         }
