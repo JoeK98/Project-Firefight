@@ -13,16 +13,7 @@ public abstract class WaterObjectController : MonoBehaviour
     public float OutputWaterPressure { get; protected set; }
 
     /// <summary>
-    /// Update is called once per frame
-    /// Update the water pressures
-    /// </summary>
-    protected virtual void Update()
-    {
-        UpdateWaterPressure();
-    }
-
-    /// <summary>
     /// Updates the Water Pressures of an Object
     /// </summary>
-    protected abstract void UpdateWaterPressure();
+    public abstract void UpdateWaterPressure();
 }

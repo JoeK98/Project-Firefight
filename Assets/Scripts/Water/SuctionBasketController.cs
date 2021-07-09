@@ -5,12 +5,12 @@ public class SuctionBasketController : MovableParentWaterObject
     [SerializeField]
     private ConnectionController outputConnection = null;
 
+    private bool isConnectedToLake = false;
+
     public void SetConnectionToLake(bool isConnected)
     {
-        InputWaterPressure = isConnected ? 3.0f : 0.0f;
-        OutputWaterPressure = InputWaterPressure;
-
-        outputConnection.UpdateWaterPressure(OutputWaterPressure);
+        isConnectedToLake = isConnected;
+        UpdateWaterPressure();
     }
 
     public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection, bool isHose)
@@ -29,9 +29,12 @@ public class SuctionBasketController : MovableParentWaterObject
         }
     }
 
-    protected override void UpdateWaterPressure()
+    public override void UpdateWaterPressure()
     {
-        
+        InputWaterPressure = isConnectedToLake ? 3.0f : 0.0f;
+        OutputWaterPressure = InputWaterPressure;
+
+        outputConnection.UpdateWaterPressure(OutputWaterPressure);
     }
 
     public override void OnClearConnection(bool wasFixedConnection)

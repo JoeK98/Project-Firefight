@@ -48,7 +48,7 @@ MonoBehaviour:
   waterPressureViaConnection: 0
   connectionSize: 1
   isMovable: 0
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 6886695307034250022}
 --- !u!65 &7045754511725171348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   waterPressureViaConnection: 1
   connectionSize: 0
   isMovable: 0
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 6886695307034250022}
 --- !u!65 &2855663827916650040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
   waterPressureViaConnection: 0
   connectionSize: 1
   isMovable: 0
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 6886695307034250022}
 --- !u!65 &8885593194579923764
 BoxCollider:
   m_ObjectHideFlags: 0

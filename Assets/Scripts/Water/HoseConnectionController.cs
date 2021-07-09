@@ -35,6 +35,11 @@ public class HoseConnectionController : ConnectionController
         layer = LayerMask.NameToLayer("Connection");
     }
 
+    private void Update()
+    {
+        DEBUG(parentObject.name + ": " + name + ": " + InputWaterPressure.ToString());
+    }
+
     private void LateUpdate()
     {
         if (setTransform)
@@ -50,7 +55,7 @@ public class HoseConnectionController : ConnectionController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (connectedObject == null && other.gameObject.layer == layer)
+        if (!connectedObject && other.gameObject.layer == layer)
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
             if (connection.CheckOnTriggerEnter(this))
@@ -62,6 +67,8 @@ public class HoseConnectionController : ConnectionController
                 MoveAccordingly(connectedObject.transform);
 
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+                UpdateWaterPressure();
             }
         }
     }
@@ -78,13 +85,15 @@ public class HoseConnectionController : ConnectionController
 
     public override void OnClearConnection()
     {
-        if (!isClearing && connectedObject != null)
+        if (!isClearing && connectedObject)
         {
             rigidBody.constraints = RigidbodyConstraints.None;
             isClearing = true;
             connectedObject.OnClearConnection();
             connectedObject = null;
             setTransform = false;
+            UpdateWaterPressure();
+            parentObject.UpdateWaterPressure();
         }
         isClearing = false;
     }

@@ -18,7 +18,7 @@ public class CollectorController : MovableParentWaterObject
     [SerializeField]
     private ConnectionController outputConnection = null;
 
-    protected override void UpdateWaterPressure()
+    public override void UpdateWaterPressure()
     {
         // The water pressures are the sum of the pressures of all input connections
         float inputWaterPressure = 0.0f;

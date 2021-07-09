@@ -43,7 +43,7 @@ public class PumpController : WaterObjectController
         isOpeningOrClosing = new bool[length];
     }
 
-    protected override void UpdateWaterPressure()
+    public override void UpdateWaterPressure()
     {
         // The input water pressure is the output water pressure of the input connection
         InputWaterPressure = inputConnection.OutputWaterPressure;
@@ -62,10 +62,16 @@ public class PumpController : WaterObjectController
         float outputPressurePerOpenedConnection = OutputWaterPressure / openOutputConnectionIndices.Count;
 
         // Update the water pressures of the output connections manually
+        for (int i = 0; i < isOpenOutputConnection.Length; i++)
+        {
+            outputConnections[i].UpdateWaterPressure(isOpenOutputConnection[i] ? outputPressurePerOpenedConnection : 0.0f);
+        }
+
+        /*// Update the water pressures of the output connections manually
         foreach (int outputIndex in openOutputConnectionIndices)
         {
             outputConnections[outputIndex].UpdateWaterPressure(outputPressurePerOpenedConnection);
-        }
+        }*/
     }
 
     public void OnToggleConnection(int index)
@@ -74,10 +80,8 @@ public class PumpController : WaterObjectController
         {
             isOpeningOrClosing[index] = true;
             isOpenOutputConnection[index] = !isOpenOutputConnection[index];
-            if (!isOpenOutputConnection[index])
-            {
-                outputConnections[index].UpdateWaterPressure(0.0f);
-            }
+
+            UpdateWaterPressure();
 
             StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
         }

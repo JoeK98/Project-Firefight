@@ -63,6 +63,7 @@ public class HydrantController : WaterObjectController
         if (other.CompareTag("HydrantKey"))
         {
             isOpen = !isOpen;
+            UpdateWaterPressure();
         }
     }
 
@@ -70,7 +71,7 @@ public class HydrantController : WaterObjectController
 
     #region Abstract Class implementation
 
-    protected override void UpdateWaterPressure()
+    public override void UpdateWaterPressure()
     {
         InputWaterPressure = WATER_PRESSURE;
         if (isOpen)

@@ -51,11 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383aec01304a42a43acbbdb9fbbfbec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 6110501939720560659}
   inputConnection: {fileID: 6110501939816368136}
   openerLever: {fileID: 670793949291777458}
   openingClosingAnimationLength: 0.1
   waterParticleSystem: {fileID: 3112412504156505770}
-  rigidBody: {fileID: 6110501939720560659}
   waterSound: {fileID: 1352800547043902682}
 --- !u!65 &6110501939720561129
 BoxCollider:
@@ -5132,7 +5132,7 @@ MonoBehaviour:
   waterPressureViaConnection: 1
   connectionSize: 2
   isMovable: 1
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 6110501939720560661}
 --- !u!65 &6110501939816368139
 BoxCollider:
   m_ObjectHideFlags: 0

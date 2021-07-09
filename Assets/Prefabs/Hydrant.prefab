@@ -123,7 +123,7 @@ MonoBehaviour:
   waterPressureViaConnection: 0
   connectionSize: 1
   isMovable: 0
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 4374300728022465092}
 --- !u!65 &8105361032994841901
 BoxCollider:
   m_ObjectHideFlags: 0

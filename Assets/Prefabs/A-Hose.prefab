@@ -52,7 +52,7 @@ MonoBehaviour:
   waterPressureViaConnection: 1
   connectionSize: 0
   isMovable: 1
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 7693089569596279198}
 --- !u!65 &7693089569122451757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   waterPressureViaConnection: 1
   connectionSize: 0
   isMovable: 1
-  parentObject: {fileID: 0}
+  parentObject: {fileID: 7693089569596279198}
 --- !u!65 &7693089570761898164
 BoxCollider:
   m_ObjectHideFlags: 0

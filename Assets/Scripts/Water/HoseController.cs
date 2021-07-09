@@ -59,7 +59,7 @@ public class HoseController : WaterObjectController
         }
     }
 
-    protected override void Update()
+    private void Update()
     {
         lineRenderer.SetPosition(0, lineEnds[0].position);
         lineRenderer.SetPosition(1, lineEnds[1].position);
@@ -67,7 +67,7 @@ public class HoseController : WaterObjectController
         UpdateWaterPressure();
     }
 
-    protected override void UpdateWaterPressure()
+    public override void UpdateWaterPressure()
     {
         // if no connection is set as the input connection yet
         if (inputConnectionIndex == -1)

@@ -34,17 +34,15 @@ public class JetPipeController : MovableParentWaterObject
 
     private bool isOpeningOrClosing = false;
 
-    protected override void Update()
+    private void Update()
     {
-        UpdateWaterPressure();
-
         if (!isOpeningOrClosing && rotationQueue.Count > 0)
         {
             StartCoroutine(rotationQueue.Dequeue());
         }
     }
 
-    protected override void UpdateWaterPressure()
+    public override void UpdateWaterPressure()
     {
         InputWaterPressure = inputConnection.OutputWaterPressure;
 
