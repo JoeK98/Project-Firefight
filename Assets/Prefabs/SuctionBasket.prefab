@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6251a77da833fe74c966bee01209617a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suctionBasket: {fileID: 0}
+  suctionBasket: {fileID: 5904844941982211736}
 --- !u!65 &2461696394742816685
 BoxCollider:
   m_ObjectHideFlags: 0

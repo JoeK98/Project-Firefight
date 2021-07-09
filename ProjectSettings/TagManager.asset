@@ -9,6 +9,7 @@ TagManager:
   - TubeB
   - TubeC
   - HydrantKey
+  - Lake
   layers:
   - Default
   - TransparentFX
