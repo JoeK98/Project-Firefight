@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class for the function of the menu
+/// <author> Vincent Holtorf </author>
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
     /// <summary>

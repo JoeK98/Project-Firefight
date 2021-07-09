@@ -2,6 +2,10 @@ using ExtensionMethods;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Scriptable Object that saves the text for the english and german tutorial
+/// <author> Vincent Holtorf, Joe Koelbel </author>
+/// </summary>
 public class FireRules : MonoBehaviour
 {
     private const float ERROR_MARGIN = 1.0f;

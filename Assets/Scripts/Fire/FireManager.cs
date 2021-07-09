@@ -2,18 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class for activating the first Fire
+/// <author> Vincent Holtorf </author>
+/// </summary>
 public class FireManager : MonoBehaviour
 {
 
-    [SerializeField] private FireRules[] windows;
+    /// <summary>
+    /// Array of all the Fires in the scene
+    /// </summary>
+    [SerializeField] private FireRules[] fires;
 
-    public FireRules[] Windows { get => windows; set => windows = value; }
+    public FireRules[] Fires { get => fires; set => fires = value; }
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Activate random the first fire at the start of the level
+    /// </summary>
     void Start()
     {
-        int windowIndex = Random.Range(0, Windows.Length);
-        Windows[windowIndex].gameObject.SetActive(true);
+        int windowIndex = Random.Range(0, Fires.Length);
+        Fires[windowIndex].gameObject.SetActive(true);
     }
 
 }

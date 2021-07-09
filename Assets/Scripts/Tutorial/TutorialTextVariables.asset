@@ -71,5 +71,29 @@ MonoBehaviour:
   - 'Open the right distributer output. '
   - 'Now take the Jetpipe and pull the trigger to open the Jetpipe. '
   - 'Last but least put out the fire. '
-  _tutTextsGermanForest: []
+  _tutTextsGermanForest:
+  - "Danke das du uns helfen m\xF6chtest, fang doch mal an die beiden Verbindungen
+    des A-Schlauches (schwarz) mit einander zu verbinden."
+  - "Da zwei von diesen Schl\xE4uchen noch zu kurz sind musst du noch einen dritten
+    anschlie\xDFen."
+  - Jetzt einmal das Schlauchende hier in die Hand nehmen.
+  - Und an den Saugkorb befestigen.
+  - "Jetzt den Saugkorb hier in das Gew\xE4sser werfen."
+  - "Das noch offene Ende der A-Schl\xE4uche hier nehmen."
+  - "Und an den A-Eingang der Pumpe anschlie\xDFen."
+  - "Als n\xE4chsten Schritt den Verteiler aufnehmen,"
+  - In den leuchtenden Bereich ablegen.
+  - Einmal den B-Schlauch ausgang nehmen.
+  - Und hier mit dem linken oder rechten Ausgang der Pumpe verbinden.
+  - 'Jetzt das andere Ende des Schlauches nehmen und zum Verteiler bringen. '
+  - "Um es an den B-Anschluss (der einzelne gro\xDFe) zu stecken."
+  - Das passende Ventil aufdrehen.
+  - Nun das rechte Ende vom C-Schlauch (rot) nehmen und zum Verteiler bringen.
+  - "Den Anschluss an eines der kleinen Verteilerausg\xE4nge stecken."
+  - "Als n\xE4chstes die beiden C-Schl\xE4uche miteinander verbinden."
+  - Jetzt dieses Ende zum Strahlrohr bringen.
+  - Und hier an das Strahlrohr stecken.
+  - "Die richtige Verteilerseite \xF6ffnen."
+  - "Jetzt durch den Trigger  das Strahlrohr \xF6ffnen."
+  - "Und das Feuer l\xF6schen."
   _tutTextsEnglishForest: []
