@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14b0c3b7dc607a418917083f3695ab8, type: 3}
+  m_Name: TutorialTextVariables
+  m_EditorClassIdentifier: 
+  _tutTextsGermanCity:
+  - "Hey sch\xF6n das du da bist. Als erstes m\xFCssen wir die Stra\xDFe sperren.
+    Daf\xFCr einmal einen Pylon greifen."
+  - Jetzt den Pylon in das Feld hier legen.
+  - Alles gute sind zwei.
+  - Und jetzt hier in den Bereich legen.
+  - "Nachdem die Stra\xDFe abgesperrt ist. Einmal den linken Anschluss des B-Schlauchs
+    (Gelb) in die Hand nehmen."
+  - "Das Ende jetzt hier an den Hydranten anschlie\xDFen."
+  - "Nun das Sammelst\xFCck hier hochheben."
+  - "Und an den A-Eingang (der Gro\xDFe) der Pumpe anschlie\xDFen."
+  - Jetzt das fehlende Ende in die Hand nehmen.
+  - "Und an eines der beiden Ausg\xE4nge des Sammelst\xFCck stecken."
+  - "Als n\xE4chstes den Hydrantenschl\xFCssel hier nehmen."
+  - "Um den Hydranten zu \xF6ffnen und das Wasser laufen lassen."
+  - Jetzt den Verteiler hoch nehmen und auf die andere Seite des Waagens bringen.
+  - Und hier in den leuchtenden Bereich legen.
+  - "Als n\xE4chstes die Linkeverbindung des B-Schlauches zur Pumpe bringen."
+  - Und verbindest das Ende hier mit dem linken oder rechten Ausgang der Pumpe.
+  - Jetzt das andere Ende hier nehmen und zum Verteiler bringen.
+  - "Jetzt das Ende an den B-Anschluss (der Einzelne gro\xDFe) stecken."
+  - Das passende Ventil aufdrehen.
+  - Nun das rechte Ende vom C-Schlauch (rot) nehmen und zum Verteiler bringen.
+  - "Den Anschluss an eines der kleinen Verteilerausg\xE4nge stecken."
+  - "Als n\xE4chstes die beiden C-Schl\xE4uche miteinander verbinden."
+  - Jetzt dieses Ende zum Strahlrohr bringen.
+  - Und hier an das Strahlrohr stecken.
+  - "Die richtige Verteilerseite \xF6ffnen."
+  - "Jetzt durch den Trigger  das Strahlrohr \xF6ffnen."
+  - "Und das Feuer l\xF6schen."
+  _tutTextsEnglishCity:
+  - Hey, nice to meet you. First, we need to block the street, for that take a Pylon.
+  - Now put it in this field here.
+  - 'We need a second so take another one. '
+  - 'And place it here. '
+  - 'So after we blocked the street, take the left connection from the B-tube (yellow). '
+  - 'Put it on the hydrant. '
+  - 'Now take the collector here. '
+  - 'And put it on the A-output (the big one) from the pump. '
+  - 'Now grab the free connection from the B-tube. '
+  - 'And connect it with one of the inputs from the collector. '
+  - 'The next step is to grab the hydrant key. '
+  - 'With the hydrant key, you now open the hydrant. '
+  - 'Now take the distributor and bring it to the other side of the firetruck. '
+  - 'And put it in the glowing space. '
+  - 'Next, take the left connection from the B-Tube to the pump. '
+  - 'Now put it on the left or right output from the pump. '
+  - 'Take the other end of the Tube and bring it to the distributor. '
+  - 'Put it at the B-input (the single big one). '
+  - 'Open the matching valve. '
+  - 'For the next step, you take the right end from the C-tube and bring it to the
+    distributor. '
+  - 'Put it on one of the C-outputs (the left or right one). '
+  - 'Now connect the two C-tube with each other. '
+  - 'And bring this end to the Jetpipe. '
+  - 'Put it at the input from the Jetpipe. '
+  - 'Open the right distributer output. '
+  - 'Now take the Jetpipe and pull the trigger to open the Jetpipe. '
+  - 'Last but least put out the fire. '
+  _tutTextsGermanForest: []
+  _tutTextsEnglishForest: []
