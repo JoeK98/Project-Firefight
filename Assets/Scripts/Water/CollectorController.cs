@@ -40,6 +40,7 @@ public class CollectorController : MovableParentWaterObject
         {
             base.AdjustTransformOnConnection(currentConnectionTransform, targetTransform, fixedConnection, isHose);
 
+            // If connecting to a fixated Object, fixate this Object and its connections
             if (fixedConnection)
             {
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
@@ -56,13 +57,15 @@ public class CollectorController : MovableParentWaterObject
 
     public override void OnClearConnection(bool wasFixedConnection)
     {
-        // Assert that only one connection can be connected to fixated connection
+        // We assert that only one connection can be connected to a fixated connection
         if (wasFixedConnection)
         {
+            // Dont move the object to its fixed position anymore
             setTransform = false;
 
             rigidBody.constraints = RigidbodyConstraints.None;
 
+            // Unfixate the connections
             foreach (ConnectionController inputConnection in inputConnections)
             {
                 inputConnection.UnFixate();
