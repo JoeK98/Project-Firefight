@@ -20,18 +20,22 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private int tutProgress = 0;
 
+    /// <summary>
+    /// Connection to check in what language the TMpro need to be
+    /// </summary>
+    [SerializeField]
+    private TutorialTextSO tutorialLanguage = null;
+
+    /// <summary>
+    /// Bools to change the texts between the Scenes
+    /// </summary>
     [SerializeField]
     private bool cityScene = false;
     [SerializeField]
     private bool forestScene = false;
-    [SerializeField]
-    private bool englishTexts= false;
-    [SerializeField]
-    private bool germanTexts = false;
+
 
     public int TutProgress { get => tutProgress; set => tutProgress = value; }
-    public bool GermanTexts { get => germanTexts; set => germanTexts = value; }
-    public bool EnglishTexts { get => englishTexts; set => englishTexts = value; }
     public bool ForestScene { get => forestScene; set => forestScene = value; }
     public bool CityScene { get => cityScene; set => cityScene = value; }
 

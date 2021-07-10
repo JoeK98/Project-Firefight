@@ -27,4 +27,6 @@ public class TutorialTextSO : ScriptableObject
     /// A List of all english texts for the english Forest tutorial
     /// </summary>
     public List<string> _tutTextsEnglishForest = new List<string>();
+
+    public bool textIsEnglish = false;
 }

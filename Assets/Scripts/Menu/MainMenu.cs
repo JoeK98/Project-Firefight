@@ -26,6 +26,14 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Changed the actuelle Scene from one Level to the Menu
+    /// </summary>
+    public void OnBackToMenu()
+    {
+        SceneManager.LoadScene("Menue");
+    }
+
+    /// <summary>
     /// End the Application
     /// </summary>
     public void OnQuitGame()
