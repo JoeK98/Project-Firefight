@@ -13,9 +13,12 @@ public class TutorialConnectionControler : MonoBehaviour
     /// Connection for the Manager and the step the connection has in the tutprial
     /// </summary>
     [SerializeField]
-    private TutorialManager _tutManger;
+    private TutorialManager tutManger;
+
     [SerializeField][Tooltip ("Number from TMPro-1")]
-    private int _tutorialNumber;
+    private int tutorialNumber;
+
+    public int TutorialNumber { get => tutorialNumber; set => tutorialNumber = value; }
 
     /// <summary>
     /// double check if the connection that the player maked has the right tag and he make it at the right time
@@ -25,35 +28,35 @@ public class TutorialConnectionControler : MonoBehaviour
         
         if (other.gameObject.CompareTag("TubeB"))
         {
-            if (_tutorialNumber == _tutManger.TutProgress)
+            if (TutorialNumber == tutManger.TutProgress)
             {
-                _tutManger.TutProgress += 1;
-                _tutManger.ChangeTask();
+                tutManger.TutProgress += 1;
+                tutManger.ChangeTask();
             }
             
         }
         else if(other.gameObject.CompareTag("TubeC"))
         {
-            if (_tutorialNumber == _tutManger.TutProgress)
+            if (TutorialNumber == tutManger.TutProgress)
             {
-                _tutManger.TutProgress += 1;
-                _tutManger.ChangeTask();
+                tutManger.TutProgress += 1;
+                tutManger.ChangeTask();
             }
         }
         else if (other.gameObject.CompareTag("Connection"))
         {
-            if (_tutorialNumber == _tutManger.TutProgress)
+            if (TutorialNumber == tutManger.TutProgress)
             {
-                _tutManger.TutProgress += 1;
-                _tutManger.ChangeTask();
+                tutManger.TutProgress += 1;
+                tutManger.ChangeTask();
             }
         }
         else if (other.gameObject.CompareTag("HydrantKey"))
         {
-            if (_tutorialNumber == _tutManger.TutProgress)
+            if (TutorialNumber == tutManger.TutProgress)
             {
-                _tutManger.TutProgress += 1;
-                _tutManger.ChangeTask();
+                tutManger.TutProgress += 1;
+                tutManger.ChangeTask();
             }
         }
     }
@@ -63,10 +66,10 @@ public class TutorialConnectionControler : MonoBehaviour
     /// </summary>
     public void OnSelectEntered()
     {
-        if(_tutorialNumber == _tutManger.TutProgress)
+        if(TutorialNumber == tutManger.TutProgress)
         {
-            _tutManger.TutProgress += 1;
-            _tutManger.ChangeTask();
+            tutManger.TutProgress += 1;
+            tutManger.ChangeTask();
         }
     }
 

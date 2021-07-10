@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Scriptable Object that saves the text for the english and german tutorial
+/// Class to declare teh behavior of the fire
 /// <author> Vincent Holtorf, Joe Koelbel </author>
 /// </summary>
 public class FireRules : MonoBehaviour
