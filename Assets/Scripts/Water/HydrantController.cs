@@ -24,12 +24,6 @@ public class HydrantController : WaterObjectController
     [SerializeField]
     private ConnectionController connection = null;
 
-    /// <summary>
-    /// Connection with the Tutorial Manager
-    /// </summary>
-    [SerializeField][Tooltip("For the TMpro nr.6")]
-    private TutorialManager _tutManger;
-
     #endregion
 
     #region Private Attributes

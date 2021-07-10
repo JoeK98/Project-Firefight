@@ -5,7 +5,16 @@
 /// </summary>
 public enum HoseTypes
 {
+    /// <summary>
+    /// Biggest Hose
+    /// </summary>
     A,
+    /// <summary>
+    /// Second biggest Hose
+    /// </summary>
     B,
+    /// <summary>
+    /// Third biggest Hose
+    /// </summary>
     C
 }

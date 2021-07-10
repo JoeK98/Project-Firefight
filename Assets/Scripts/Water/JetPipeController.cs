@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,17 +9,31 @@ using System.Collections.Generic;
 public class JetPipeController : MovableParentWaterObject
 {
     /// <summary>
+    /// minimal water pressure to start the particle system
+    /// </summary>
+    private const float MIN_WATER_PRESSURE = 0.5f;
+
+    /// <summary>
     /// The input connection of the jet pipe
     /// </summary>
     [SerializeField]
     private ConnectionController inputConnection = null;
 
+    /// <summary>
+    /// The animated lever that shows whether the pipe is opened or not
+    /// </summary>
     [SerializeField]
     private Transform openerLever = null;
 
+    /// <summary>
+    /// How much time the opening or closing animation takes
+    /// </summary>
     [SerializeField]
     private float openingClosingAnimationLength = 0.1f;
 
+    /// <summary>
+    /// The water particle system
+    /// </summary>
     [SerializeField]
     private ParticleSystem waterParticleSystem = null;
 
@@ -30,15 +43,44 @@ public class JetPipeController : MovableParentWaterObject
     [SerializeField, Tooltip("Audiosource from the JetPipe")]
     private AudioSource waterSound;
 
-    private Queue<IEnumerator> rotationQueue = new Queue<IEnumerator>();
+    /// <summary>
+    /// Queue for opening and closing animations
+    /// </summary>
+    private Queue<IEnumerator> animationQueue = new Queue<IEnumerator>();
 
+    /// <summary>
+    /// Flag whether an animation is currently running
+    /// </summary>
     private bool isOpeningOrClosing = false;
 
+    /// <summary>
+    /// Flag whether the pipe is opened or not
+    /// </summary>
+    private bool isActive = false;
+
+    /// <summary>
+    /// Update is called once per frame
+    /// if an animation is queued and none is already running -> start a new animation
+    /// </summary>
     private void Update()
     {
-        if (!isOpeningOrClosing && rotationQueue.Count > 0)
+        if (!isOpeningOrClosing && animationQueue.Count > 0)
         {
-            StartCoroutine(rotationQueue.Dequeue());
+            StartCoroutine(animationQueue.Dequeue());
+        }
+
+        if (isActive && OutputWaterPressure > MIN_WATER_PRESSURE)
+        {
+            waterParticleSystem.Play();
+            if (!waterSound.isPlaying)
+            {
+                waterSound.Play();
+            }
+        }
+        else
+        {
+            waterParticleSystem.Stop();
+            waterSound.Stop();
         }
     }
 
@@ -63,38 +105,6 @@ public class JetPipeController : MovableParentWaterObject
         }
     }
 
-
-
-    /// <summary>
-    /// Callback for the Activated Event of the XR Interactable
-    /// </summary>
-    public void OnActivate()
-    {
-
-        if (OutputWaterPressure > 0.5f)
-        {
-            waterParticleSystem.Play();
-            waterSound.Play();
-        }
-        else
-        {
-            waterParticleSystem.Stop();
-        }
-
-        rotationQueue.Enqueue(RotateOpener(true));
-    }
-
-    /// <summary>
-    /// Callback for the Deactivated Event of the XR Interactable
-    /// </summary>
-    public void OnDeactivate()
-    {
-        waterParticleSystem.Stop();
-        waterSound.Stop();
-
-        rotationQueue.Enqueue(RotateOpener(false));
-    }
-
     public override void OnClearConnection(bool wasFixedConnection)
     {
         if (wasFixedConnection)
@@ -107,26 +117,60 @@ public class JetPipeController : MovableParentWaterObject
         }
     }
 
-    private IEnumerator RotateOpener(bool isOpen)
+    /// <summary>
+    /// Callback for the Activated Event of the XR Interactable
+    /// </summary>
+    public void OnActivate()
     {
-        float rotationPerSecond = (isOpen ? -90.0f : 90.0f) / openingClosingAnimationLength;
+        isActive = true;
 
+        animationQueue.Enqueue(RotateOpener(true));
+    }
+
+    /// <summary>
+    /// Callback for the Deactivated Event of the XR Interactable
+    /// </summary>
+    public void OnDeactivate()
+    {
+        isActive = false;
+
+        animationQueue.Enqueue(RotateOpener(false));
+    }
+
+    /// <summary>
+    /// Coroutine that handels the animation of opening and closing of the pipe
+    /// </summary>
+    /// <param name="isOpening"> whether the pipe is opening or closing </param>
+    /// <returns></returns>
+    private IEnumerator RotateOpener(bool isOpening)
+    {
+        // Calculate how much the object should rotate per second
+        float rotationPerSecond = (isOpening ? -90.0f : 90.0f) / openingClosingAnimationLength;
+
+        // how much time passed since the animation started
         float wholeAnimationTime = 0.0f;
 
+        // while the animation is not running as long as it should -> continue the animation
         while (wholeAnimationTime < openingClosingAnimationLength)
         {
+            // time since the last frame update
             float animationTime = Time.deltaTime;
             wholeAnimationTime += animationTime;
 
+            // if more time passed than the animation should run -> substract the extra time
             if (wholeAnimationTime > openingClosingAnimationLength)
             {
                 animationTime -= wholeAnimationTime % openingClosingAnimationLength;
             }
+
+            // Rotate the object around its local z-axis
             openerLever.Rotate(0.0f, 0.0f, rotationPerSecond * animationTime, Space.Self);
 
+            // yield return null coroutines should be executed right after the normal update functions of MonoBehaviours
             yield return null;
         }
 
+        // when the animation is finished, set the flag accordingly
         isOpeningOrClosing = false;
     }
 }
