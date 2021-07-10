@@ -25,8 +25,6 @@ public class ConnectionController : WaterObjectController
 
     #endregion
 
-    #region Serialized Fields
-
     /// <summary>
     /// Flag whether the water pressure is updated via the connected ConnectionController
     /// </summary>
@@ -45,17 +43,18 @@ public class ConnectionController : WaterObjectController
     [SerializeField]
     protected bool isMovable = false;
 
+    /// <summary>
+    /// The parent object of the connection
+    /// </summary>
     [SerializeField]
     protected WaterObjectController parentObject = null;
     
-    #endregion
 
-    #region Protected Attributes
 
     /// <summary>
     /// The connected connection
     /// </summary>
-    protected ConnectionController connectedObject = null;
+    public ConnectionController ConnectedObject { get; protected set; } = null;
 
     /// <summary>
     /// Flag whether the connection is being cleared
@@ -75,44 +74,58 @@ public class ConnectionController : WaterObjectController
     /// </summary>
     protected bool isUnfixating = false;
 
-    protected bool isConnectedToFixed = false;
+    /// <summary>
+    /// Flag whether this connection is connected to a fixated object
+    /// </summary>
+    protected bool isConnectedToFixated = false;
 
+    /// <summary>
+    /// Flag whether this connection is fixated
+    /// </summary>
     protected bool isFixated = false;
 
+    /// <summary>
+    /// The position of this connection on the last frame
+    /// </summary>
     protected Vector3 lastPosition;
 
+    /// <summary>
+    /// The rotation of this connection on the last frame
+    /// </summary>
     protected Quaternion lastRotation;
 
-    protected int layer;
-
+    /// <summary>
+    /// Flag whether the parent object is movable
+    /// </summary>
     protected bool isParentMovable = false;
 
-    #endregion
-
-    #region MonoBehaviour implementation
-
+    /// <summary>
+    /// Start is called before the first frame update
+    /// Sets initial values to some variables
+    /// </summary>
     private void Start()
     {
-        layer = LayerMask.NameToLayer("Connection");
-
         lastPosition = transform.position;
         lastRotation = transform.rotation;
 
         isParentMovable = parentObject && parentObject.GetType().IsSubclassOf(typeof(MovableParentWaterObject));
     }
 
+    /// <summary>
+    /// Update is called once per frame
+    /// Updates the position of the connection and the connected objects
+    /// </summary>
     private void Update()
     {
-        // Wenn nicht fixiert, verbunden mit anderer Connection und bewegt, dann bewege die andere Verbindung entsprechend
-        if (!isFixated && connectedObject && (!lastPosition.Equals(transform.position) || !lastRotation.Equals(transform.rotation)))
+        // If not fixated, connected to another connection and is at a different location than last frame -> Move the connected object accordingly
+        if (!isFixated && ConnectedObject && (!lastPosition.Equals(transform.position) || !lastRotation.Equals(transform.rotation)))
         {
-            connectedObject.MoveAccordingly(transform);
+            ConnectedObject.MoveAccordingly(transform);
         }
 
+        // Save position and rotation for next frame
         lastPosition = transform.position;
         lastRotation = transform.rotation;
-
-        DEBUG(parentObject.name + ": " + name + ": " + InputWaterPressure.ToString());
     }
 
     /// <summary>
@@ -121,64 +134,73 @@ public class ConnectionController : WaterObjectController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (!connectedObject && other.gameObject.layer == layer)
+        // If not already connected and if the other object is on the same layer
+        if (!ConnectedObject && other.gameObject.layer == gameObject.layer)
         {
+            // Try to get the other ConnectionController
             ConnectionController connection = other.GetComponent<ConnectionController>();
-            if ((!connection.connectedObject || connection.connectedObject == this) && connection.connectionSize == connectionSize)
+
+            // The other object must have no connection or must be connected to this (since the execution of one OnTriggerEnter happens before the other) and the connections must be of the same size
+            if ((!connection.ConnectedObject || connection.ConnectedObject == this) && connection.connectionSize == connectionSize)
             {
-                connectedObject = connection;
+                // then the other object can be assigned to the connectedObject variable
+                ConnectedObject = connection;
+
+                // if this connection is movable and not fixated
                 if (isMovable && !isFixated)
                 {
-                    isConnectedToFixed = !connection.isMovable || connection.isFixated;
+                    // check if the other connection is a fixated connection
+                    isConnectedToFixated = !connection.isMovable || connection.isFixated;
 
+                    // if the parent object is a movable object -> adjust its transform to have the connections fit to another
                     if (isParentMovable)
                     {
-                        ((MovableParentWaterObject)parentObject).AdjustTransformOnConnection(transform, other.transform, isConnectedToFixed, connectedObject.GetType() == typeof(HoseConnectionController));
+                        ((MovableParentWaterObject)parentObject).AdjustTransformOnConnection(transform, other.transform, isConnectedToFixated, ConnectedObject.GetType() == typeof(HoseConnectionController));
                     }
                 }
             }
         }
     }
 
-    #endregion
-
-    #region Abstract Class implementation
+    protected virtual void MoveAccordingly(Transform other)
+    {
+        // TODO
+    }
 
     public override void UpdateWaterPressure()
     {
+        // the water pressure can be assigned via the connectedObject or the parent object
+        // this method is used when the pressure is updated via the connectedObject
         if (waterPressureViaConnection)
         {
-            InputWaterPressure = connectedObject ? connectedObject.OutputWaterPressure : 0.0f;
+            // the InputWaterPressure is either the OutputWaterPressure of the connectedObject or 0
+            InputWaterPressure = ConnectedObject ? ConnectedObject.OutputWaterPressure : 0.0f;
             OutputWaterPressure = InputWaterPressure;
 
+            // Update the water pressure of the parent object
             parentObject.UpdateWaterPressure();
         }
     }
-
-    #endregion
-
-    protected virtual void MoveAccordingly(Transform other)
-    {
-
-    }
-
-    #region Public Methods
 
     /// <summary>
     /// If the water pressure is not updated via the connection
     /// then it can be Updated manually
     /// </summary>
-    /// <param name="waterPressure"></param>
+    /// <param name="waterPressure"> the water pressure given by the parent object </param>
     public void UpdateWaterPressure(float waterPressure)
     {
+        // the water pressure can be assigned via the connectedObject or the parent object
+        // this method is used when the pressure is updated via the parent object
         if (!waterPressureViaConnection)
         {
+            // the water pressure is given by the parent object in the method call
             InputWaterPressure = waterPressure;
             OutputWaterPressure = waterPressure;
 
-            if (connectedObject)
+            // if this connection is connected to another object -> update its water pressure
+            if (ConnectedObject)
             {
-                connectedObject.UpdateWaterPressure();
+                ConnectedObject.UpdateWaterPressure();
             }
         }
     }
@@ -188,19 +210,28 @@ public class ConnectionController : WaterObjectController
     /// </summary>
     public virtual void OnClearConnection()
     {
-        if (!isClearing && connectedObject)
+        // Only do something when not already clearing and still being conected to an object
+        if (!isClearing && ConnectedObject)
         {
+            // set the flag to stop the recursion to true
             isClearing = true;
-            connectedObject.OnClearConnection();
-            connectedObject = null;
+
+            // call the method on the connected object
+            ConnectedObject.OnClearConnection();
+
+            // remove the connected object
+            ConnectedObject = null;
+
+            // if the parent object is movable -> call its OnClearConnection method to maybe unfixate the object
             if (isParentMovable)
             {
-                ((MovableParentWaterObject)parentObject).OnClearConnection(isConnectedToFixed);
+                ((MovableParentWaterObject)parentObject).OnClearConnection(isConnectedToFixated);
             }
-            isConnectedToFixed = false;
+            isConnectedToFixated = false;
 
             UpdateWaterPressure();
         }
+        // set the flag to stop the recursion to false after everything is done
         isClearing = false;
     }
 
@@ -213,37 +244,40 @@ public class ConnectionController : WaterObjectController
     /// <returns> true if the connections are compatible else false </returns>
     public bool CheckOnTriggerEnter(ConnectionController connection)
     {
-        return connection.connectionSize == connectionSize && (!connectedObject || connectedObject == connection);
+        return connection.connectionSize == connectionSize && (!ConnectedObject || ConnectedObject == connection);
     }
 
+    /// <summary>
+    /// fixate this object and the connected object
+    /// </summary>
     public void Fixate()
     {
         if (!isFixating)
         {
             isFixating = true;
-            if (connectedObject) // ? (No null propagation) should not be used for unity objects
+            if (ConnectedObject) // ? (No null propagation) should not be used for unity objects
             {
-                connectedObject.Fixate();
+                ConnectedObject.Fixate();
             }
             isFixated = true;
         }
         isFixating = false;
     }
 
+    /// <summary>
+    /// unfixate this object and the connected objet
+    /// </summary>
     public void UnFixate()
     {
         if (!isUnfixating)
         {
             isUnfixating = true;
-            if (connectedObject) // ? (No null propagation) should not be used for unity objects
+            if (ConnectedObject) // ? (No null propagation) should not be used for unity objects
             {
-                connectedObject.UnFixate();
+                ConnectedObject.UnFixate();
             }
             isFixated = false;
         }
         isUnfixating = false;
     }
-
-    #endregion
-
 }

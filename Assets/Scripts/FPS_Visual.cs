@@ -38,7 +38,7 @@ public class FPS_Visual : MonoBehaviour
                 fpsText.color = Color.green;
             }
             
-            fpsText.text = Mathf.FloorToInt(frames / timeSinceLastTextUpdate).ToString();
+            fpsText.text = fps.ToString();
 
             timeSinceLastTextUpdate %= updateInterval;
             frames = 0;

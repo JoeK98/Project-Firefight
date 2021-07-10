@@ -40,7 +40,8 @@ public class SetupManager : MonoBehaviour
         // Disable collisions between connection and opener colliders
         Physics.IgnoreLayerCollision(collisionLayer2, collisionLayer3);
 
-        // TODO: Set display refresh rate
+        // Uncomment this to enable higher display refresh rates
+        /*
         if (!Unity.XR.Oculus.Performance.TrySetDisplayRefreshRate(120.0f))
         {
             // This should only happen if the exoerimental setting for 120Hz support is turned off in the Quest 2 settings
@@ -50,5 +51,6 @@ public class SetupManager : MonoBehaviour
                 Unity.XR.Oculus.Performance.TrySetDisplayRefreshRate(80.0f);
             }
         }
+        */
     }
 }

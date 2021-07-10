@@ -95,6 +95,13 @@ public class HoseController : WaterObjectController
 
             // Update the water pressure of the output connection manually
             connections[(inputConnectionIndex + 1) % connections.Length].UpdateWaterPressure(OutputWaterPressure);
+
+            // When the input connection was disconnected, the other could become the input connection -> Reset to initial state
+            if (!connections[inputConnectionIndex].ConnectedObject)
+            {
+                connections[(inputConnectionIndex + 1) % connections.Length].WaterPressureViaConnection = true;
+                inputConnectionIndex = -1;
+            }
         }
     }
 

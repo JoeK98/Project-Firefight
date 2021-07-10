@@ -8,16 +8,17 @@ using UnityEngine;
 public class HoseConnectionController : ConnectionController
 {
     /// <summary>
+    /// A hose is currently only grabbable at its connections
+    /// This means the connection needs a rigidbody
+    /// </summary>
+    [SerializeField]
+    private Rigidbody rigidBody = null;
+
+    /// <summary>
     /// For Hoses the input and output connections arent initially defined
     /// which means that this value needs to be changed accordingly
     /// </summary>
     public bool WaterPressureViaConnection { set { waterPressureViaConnection = value; } }
-
-    /// <summary>
-    /// A hose is currently only grabbable at its connections (TODO: check later if this is still true)
-    /// This means the connection needs a rigidbody
-    /// </summary>
-    private Rigidbody rigidBody = null;
 
     private Vector3 targetPosition;
 
@@ -27,19 +28,19 @@ public class HoseConnectionController : ConnectionController
 
     /// <summary>
     /// Start is called before the first frame update
-    /// Search for the Rigidbody
+    /// Search for the Rigidbody when it is not assigned in the editor
     /// </summary>
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
-        layer = LayerMask.NameToLayer("Connection");
+        if (!rigidBody)
+        {
+            rigidBody = GetComponent<Rigidbody>();
+        }
     }
 
-    private void Update()
-    {
-        DEBUG(parentObject.name + ": " + name + ": " + InputWaterPressure.ToString());
-    }
-
+    /// <summary>
+    /// Update the position of the connection when connected to an object
+    /// </summary>
     private void LateUpdate()
     {
         if (setTransform)
@@ -55,16 +56,16 @@ public class HoseConnectionController : ConnectionController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (!connectedObject && other.gameObject.layer == layer)
+        if (!ConnectedObject && other.gameObject.layer == gameObject.layer)
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
             if (connection.CheckOnTriggerEnter(this))
             {
-                connectedObject = connection;
+                ConnectedObject = connection;
 
                 setTransform = true;
 
-                MoveAccordingly(connectedObject.transform);
+                MoveAccordingly(ConnectedObject.transform);
 
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -85,12 +86,12 @@ public class HoseConnectionController : ConnectionController
 
     public override void OnClearConnection()
     {
-        if (!isClearing && connectedObject)
+        if (!isClearing && ConnectedObject)
         {
             rigidBody.constraints = RigidbodyConstraints.None;
             isClearing = true;
-            connectedObject.OnClearConnection();
-            connectedObject = null;
+            ConnectedObject.OnClearConnection();
+            ConnectedObject = null;
             setTransform = false;
             UpdateWaterPressure();
             parentObject.UpdateWaterPressure();
