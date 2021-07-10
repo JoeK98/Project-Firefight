@@ -24,12 +24,6 @@ public class HydrantController : WaterObjectController
     [SerializeField]
     private ConnectionController connection = null;
 
-    /// <summary>
-    /// Connection with the Tutorial Manager
-    /// </summary>
-    [SerializeField][Tooltip("For the TMpro nr.6")]
-    private TutorialManager _tutManger;
-
     #endregion
 
     #region Private Attributes
@@ -55,7 +49,6 @@ public class HydrantController : WaterObjectController
 
     /// <summary>
     /// Close / Open the hydrant when touched with a hydrant key
-    /// Increase the Tutorial Progress when Open the Hydrant
     /// </summary>
     /// <param name="other"> collider that entered the trigger </param>
     private void OnTriggerEnter(Collider other)

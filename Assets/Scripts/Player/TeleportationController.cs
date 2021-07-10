@@ -36,7 +36,7 @@ public class TeleportationController : MonoBehaviour
     /// Start is called before the first frame update
     /// Search for an fitting input device and the line visual
     /// </summary>
-    void Start()
+    private void Start()
     {
         InputDeviceCharacteristics inputDeviceCharacteristics = InputDeviceCharacteristics.HeldInHand
                                             | InputDeviceCharacteristics.Controller
@@ -61,10 +61,9 @@ public class TeleportationController : MonoBehaviour
     /// Update is called once per frame
     /// Checks whether the input is higher than the deadzone and shows the line accordingly
     /// </summary>
-    void Update()
+    private void Update()
     {
-        Vector2 axisInput;
-        inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out axisInput);
+        inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 axisInput);
 
         lineVisual.enabled = axisInput.y > deadzone;
     }

@@ -9,6 +9,12 @@ using UnityEngine;
 public class PumpController : WaterObjectController
 {
     /// <summary>
+    /// How much the pressure is increased in the pump
+    /// </summary>
+    [SerializeField]
+    private float pumpMultiplier = 3.0f;
+
+    /// <summary>
     /// The input connection
     /// </summary>
     [SerializeField]
@@ -30,12 +36,10 @@ public class PumpController : WaterObjectController
 
     private bool[] isOpeningOrClosing;
 
-    // TODO: Multiplier changeable by lever or buttons
     /// <summary>
-    /// How much the pressure is increased in the pump
+    /// Start is called before the first frame update
+    /// initializes the arrays
     /// </summary>
-    private float pumpMultiplier = 3.0f;
-
     private void Start()
     {
         int length = outputConnections.Length;
@@ -66,12 +70,6 @@ public class PumpController : WaterObjectController
         {
             outputConnections[i].UpdateWaterPressure(isOpenOutputConnection[i] ? outputPressurePerOpenedConnection : 0.0f);
         }
-
-        /*// Update the water pressures of the output connections manually
-        foreach (int outputIndex in openOutputConnectionIndices)
-        {
-            outputConnections[outputIndex].UpdateWaterPressure(outputPressurePerOpenedConnection);
-        }*/
     }
 
     public void OnToggleConnection(int index)
