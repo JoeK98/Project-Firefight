@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Class to decide the language of the tutorial
+/// <author> Vincent Holtorf </author>
+/// </summary>
 public class TutorialText : MonoBehaviour
 {
     /// <summary>
@@ -24,9 +28,6 @@ public class TutorialText : MonoBehaviour
     [Tooltip("Number from TMPro")]
     private int tutorialNumber;
 
-    /// <summary>
-    /// Variable to change the Text over the script
-    /// </summary>
     private TextMeshProUGUI textMeshPro;
 
     /// <summary>

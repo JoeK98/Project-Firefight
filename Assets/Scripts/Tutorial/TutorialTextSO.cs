@@ -28,5 +28,8 @@ public class TutorialTextSO : ScriptableObject
     /// </summary>
     public List<string> _tutTextsEnglishForest = new List<string>();
 
+    /// <summary>
+    /// Simple bool to controlle the tutorial language
+    /// </summary>
     public bool textIsEnglish = false;
 }
