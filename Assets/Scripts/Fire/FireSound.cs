@@ -6,7 +6,7 @@ using System.Linq;
 
 /// <summary>
 /// Class that controls when the Firesound need to stop
-/// <author> Vincent Holtorf </author>
+/// <author> Vincent Holtorf, Joe Koelbel </author>
 /// </summary>
 public class FireSound : MonoBehaviour
 {
@@ -16,22 +16,23 @@ public class FireSound : MonoBehaviour
     [SerializeField, Tooltip("Audiosource from the Fires")]
     private AudioSource fireSound;
 
-    /// <summary>
-    /// The connection to the FireManager
-    /// </summary>
-    public FireManager fM;
+    private int activeFires = 0;
 
-    /// <summary>
-    /// Check if any Fire in the Scene has the State ONFIRE, when none Fire hasn´t the state, stop the music
-    /// </summary>
-    public void MusicController()
+    public void AddActiveFire()
     {
-        int fireWindows = fM.Fires.Where(x => x.State == FireStates.ONFIRE).ToList().Count;
+        activeFires++;
+        if (!fireSound.isPlaying)
+        {
+            fireSound.Play();
+        }
+    }
 
-        if(fireWindows <= 0)
+    public void RemoveActiveFire()
+    {
+        activeFires--;
+        if (activeFires == 0)
         {
             fireSound.Stop();
         }
     }
-
 }

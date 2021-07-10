@@ -629,6 +629,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 249164515}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 249164515}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.data[0]
       value: 
       objectReference: {fileID: 249164516}
@@ -1344,9 +1348,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: fires.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
       propertyPath: windows.Array.size
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: fires.Array.data[10]
+      value: 
+      objectReference: {fileID: 59137765}
+    - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: fires.Array.data[11]
+      value: 
+      objectReference: {fileID: 1196402061}
+    - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: fires.Array.data[12]
+      value: 
+      objectReference: {fileID: 254550439}
+    - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: fires.Array.data[13]
+      value: 
+      objectReference: {fileID: 1643069924}
     - target: {fileID: 3712115307233734359, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
       propertyPath: windows.Array.data[10]
       value: 
@@ -2079,6 +2103,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 249164515}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 249164515}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -2266,8 +2294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 20
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &298154265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7580954618526882389, guid: 20c5bb00e75d5db4280f48e823ef0dfc, type: 3}
@@ -2285,8 +2313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 4
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!4 &322435014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7693089569596279197, guid: d6208f900ad72e047a3d1239990944d2, type: 3}
@@ -2309,8 +2337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 16
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &336816401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2490,8 +2518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 12
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &434740463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2714,8 +2742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 13
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &521040789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2811,8 +2839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 18
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &565501772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,8 +3207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 16
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &728262189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3359,8 +3387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 20
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &856794367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7300178254265150056, guid: 46e95ae00467af648b5c9c4caefecc70, type: 3}
@@ -3378,8 +3406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 2
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &880261122 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 494862871061926655, guid: 99293399733614747a84796a66c1c427, type: 3}
@@ -3397,8 +3425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 16
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &893542714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4084,8 +4112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 21
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &1189078356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7300178254805556002, guid: 46e95ae00467af648b5c9c4caefecc70, type: 3}
@@ -4103,8 +4131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 5
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &1196402060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4178,6 +4206,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 249164515}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 249164515}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
@@ -4277,8 +4309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 10
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!4 &1286469861 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7693089569596279197, guid: d6208f900ad72e047a3d1239990944d2, type: 3}
@@ -4562,8 +4594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 17
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &1381615414 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 856797598737825764, guid: 51ea115015ff58b40a66c17a22e14ed6, type: 3}
@@ -4581,8 +4613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 17
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &1442670324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4759,8 +4791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 19
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &1544340996 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7580954617961128908, guid: 20c5bb00e75d5db4280f48e823ef0dfc, type: 3}
@@ -4778,8 +4810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 0
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &1600440168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4938,6 +4970,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 249164515}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 249164515}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
@@ -5531,8 +5567,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 5
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &1858153738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5746,8 +5782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 15
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &1885451318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6333,8 +6369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 20
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &2058919212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 494862870224701620, guid: 99293399733614747a84796a66c1c427, type: 3}
@@ -6352,8 +6388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 8
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &2085092307
 GameObject:
   m_ObjectHideFlags: 0

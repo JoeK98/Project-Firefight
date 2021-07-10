@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976af0e75e9811c4c9cd5015b40b3884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windows:
+  fires:
   - {fileID: 3712115307370337666}
   - {fileID: 5398357772985136611}
   - {fileID: 5673094172036437633}
@@ -78,7 +78,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8db513782575f2e408dc55aadbd014f4, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSound: {fileID: 1738263658}
-  fM: {fileID: 3712115307233734359}
 --- !u!114 &1183959476518061712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,8 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialNumber: 0
-  _tutManger: {fileID: 0}
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &256735271264557469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,6 +263,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
@@ -372,6 +375,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.data[0]
       value: 
       objectReference: {fileID: 5398357772985136611}
@@ -477,6 +484,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.data[0]
       value: 
       objectReference: {fileID: 5398357772985136611}
@@ -579,6 +590,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
@@ -691,6 +706,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -797,6 +816,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
@@ -909,6 +932,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1018,6 +1045,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: neighbours.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1124,6 +1155,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
@@ -1237,6 +1272,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
       propertyPath: fSound
+      value: 
+      objectReference: {fileID: 1738263659}
+    - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}
+      propertyPath: fireSound
       value: 
       objectReference: {fileID: 1738263659}
     - target: {fileID: 3464409862322048031, guid: 37192938a098f484989b4632bfc47e24, type: 3}

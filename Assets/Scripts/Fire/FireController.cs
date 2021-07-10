@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Class to declare teh behavior of the fire
+/// Class to control a single fire
 /// <author> Vincent Holtorf, Joe Koelbel </author>
 /// </summary>
-public class FireRules : MonoBehaviour
+public class FireController : MonoBehaviour
 {
     private const float ERROR_MARGIN = 1.0f;
 
@@ -14,7 +14,7 @@ public class FireRules : MonoBehaviour
     private FireRulesSO fireRulesVariables = null;
 
     [SerializeField]
-    private List<FireRules> neighbours = new List<FireRules>();
+    private List<FireController> neighbours = new List<FireController>();
 
     [SerializeField]
     private FireStates state = FireStates.NONE;
@@ -29,14 +29,13 @@ public class FireRules : MonoBehaviour
 
     private ParticleSystem.EmissionModule sparksEmission;
 
-    //TODO: Delete Serializiefilde after blanacing 
-    [SerializeField]private float fireHP = 0.0f;
+    private float fireHP = 0.0f;
+
     private Material fireMaterial;
+
     private int alphaID;
 
-    public FireStates State { get => state; set => state = value; }
-
-    public FireSound fSound;
+    public FireSound fireSound;
 
     // Start is called before the first frame update
     private void Awake()
@@ -50,15 +49,16 @@ public class FireRules : MonoBehaviour
 
     private void OnEnable()
     {
-        State = FireStates.ONFIRE;
+        state = FireStates.ONFIRE;
         fireHP = fireRulesVariables.fireLowerBorder + 0.001f;
+        fireSound.AddActiveFire();
         UpdateVisuals();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        switch (State)
+        switch (state)
         {
             case FireStates.NONE:
                 gameObject.SetActive(false);
@@ -66,28 +66,20 @@ public class FireRules : MonoBehaviour
             case FireStates.ONFIRE:
                 if (fireHP < fireRulesVariables.fireUpperBorder && fireHP >= fireRulesVariables.fireLowerBorder)
                 {
-                    fireHP = Mathf.Clamp(fireHP + fireRulesVariables.fireMultiplicator * Time.deltaTime, fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder + ERROR_MARGIN);
+                    fireHP = Mathf.Clamp(fireHP + fireRulesVariables.fireMultiplicator * Time.deltaTime, fireRulesVariables.fireLowerBorder - ERROR_MARGIN, fireRulesVariables.fireUpperBorder + ERROR_MARGIN);
                     UpdateVisuals();
                 }
 
-                // TODO: This will enable one neighbour per frame (might enable all at once or use a cooldown)
+                // This will enable all neighbours in one frame (might enable a random one and apply a cooldown to enable the next neighbour)
                 else if (fireHP >= fireRulesVariables.fireUpperBorder)
                 {
-                    int neighbourIndex = Random.Range(0, neighbours.Count);
-                    neighbours[neighbourIndex].gameObject.SetActive(true);
+                    foreach (FireController neighbour in neighbours)
+                    {
+                        neighbour.gameObject.SetActive(true);
+                    }
                 }
-
-                /*else if (fireHP <= fireRulesVariables.fireLowerBorder)
-                {
-                    state = FireStates.PUTOUT;
-                }*/
                 break;
-            case FireStates.PUTOUT:
-                /*if (fireHP <= fireRulesVariables.fireLowerBorder)
-                {
-                    fireMaterial.color = Color.blue;
-                }*/
-                fSound.MusicController();
+            default:
                 break;
         }
     }
@@ -103,17 +95,22 @@ public class FireRules : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        //TODO: Potential for better performance when saving the Particle System
-        int numCollisions = ParticlePhysicsExtensions.GetCollisionEvents(other.GetComponent<ParticleSystem>(), gameObject, new List<ParticleCollisionEvent>());
-
-        fireHP = Mathf.Clamp(fireHP - numCollisions * fireRulesVariables.particleDamage, fireRulesVariables.fireLowerBorder - ERROR_MARGIN, fireRulesVariables.fireUpperBorder);
-
-        if (fireHP < fireRulesVariables.fireLowerBorder)
+        // The fire only needs to be put out when it is on fire
+        if (state == FireStates.ONFIRE)
         {
-            State = FireStates.PUTOUT;
-            UpdateVisuals();
-            smokeParticleSystem.Stop();
-            sparksParticleSystem.Stop();
+            // Potential for better performance when saving the Particle System, but theoretically multiple particle systems could hit the object
+            int numCollisions = ParticlePhysicsExtensions.GetCollisionEvents(other.GetComponent<ParticleSystem>(), gameObject, new List<ParticleCollisionEvent>());
+
+            fireHP = Mathf.Clamp(fireHP - numCollisions * fireRulesVariables.particleDamage, fireRulesVariables.fireLowerBorder - ERROR_MARGIN, fireRulesVariables.fireUpperBorder + ERROR_MARGIN);
+
+            if (fireHP < fireRulesVariables.fireLowerBorder)
+            {
+                state = FireStates.PUTOUT;
+                fireSound.RemoveActiveFire();
+                UpdateVisuals();
+                smokeParticleSystem.Stop();
+                sparksParticleSystem.Stop();
+            }
         }
     }
 

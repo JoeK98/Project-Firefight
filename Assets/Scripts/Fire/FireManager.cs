@@ -12,17 +12,16 @@ public class FireManager : MonoBehaviour
     /// <summary>
     /// Array of all the Fires in the scene
     /// </summary>
-    [SerializeField] private FireRules[] fires;
-
-    public FireRules[] Fires { get => fires; set => fires = value; }
+    [SerializeField] 
+    private FireController[] fires;
 
     /// <summary>
     /// Activate random the first fire at the start of the level
     /// </summary>
-    void Start()
+    private void Start()
     {
-        int windowIndex = Random.Range(0, Fires.Length);
-        Fires[windowIndex].gameObject.SetActive(true);
+        int windowIndex = Random.Range(0, fires.Length);
+        fires[windowIndex].gameObject.SetActive(true);
     }
 
 }
