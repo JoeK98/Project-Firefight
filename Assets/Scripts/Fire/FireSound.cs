@@ -16,6 +16,9 @@ public class FireSound : MonoBehaviour
     [SerializeField, Tooltip("Audiosource from the Fires")]
     private AudioSource fireSound;
 
+    [SerializeField]
+    private TutorialManager tM;
+
     private int activeFires = 0;
 
     public void AddActiveFire()
@@ -33,6 +36,7 @@ public class FireSound : MonoBehaviour
         if (activeFires == 0)
         {
             fireSound.Stop();
+            tM.TutProgress += 1;
         }
     }
 }

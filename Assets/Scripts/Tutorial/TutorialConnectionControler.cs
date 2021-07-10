@@ -15,7 +15,7 @@ public class TutorialConnectionControler : MonoBehaviour
     [SerializeField]
     private TutorialManager tutManger;
 
-    [SerializeField][Tooltip ("Number from TMPro-1")]
+    [SerializeField][Tooltip ("Number from TMPro")]
     private int tutorialNumber;
 
     public int TutorialNumber { get => tutorialNumber; set => tutorialNumber = value; }

@@ -12,15 +12,15 @@ public class TutorialManager : MonoBehaviour
     /// Activate random the first fire at the start of the level
     /// </summary>
     [SerializeField]
-    private List<GameObject> _tutTexts = new List<GameObject>();
+    private List<GameObject> tutTexts = new List<GameObject>();
 
     /// <summary>
     /// Int to check where the player is in the Tutorial
     /// </summary>
     [SerializeField]
-    private int _tutProgress = 0;
+    private int tutProgress = 0;
 
-    public int TutProgress { get => _tutProgress; set => _tutProgress = value; }
+    public int TutProgress { get => tutProgress; set => tutProgress = value; }
 
     /// <summary>
     /// Function to change the Task, its activate the next task and deactivated the last task 
@@ -28,8 +28,8 @@ public class TutorialManager : MonoBehaviour
     public void ChangeTask()
     {
 
-        _tutTexts[_tutProgress].gameObject.SetActive(true);
-        _tutTexts[_tutProgress - 1].gameObject.SetActive(false);
+        tutTexts[tutProgress].gameObject.SetActive(true);
+        tutTexts[tutProgress - 1].gameObject.SetActive(false);
 
     }
 

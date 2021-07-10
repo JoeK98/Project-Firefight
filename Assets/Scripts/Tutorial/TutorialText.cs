@@ -15,11 +15,11 @@ public class TutorialText : MonoBehaviour
     [Tooltip("Number from TMPro")]
     private int tutorialNumber;
 
-    private TextMeshPro textMeshPro;
+    private TextMeshProUGUI textMeshPro;
 
     private void Awake()
     {
-        textMeshPro = GetComponent<TextMeshPro>();
+        textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
         textMeshPro.text = tutorialText._tutTextsGermanCity[tutorialNumber];
     }
 

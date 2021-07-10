@@ -29,19 +29,20 @@ MonoBehaviour:
   - "Um den Hydranten zu \xF6ffnen und das Wasser laufen lassen."
   - Jetzt den Verteiler hoch nehmen und auf die andere Seite des Waagens bringen.
   - Und hier in den leuchtenden Bereich legen.
-  - "Als n\xE4chstes die Linkeverbindung des B-Schlauches zur Pumpe bringen."
-  - Und verbindest das Ende hier mit dem linken oder rechten Ausgang der Pumpe.
+  - "Als n\xE4chstes die linke Verbindung des B-Schlauches zur Pumpe bringen."
+  - Und das Ende hier mit dem linken oder rechten Ausgang der Pumpe verbinden.
   - Jetzt das andere Ende hier nehmen und zum Verteiler bringen.
-  - "Jetzt das Ende an den B-Anschluss (der Einzelne gro\xDFe) stecken."
+  - "Und an den B-Anschluss (der Einzelne gro\xDFe) stecken."
   - Das passende Ventil aufdrehen.
   - Nun das rechte Ende vom C-Schlauch (rot) nehmen und zum Verteiler bringen.
-  - "Den Anschluss an eines der kleinen Verteilerausg\xE4nge stecken."
+  - "Den Anschluss an eines der kleinen Ausg\xE4nge stecken."
   - "Als n\xE4chstes die beiden C-Schl\xE4uche miteinander verbinden."
   - Jetzt dieses Ende zum Strahlrohr bringen.
-  - Und hier an das Strahlrohr stecken.
+  - Und hier an das Strahlrohr stecken und dann ab richtung Verteiler damit.
   - "Die richtige Verteilerseite \xF6ffnen."
   - "Jetzt durch den Trigger  das Strahlrohr \xF6ffnen."
   - "Und das Feuer l\xF6schen."
+  - "Super du hast es geschafft, danke f\xFCr deine Hilfe."
   _tutTextsEnglishCity:
   - Hey, nice to meet you. First, we need to block the street, for that take a Pylon.
   - Now put it in this field here.
@@ -71,6 +72,7 @@ MonoBehaviour:
   - 'Open the correct distributer output. '
   - 'Now take the jet pipe and pull the trigger to open the it. '
   - 'Last but least put out the fire. '
+  - Perfect you have done it, thank you for the help.
   _tutTextsGermanForest:
   - "Danke das du uns helfen m\xF6chtest, fang doch mal an die beiden Verbindungen
     des A-Schlauches (schwarz) mit einander zu verbinden."

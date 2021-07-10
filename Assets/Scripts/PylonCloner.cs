@@ -5,6 +5,10 @@ using UnityEngine;
 public class PylonCloner : MonoBehaviour
 {
     
+    [SerializeField]
+    private TutorialManager tM;
+
+
     [System.Serializable]
     public class Pool
     {
@@ -57,6 +61,17 @@ public class PylonCloner : MonoBehaviour
     public void OnGrabObject()
     {
         GetPylonInstance();
+
+        if (tM.TutProgress == 0)
+        {
+            tM.TutProgress += 1;
+            tM.ChangeTask();
+        }
+        else if(tM.TutProgress == 2)
+        {
+            tM.TutProgress += 1;
+            tM.ChangeTask();
+        }
     }
 
 
