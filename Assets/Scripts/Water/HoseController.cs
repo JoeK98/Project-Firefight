@@ -67,6 +67,8 @@ public class HoseController : WaterObjectController
     {
         lineRenderer.SetPosition(0, lineEnds[0].position);
         lineRenderer.SetPosition(1, lineEnds[1].position);
+
+        UpdateWaterPressure();
     }
 
     public override void UpdateWaterPressure()
@@ -83,10 +85,6 @@ public class HoseController : WaterObjectController
                 {
                     inputConnectionIndex = i;
                     connections[(i + 1) % connections.Length].WaterPressureViaConnection = false;
-
-
-                    // Call this method again to get to the else part
-                    UpdateWaterPressure();
                 }
             }
         }
