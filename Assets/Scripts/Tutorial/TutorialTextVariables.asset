@@ -80,6 +80,7 @@ MonoBehaviour:
     anschlie\xDFen."
   - Jetzt einmal das Schlauchende hier in die Hand nehmen.
   - Und an den Saugkorb befestigen.
+  - Den Saugorb jetzt einaml hoch nehmen
   - "Jetzt den Saugkorb hier in das Gew\xE4sser werfen."
   - "Das noch offene Ende der A-Schl\xE4uche hier nehmen."
   - "Und an den A-Eingang der Pumpe anschlie\xDFen."
@@ -90,7 +91,7 @@ MonoBehaviour:
   - 'Jetzt das andere Ende des Schlauches nehmen und zum Verteiler bringen. '
   - "Um es an den B-Anschluss (der einzelne gro\xDFe) zu stecken."
   - Das passende Ventil aufdrehen.
-  - Nun das rechte Ende vom C-Schlauch (rot) nehmen und zum Verteiler bringen.
+  - Nun das Ende vom C-Schlauch (rot) nehmen und zum Verteiler bringen.
   - "Den Anschluss an eines der kleinen Verteilerausg\xE4nge stecken."
   - "Als n\xE4chstes die beiden C-Schl\xE4uche miteinander verbinden."
   - Jetzt dieses Ende zum Strahlrohr bringen.
@@ -98,12 +99,14 @@ MonoBehaviour:
   - "Die richtige Verteilerseite \xF6ffnen."
   - "Jetzt durch den Trigger  das Strahlrohr \xF6ffnen."
   - "Und das Feuer l\xF6schen."
+  - "Super du hast es geschafft, danke f\xFCr deine Hilfe."
   _tutTextsEnglishForest:
   - Thank you for wanting to help us, start to connect the two connections of the
     A-hose (black) with each other.
   - Since two of these hoses are still too short, you have to connect the third one.
   - Now take the end of the hose in your hand.
   - And attach it to the suction strainer.
+  - Take the suction.
   - Now throw the suction head into the water here.
   - Take the end of the A-hose that is still open here.
   - And connect it to the A-input of the pump.
@@ -122,3 +125,4 @@ MonoBehaviour:
   - 'Open the correct distributer output. '
   - 'Now take the jet pipe and pull the trigger to open the it. '
   - 'Last but least put out the fire. '
+  - Perfect you have done it, thank you for the help.
