@@ -7,50 +7,30 @@ using UnityEngine;
 /// </summary>
 public class ConnectionController : WaterObjectController
 {
-
-    //TODO: REMOVE DEBUG
-
-    #region DEBUG
-
-    [SerializeField]
-    protected TextMeshProUGUI debugText = null;
-
-    protected void DEBUG(string message)
-    {
-        if (debugText)
-        {
-            debugText.text = message;
-        }
-    }
-
-    #endregion
-
     /// <summary>
     /// Flag whether the water pressure is updated via the connected ConnectionController
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Flag whether the water pressure is updated via the connected ConnectionController")]
     protected bool waterPressureViaConnection = true;
 
     /// <summary>
     /// The size of the connection
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The size of the connection")]
     protected HoseTypes connectionSize = HoseTypes.C;
 
     /// <summary>
-    /// Flag whether the connection is movable (TODO: not implemented yet)
+    /// Flag whether the connection is movable
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Flag whether the connection is movable")]
     protected bool isMovable = false;
 
     /// <summary>
     /// The parent object of the connection
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The parent object of the connection")]
     protected WaterObjectController parentObject = null;
     
-
-
     /// <summary>
     /// The connected connection
     /// </summary>
@@ -162,6 +142,10 @@ public class ConnectionController : WaterObjectController
         }
     }
 
+    /// <summary>
+    /// Moves the connection to fit the given Transform
+    /// </summary>
+    /// <param name="other"> the transform that this connection should fit to </param>
     protected virtual void MoveAccordingly(Transform other)
     {
         // TODO

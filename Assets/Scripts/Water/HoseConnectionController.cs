@@ -11,7 +11,7 @@ public class HoseConnectionController : ConnectionController
     /// A hose is currently only grabbable at its connections
     /// This means the connection needs a rigidbody
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The Rigidbody of this connection (if not set, it will be retrieved in the Start method)")]
     private Rigidbody rigidBody = null;
 
     /// <summary>
@@ -20,10 +20,19 @@ public class HoseConnectionController : ConnectionController
     /// </summary>
     public bool WaterPressureViaConnection { set { waterPressureViaConnection = value; } }
 
+    /// <summary>
+    /// Target position when Updated in the LateUpdate method
+    /// </summary>
     private Vector3 targetPosition;
 
+    /// <summary>
+    /// Target rotation when Updated in the LateUpdate method
+    /// </summary>
     private Quaternion targetRotation;
 
+    /// <summary>
+    /// Flag whether the transform should be updated in the LateUpdate method
+    /// </summary>
     private bool setTransform = false;
 
     /// <summary>
@@ -56,6 +65,7 @@ public class HoseConnectionController : ConnectionController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
+        // if not already connected and the other object is on the same layer ->
         if (!ConnectedObject && other.gameObject.layer == gameObject.layer)
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();

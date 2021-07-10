@@ -11,25 +11,25 @@ public class DistributorController : MovableParentWaterObject
     /// <summary>
     /// The input connection
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The input connection")]
     private ConnectionController inputConnection = null;
 
     /// <summary>
     /// Array of the output connections
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Array of the output connections")]
     private ConnectionController[] outputConnections = new ConnectionController[3];
 
     /// <summary>
     /// Array of the objects that are animated when opening or closing a connection
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Array of the objects that are animated when opening or closing a connection")]
     private Transform[] outputOpener = new Transform[3];
 
     /// <summary>
     /// How long the animation takes
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("How long the animation takes")]
     private float openingClosingAnimationLength = 1.0f;
 
     /// <summary>
@@ -42,11 +42,11 @@ public class DistributorController : MovableParentWaterObject
     /// </summary>
     private bool[] isOpeningOrClosing;
 
-
     protected override void Start()
     {
         base.Start();
 
+        // initialize the arrays
         int length = outputConnections.Length;
         isOpenOutputConnection = new bool[length];
         isOpeningOrClosing = new bool[length];

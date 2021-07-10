@@ -55,7 +55,6 @@ public class HydrantController : WaterObjectController
 
     /// <summary>
     /// Close / Open the hydrant when touched with a hydrant key
-    /// Increase the Tutorial Progress when Open the Hydrant
     /// </summary>
     /// <param name="other"> collider that entered the trigger </param>
     private void OnTriggerEnter(Collider other)
