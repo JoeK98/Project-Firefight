@@ -41,6 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1c68eb5ff781947805be891c48bc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tM: {fileID: 0}
   pools:
   - tag: pylon
     pylonPrefab: {fileID: 986723624729967299, guid: f784f87afddb7cb478b27f514752509d, type: 3}
@@ -58,7 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 1741738478}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -133,15 +135,15 @@ MonoBehaviour:
   m_VelocityScale: 1
   m_AngularVelocityDamping: 0.4
   m_AngularVelocityScale: 0.95
-  m_TrackPosition: 1
+  m_TrackPosition: 0
   m_SmoothPosition: 0
   m_SmoothPositionAmount: 5
   m_TightenPosition: 0.5
-  m_TrackRotation: 1
+  m_TrackRotation: 0
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 5
   m_TightenRotation: 0.5
-  m_ThrowOnDetach: 1
+  m_ThrowOnDetach: 0
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2

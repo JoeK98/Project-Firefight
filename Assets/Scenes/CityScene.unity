@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,6 +248,10 @@ PrefabInstance:
       propertyPath: tutorialNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 3
@@ -606,6 +610,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 9
@@ -974,6 +982,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 10
       objectReference: {fileID: 0}
@@ -1121,6 +1133,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 6
@@ -1356,6 +1372,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 15
@@ -1749,6 +1769,10 @@ PrefabInstance:
       propertyPath: tM
       value: 
       objectReference: {fileID: 970369986}
+    - target: {fileID: 1741738476, guid: 6c7f5fa7d40dd1d41974eabc85ef8947, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 583427067}
     - target: {fileID: 1741738476, guid: 6c7f5fa7d40dd1d41974eabc85ef8947, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2241,6 +2265,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 23
       objectReference: {fileID: 0}
@@ -2438,6 +2466,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 24
       objectReference: {fileID: 0}
@@ -2596,6 +2628,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 17
       objectReference: {fileID: 0}
@@ -2750,6 +2786,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 8
       objectReference: {fileID: 0}
@@ -2897,6 +2937,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 14
@@ -3161,6 +3205,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 7
       objectReference: {fileID: 0}
@@ -3364,6 +3412,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 4
       objectReference: {fileID: 0}
@@ -3502,6 +3554,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 16
@@ -3747,6 +3803,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 13
       objectReference: {fileID: 0}
@@ -3894,6 +3954,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 22
@@ -4352,6 +4416,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 5
       objectReference: {fileID: 0}
@@ -4626,6 +4694,10 @@ MonoBehaviour:
   - {fileID: 2000442849}
   - {fileID: 583427069}
   tutProgress: 0
+  cityScene: 1
+  forestScene: 0
+  englishTexts: 0
+  germanTexts: 1
 --- !u!1001 &984046110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4745,6 +4817,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 20
@@ -4884,6 +4960,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 11
@@ -5465,6 +5545,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 12
       objectReference: {fileID: 0}
@@ -5723,6 +5807,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 0
@@ -6372,6 +6460,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 19
       objectReference: {fileID: 0}
@@ -6666,6 +6758,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 26
       objectReference: {fileID: 0}
@@ -6871,6 +6967,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 18
@@ -7876,6 +7976,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 1
       objectReference: {fileID: 0}
@@ -8486,6 +8590,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 21
       objectReference: {fileID: 0}
@@ -8746,6 +8854,10 @@ PrefabInstance:
       propertyPath: tutorialNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
+      propertyPath: tM
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 3469941868486632705, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: tutorialNumber
       value: 2
