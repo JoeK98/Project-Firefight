@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Audio;
 using UnityEngine;
-using System.Linq;
 
 /// <summary>
 /// Class that controls when the Firesound need to stop
 /// <author> Vincent Holtorf, Joe Koelbel </author>
 /// </summary>
-public class FireSound : MonoBehaviour
+public class FireSoundController : MonoBehaviour
 {
     /// <summary>
     /// The connection for the Audiosound
