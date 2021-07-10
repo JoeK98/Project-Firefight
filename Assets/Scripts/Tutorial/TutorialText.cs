@@ -12,6 +12,9 @@ public class TutorialText : MonoBehaviour
     private TutorialTextSO tutorialText = null;
 
     [SerializeField]
+    private TutorialManager tM;
+
+    [SerializeField]
     [Tooltip("Number from TMPro")]
     private int tutorialNumber;
 
@@ -20,7 +23,29 @@ public class TutorialText : MonoBehaviour
     private void Awake()
     {
         textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-        textMeshPro.text = tutorialText._tutTextsGermanCity[tutorialNumber];
+
+        if (tM.CityScene)
+        {
+            if (tM.EnglishTexts)
+            {
+                textMeshPro.text = tutorialText._tutTextsEnglishCity[tutorialNumber];
+            }
+            else if (tM.GermanTexts)
+            {
+                textMeshPro.text = tutorialText._tutTextsGermanCity[tutorialNumber];
+            }
+        }
+        else if (tM.ForestScene)
+        {
+            if (tM.EnglishTexts)
+            {
+                textMeshPro.text = tutorialText._tutTextsEnglishForest[tutorialNumber];
+            }
+            else if (tM.GermanTexts)
+            {
+                textMeshPro.text = tutorialText._tutTextsGermanForest[tutorialNumber];
+            }
+        }
     }
 
 
