@@ -98,7 +98,7 @@ public class FireController : MonoBehaviour
         // The fire only needs to be put out when it is on fire
         if (state == FireStates.ONFIRE)
         {
-            // Potential for better performance when saving the Particle System, but theoretically multiple particle systems could hit the object
+            // Potential for better performance when saving the Particle System, but theoretically multiple particle systems could hit the object (e.g. one jetpipe in each hand)
             int numCollisions = ParticlePhysicsExtensions.GetCollisionEvents(other.GetComponent<ParticleSystem>(), gameObject, new List<ParticleCollisionEvent>());
 
             fireHP = Mathf.Clamp(fireHP - numCollisions * fireRulesVariables.particleDamage, fireRulesVariables.fireLowerBorder - ERROR_MARGIN, fireRulesVariables.fireUpperBorder + ERROR_MARGIN);
