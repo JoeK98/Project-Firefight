@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802f5e6ef3301c049beb6dcdee6df644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 2
   isMovable: 1
   parentObject: {fileID: 5099099834097841828}
+  rigidBody: {fileID: 4838588551260005722}
 --- !u!65 &3689018693833449340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,14 +259,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f88d59a83efe1d44a3fb04ef5f76310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connections:
+  - {fileID: 4709582900933074377}
+  - {fileID: 540438654884361347}
   hoseType: 2
   lineRenderer: {fileID: 3691527893568245620}
   lineEnds:
   - {fileID: 7803126545142766960}
   - {fileID: 2108384229819535653}
-  connections:
-  - {fileID: 4709582900933074377}
-  - {fileID: 540438654884361347}
 --- !u!120 &3691527893568245620
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -413,11 +413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802f5e6ef3301c049beb6dcdee6df644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 2
   isMovable: 1
   parentObject: {fileID: 5099099834097841828}
+  rigidBody: {fileID: 6397574143226622931}
 --- !u!65 &7289984380757645074
 BoxCollider:
   m_ObjectHideFlags: 0

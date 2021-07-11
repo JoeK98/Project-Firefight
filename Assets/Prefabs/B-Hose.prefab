@@ -46,14 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f88d59a83efe1d44a3fb04ef5f76310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connections:
+  - {fileID: 3773117875483956883}
+  - {fileID: 3161759750644167675}
   hoseType: 1
   lineRenderer: {fileID: 7580954617193442175}
   lineEnds:
   - {fileID: 878703909228836773}
   - {fileID: 5824932920379660407}
-  connections:
-  - {fileID: 3773117875483956883}
-  - {fileID: 3161759750644167675}
 --- !u!120 &7580954617193442175
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -200,11 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802f5e6ef3301c049beb6dcdee6df644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 1
   isMovable: 1
   parentObject: {fileID: 7580954617193442173}
+  rigidBody: {fileID: 7580954617961128898}
 --- !u!65 &7580954617961128910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -280,10 +280,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3161759750644167675}
+        m_TargetAssemblyTypeName: HoseConnectionController, Assembly-CSharp
+        m_MethodName: OnSelectEntered
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3161759750644167675}
+        m_TargetAssemblyTypeName: HoseConnectionController, Assembly-CSharp
+        m_MethodName: OnSelectExited
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls:
@@ -413,11 +437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802f5e6ef3301c049beb6dcdee6df644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 1
   isMovable: 1
   parentObject: {fileID: 7580954617193442173}
+  rigidBody: {fileID: 7580954618526882411}
 --- !u!65 &7580954618526882391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -493,10 +517,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3773117875483956883}
+        m_TargetAssemblyTypeName: HoseConnectionController, Assembly-CSharp
+        m_MethodName: OnSelectEntered
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3773117875483956883}
+        m_TargetAssemblyTypeName: HoseConnectionController, Assembly-CSharp
+        m_MethodName: OnSelectExited
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls:
