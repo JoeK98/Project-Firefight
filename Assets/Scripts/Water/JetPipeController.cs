@@ -132,9 +132,12 @@ public class JetPipeController : MovableParentWaterObject
     /// </summary>
     public void OnActivate()
     {
-        isActive = true;
+        if (!isActive)
+        {
+            isActive = true;
 
-        animationQueue.Enqueue(RotateOpener(true));
+            animationQueue.Enqueue(RotateOpener(true));
+        }
     }
 
     /// <summary>
@@ -142,9 +145,12 @@ public class JetPipeController : MovableParentWaterObject
     /// </summary>
     public void OnDeactivate()
     {
-        isActive = false;
+        if (isActive)
+        {
+            isActive = false;
 
-        animationQueue.Enqueue(RotateOpener(false));
+            animationQueue.Enqueue(RotateOpener(false));
+        }
     }
 
     /// <summary>
