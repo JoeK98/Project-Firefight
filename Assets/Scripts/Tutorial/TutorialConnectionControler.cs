@@ -30,7 +30,7 @@ public class TutorialConnectionControler : MonoBehaviour
         {
             if (TutorialNumber == tutManger.TutProgress)
             {
-                tutManger.TutProgress += 1;
+                tutManger.TutProgress ++;
                 tutManger.ChangeTask();
             }
             
@@ -39,7 +39,7 @@ public class TutorialConnectionControler : MonoBehaviour
         {
             if (TutorialNumber == tutManger.TutProgress)
             {
-                tutManger.TutProgress += 1;
+                tutManger.TutProgress ++;
                 tutManger.ChangeTask();
             }
         }
@@ -47,7 +47,7 @@ public class TutorialConnectionControler : MonoBehaviour
         {
             if (TutorialNumber == tutManger.TutProgress)
             {
-                tutManger.TutProgress += 1;
+                tutManger.TutProgress ++;
                 tutManger.ChangeTask();
             }
         }
@@ -55,7 +55,7 @@ public class TutorialConnectionControler : MonoBehaviour
         {
             if (TutorialNumber == tutManger.TutProgress)
             {
-                tutManger.TutProgress += 1;
+                tutManger.TutProgress ++;
                 tutManger.ChangeTask();
             }
         }
@@ -68,7 +68,7 @@ public class TutorialConnectionControler : MonoBehaviour
     {
         if(TutorialNumber == tutManger.TutProgress)
         {
-            tutManger.TutProgress += 1;
+            tutManger.TutProgress ++;
             tutManger.ChangeTask();
         }
     }

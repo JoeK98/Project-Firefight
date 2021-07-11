@@ -32,7 +32,8 @@ public class FireSoundController : MonoBehaviour
         if (activeFires == 0)
         {
             fireSound.Stop();
-            tM.TutProgress += 1;
+            tM.TutProgress ++;
+            tM.ChangeTask();
         }
     }
 }

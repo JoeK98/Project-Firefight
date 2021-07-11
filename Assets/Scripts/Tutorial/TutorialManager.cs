@@ -21,12 +21,6 @@ public class TutorialManager : MonoBehaviour
     private int tutProgress = 0;
 
     /// <summary>
-    /// Connection to check in what language the TMpro need to be
-    /// </summary>
-    [SerializeField]
-    private TutorialTextSO tutorialLanguage = null;
-
-    /// <summary>
     /// Bools to change the texts between the Scenes
     /// </summary>
     [SerializeField]
