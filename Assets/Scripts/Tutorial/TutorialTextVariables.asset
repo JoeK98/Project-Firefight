@@ -26,8 +26,8 @@ MonoBehaviour:
   - Jetzt das fehlende Ende in die Hand nehmen.
   - "Und an eines der beiden Eing\xE4nge des Sammelst\xFCcks stecken."
   - "Als n\xE4chstes den Hydrantenschl\xFCssel hier nehmen."
-  - "Um den Hydranten zu \xF6ffnen und das Wasser laufen zu lassen. (Mit der Spitze
-    das obere Ende des Hydranten ber\xFChren)"
+  - "Und damit den Hydranten \xF6ffnen. (Mit der Spitze das obere Ende des Hydranten
+    ber\xFChren)"
   - Jetzt den Verteiler hoch nehmen und auf die andere Seite des Waagens bringen.
   - Und hier in den leuchtenden Bereich legen.
   - "Als n\xE4chstes die linke Verbindung des B-Schlauches zur Pumpe bringen."
@@ -76,13 +76,13 @@ MonoBehaviour:
   - 'Last but not least put out the fire. '
   - Perfect, you have done it, thank you for the help.
   _tutTextsGermanForest:
-  - "Danke, dass du uns helfen m\xF6chtest, fang doch mal damit an, die beiden Verbindungen
-    des A-Schlauches (schwarz) mit einander zu verbinden."
+  - "Danke, dass du uns helfen m\xF6chtest. Verbinde die beiden A-Schl\xE4uche (schwarz)
+    hier mit einander."
   - "Da zwei von diesen Schl\xE4uchen noch zu kurz sind, musst du noch einen dritten
     anschlie\xDFen."
   - Jetzt einmal das Schlauchende hier in die Hand nehmen.
   - Und an den Saugkorb befestigen.
-  - Den Saugorb jetzt einmal aufnehmen.
+  - Den Saugkorb jetzt einmal aufnehmen.
   - "Jetzt den Saugkorb hier in das Gew\xE4sser werfen."
   - "Das noch offene Ende der A-Schl\xE4uche hier nehmen."
   - "Und an den A-Eingang der Pumpe anschlie\xDFen."
@@ -103,8 +103,8 @@ MonoBehaviour:
   - "Und das Feuer l\xF6schen."
   - "Super, du hast es geschafft, danke f\xFCr deine Hilfe."
   _tutTextsEnglishForest:
-  - Thank you for wanting to help us. Start by connecting the two connections of
-    the A-hoses (black) with each other.
+  - Thank you for wanting to help us. Start by connecting the two A-hoses (black)
+    with each other.
   - Since two of these hoses are still too short, you have to connect a third one.
   - Now take the end of the hose in your hand.
   - And attach it to the suction strainer.
