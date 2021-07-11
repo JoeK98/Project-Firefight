@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5514,13 +5514,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -6579,7 +6579,7 @@ RectTransform:
   m_GameObject: {fileID: 1397340953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1187761350}
   m_Father: {fileID: 1291743545}
@@ -6588,7 +6588,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -59.6, y: -57.3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 55, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1397340955
 MonoBehaviour:
@@ -9384,6 +9384,10 @@ PrefabInstance:
       value: HydrantKey
       objectReference: {fileID: 0}
     - target: {fileID: 7826595077674843770, guid: 3172d60af1ceed449a85e6131bde150e, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 583427067}
+    - target: {fileID: 7826595077674843770, guid: 3172d60af1ceed449a85e6131bde150e, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -9413,7 +9417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8132445831959184262, guid: 3172d60af1ceed449a85e6131bde150e, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8132445831959184262, guid: 3172d60af1ceed449a85e6131bde150e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9495,7 +9499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552487496834000338, guid: afb15cc71a92d6c4995802f7f33f890f, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8552487496834000338, guid: afb15cc71a92d6c4995802f7f33f890f, type: 3}
       propertyPath: m_LocalPosition.x
