@@ -6,11 +6,18 @@ using UnityEngine;
 /// </summary>
 public class SuctionStrainerInput : MonoBehaviour
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// The suction strainer
     /// </summary>
     [SerializeField, Tooltip("The suction strainer")]
     private SuctionStrainerController suctionStrainer;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// OnTriggerEnter is called when another Collider enters the trigger
@@ -37,4 +44,7 @@ public class SuctionStrainerInput : MonoBehaviour
             suctionStrainer.SetConnectionToLake(false);
         }
     }
+
+    #endregion
+
 }

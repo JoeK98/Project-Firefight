@@ -9,18 +9,24 @@ using UnityEngine.XR.Interaction.Toolkit;
 /// </summary>
 public class TeleportationController : MonoBehaviour
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// How much the stick must be moved to activate the line
     /// </summary>
-    [Range(0.1f, 0.95f)]
-    [SerializeField]
+    [SerializeField, Tooltip("How much the stick must be moved to activate the line"), Range(0.1f, 0.95f)]
     private float deadzone = 0.5f;
 
     /// <summary>
     /// What kind of hand is it
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("What kind of hand is it")]
     private HandTypes handType = HandTypes.LEFT;
+
+    #endregion
+
+    #region Private Attributes
 
     /// <summary>
     /// The input device that controls that hand
@@ -31,6 +37,10 @@ public class TeleportationController : MonoBehaviour
     /// The Line
     /// </summary>
     private XRInteractorLineVisual lineVisual;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Start is called before the first frame update
@@ -67,4 +77,7 @@ public class TeleportationController : MonoBehaviour
 
         lineVisual.enabled = axisInput.y > deadzone;
     }
+
+    #endregion
+
 }

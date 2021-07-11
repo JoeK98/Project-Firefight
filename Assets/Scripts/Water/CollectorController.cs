@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class CollectorController : MovableParentWaterObject
 {
+
+    #region Serialized Fields
+
     [Header("Connections")]
 
     /// <summary>
@@ -19,6 +22,10 @@ public class CollectorController : MovableParentWaterObject
     /// </summary>
     [SerializeField, Tooltip("The output connection")]
     private ConnectionController outputConnection = null;
+
+    #endregion
+
+    #region Abstract Class implementation
 
     public override void UpdateWaterPressure()
     {
@@ -76,4 +83,7 @@ public class CollectorController : MovableParentWaterObject
             outputConnection.UnFixate();
         }
     }
+
+    #endregion
+
 }

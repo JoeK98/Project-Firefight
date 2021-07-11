@@ -9,29 +9,36 @@ using UnityEngine.XR;
 [RequireComponent(typeof(Animator))]
 public class HandAnimationController : MonoBehaviour
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// Is it a Left or a Right hand
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Is it a Left or a Right hand")]
     private HandTypes handType;
 
     /// <summary>
     /// Flag whether every button should curl all fingers
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Flag whether every button should curl all fingers")]
     private bool useAsFist = false;
 
     /// <summary>
     /// How fast the Thumb curls when A/B/X/Y is pressed since those are no triggers
     /// </summary>
-    [SerializeField]
-    [Range(0.0f, 10.0f)]
+    [SerializeField, Tooltip("How fast the Thumb curls when A/B/X/Y is pressed since those are no triggers"), Range(0.0f, 10.0f)]
     private float thumbMoveSpeed = 0.25f;
 
     /// <summary>
     /// The animator of the hand
     /// </summary>
+    [SerializeField, Tooltip("The animator of the hand (when not set in inspector, it will be retrieved in Start)")]
     private Animator animator;
+
+    #endregion
+
+    #region Private Attributes
 
     /// <summary>
     /// The device that controls the hand
@@ -53,13 +60,20 @@ public class HandAnimationController : MonoBehaviour
     /// </summary>
     private float threeFingersValue;
 
+    #endregion
+
+    #region MonoBehaviour implementation
+
     /// <summary>
     /// Start is called before the first frame update
     /// Searches for the animator and checks if an input device is connected
     /// </summary>
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
         inputDevice = GetInputDevice();
     }
 
@@ -71,6 +85,10 @@ public class HandAnimationController : MonoBehaviour
     {
         AnimateHand();
     }
+
+    #endregion
+
+    #region Private Methods
 
     /// <summary>
     /// Get the desired input device based on the hand type
@@ -127,4 +145,7 @@ public class HandAnimationController : MonoBehaviour
             animator.SetFloat("ThreeFingers", threeFingersValue);
         }
     }
+
+    #endregion
+
 }

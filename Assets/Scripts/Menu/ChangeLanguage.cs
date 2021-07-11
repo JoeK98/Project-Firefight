@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
 /// <summary>
 /// Class to change the language of the tutorial
 /// <author> Vincent Holtorf </author>
@@ -8,9 +8,9 @@ using UnityEngine;
 public class ChangeLanguage : MonoBehaviour
 {
     /// <summary>
-    /// Connection to give the TMpro the diffrent strings for the texts
+    /// Connection to give the TMpro the different strings for the texts
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Connection to give the TMpro the different strings for the texts")]
     private TutorialTextSO SOLangugeBool = null;
 
     /// <summary>

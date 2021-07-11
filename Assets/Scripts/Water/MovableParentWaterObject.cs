@@ -7,11 +7,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class MovableParentWaterObject : WaterObjectController
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// The rigidbody of the object
     /// </summary>
     [SerializeField, Tooltip("The Rigidbody of this Object (if not set, it will be retrieved in the Start method)")]
     protected Rigidbody rigidBody = null;
+
+    #endregion
+
+    #region Protected Attributes
 
     /// <summary>
     /// Flag whether the transform should be updated in late update
@@ -27,6 +34,10 @@ public abstract class MovableParentWaterObject : WaterObjectController
     /// Rotation the object when updated in late update
     /// </summary>
     protected Quaternion targetRotation;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Start is called before the first frame update
@@ -51,6 +62,10 @@ public abstract class MovableParentWaterObject : WaterObjectController
             transform.rotation = targetRotation;
         }
     }
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     /// Adjusts the transform so that the connection matches its target transform
@@ -84,5 +99,7 @@ public abstract class MovableParentWaterObject : WaterObjectController
     /// </summary>
     /// <param name="wasFixedConnection"> whether the cleared connection was a fixated connection </param>
     public abstract void OnClearConnection(bool wasFixedConnection);
+
+    #endregion
 
 }

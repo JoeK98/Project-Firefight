@@ -1545,6 +1545,10 @@ PrefabInstance:
       propertyPath: tM
       value: 
       objectReference: {fileID: 448683611}
+    - target: {fileID: 1738263659, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 448683611}
     - target: {fileID: 1694654087941708434, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1531209

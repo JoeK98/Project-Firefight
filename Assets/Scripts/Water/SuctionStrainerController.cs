@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class SuctionStrainerController : MovableParentWaterObject
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// The output connection
     /// </summary>
@@ -18,20 +21,18 @@ public class SuctionStrainerController : MovableParentWaterObject
     [SerializeField, Tooltip("How much Pressure should the suction strainer have, when in the lake")]
     private float connectedPressure = 3.0f;
 
+    #endregion
+
+    #region Private Attributes
+
     /// <summary>
     /// Flag whether the suction strainer is in the lake
     /// </summary>
     private bool isConnectedToLake = false;
 
-    /// <summary>
-    /// Sets the flag accordingly and updates the water pressure
-    /// </summary>
-    /// <param name="isConnected"> whether the suction strainer is in the lake </param>
-    public void SetConnectionToLake(bool isConnected)
-    {
-        isConnectedToLake = isConnected;
-        UpdateWaterPressure();
-    }
+    #endregion
+
+    #region Abstract class implementation
 
     public override void AdjustTransformOnConnection(Transform currentConnectionTransform, Transform targetTransform, bool fixedConnection, bool isHose)
     {
@@ -69,4 +70,21 @@ public class SuctionStrainerController : MovableParentWaterObject
             outputConnection.UnFixate();
         }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Sets the flag accordingly and updates the water pressure
+    /// </summary>
+    /// <param name="isConnected"> whether the suction strainer is in the lake </param>
+    public void SetConnectionToLake(bool isConnected)
+    {
+        isConnectedToLake = isConnected;
+        UpdateWaterPressure();
+    }
+
+    #endregion
+
 }

@@ -45,7 +45,7 @@ public class PylonCloner : MonoBehaviour
         {
             foreach (GameObject tmp in entry.Value)
             {
-                if (!tmp.active)
+                if (!tmp.activeSelf)
                 {
                     tmp.SetActive(true);
                     return tmp;

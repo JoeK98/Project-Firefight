@@ -7,6 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class HoseConnectionController : ConnectionController
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// A hose is currently only grabbable at its connections
     /// This means the connection needs a rigidbody
@@ -14,11 +17,19 @@ public class HoseConnectionController : ConnectionController
     [SerializeField, Tooltip("The Rigidbody of this connection (if not set, it will be retrieved in the Start method)")]
     private Rigidbody rigidBody = null;
 
+    #endregion
+
+    #region Public Attributes
+
     /// <summary>
     /// For Hoses the input and output connections arent initially defined
     /// which means that this value needs to be changed accordingly
     /// </summary>
     public bool WaterPressureViaConnection { set { waterPressureViaConnection = value; } }
+
+    #endregion
+
+    #region Private Attributes
 
     /// <summary>
     /// Target position when Updated in the LateUpdate method
@@ -34,6 +45,10 @@ public class HoseConnectionController : ConnectionController
     /// Flag whether the transform should be updated in the LateUpdate method
     /// </summary>
     private bool setTransform = false;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Start is called before the first frame update
@@ -84,6 +99,10 @@ public class HoseConnectionController : ConnectionController
         }
     }
 
+    #endregion
+
+    #region Protected Methods
+
     protected override void MoveAccordingly(Transform other)
     {
         transform.position = other.position;
@@ -93,6 +112,10 @@ public class HoseConnectionController : ConnectionController
         targetPosition = transform.position;
         targetRotation = transform.rotation;
     }
+
+    #endregion
+
+    #region Public Methods 
 
     public override void OnClearConnection()
     {
@@ -108,5 +131,7 @@ public class HoseConnectionController : ConnectionController
         }
         isClearing = false;
     }
+
+    #endregion
 
 }

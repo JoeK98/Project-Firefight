@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class PumpController : WaterObjectController
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// How much the pressure is increased in the pump
     /// </summary>
@@ -42,6 +45,10 @@ public class PumpController : WaterObjectController
     [SerializeField, Tooltip("How long the animation takes")]
     private float openingClosingAnimationLength = 1.0f;
 
+    #endregion
+
+    #region Private Attributes
+
     /// <summary>
     /// array that shows which connections are open or closed
     /// </summary>
@@ -51,6 +58,10 @@ public class PumpController : WaterObjectController
     /// array that shows which connections are currently opening or closing
     /// </summary>
     private bool[] isOpeningOrClosing;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Start is called before the first frame update
@@ -62,6 +73,10 @@ public class PumpController : WaterObjectController
         isOpenOutputConnection = new bool[length];
         isOpeningOrClosing = new bool[length];
     }
+
+    #endregion
+
+    #region Abstract class implementation
 
     public override void UpdateWaterPressure()
     {
@@ -88,24 +103,9 @@ public class PumpController : WaterObjectController
         }
     }
 
-    /// <summary>
-    /// Opens or closes the connection with the given index
-    /// </summary>
-    /// <param name="index"> index of the connection to be opened or closed </param>
-    public void OnToggleConnection(int index)
-    {
-        // Only do something when that connection is not already opening or closing
-        if (!isOpeningOrClosing[index])
-        {
-            isOpeningOrClosing[index] = true;
-            isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+    #endregion
 
-            UpdateWaterPressure();
-
-            // Start the animation in a coroutine
-            StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
-        }
-    }
+    #region Private Methods
 
     /// <summary>
     /// Coroutine that handels the animation of opening and closing of connections
@@ -144,4 +144,30 @@ public class PumpController : WaterObjectController
         // when the animation is finished, set the flag accordingly
         isOpeningOrClosing[index] = false;
     }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Opens or closes the connection with the given index
+    /// </summary>
+    /// <param name="index"> index of the connection to be opened or closed </param>
+    public void OnToggleConnection(int index)
+    {
+        // Only do something when that connection is not already opening or closing
+        if (!isOpeningOrClosing[index])
+        {
+            isOpeningOrClosing[index] = true;
+            isOpenOutputConnection[index] = !isOpenOutputConnection[index];
+
+            UpdateWaterPressure();
+
+            // Start the animation in a coroutine
+            StartCoroutine(RotateOpener(index, isOpenOutputConnection[index]));
+        }
+    }
+
+    #endregion
+
 }

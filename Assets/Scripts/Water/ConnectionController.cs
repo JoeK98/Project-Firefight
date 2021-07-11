@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class ConnectionController : WaterObjectController
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// Flag whether the water pressure is updated via the connected ConnectionController
     /// </summary>
@@ -30,11 +32,19 @@ public class ConnectionController : WaterObjectController
     /// </summary>
     [SerializeField, Tooltip("The parent object of the connection")]
     protected WaterObjectController parentObject = null;
-    
+
+    #endregion
+
+    #region Public Attributes
+
     /// <summary>
     /// The connected connection
     /// </summary>
     public ConnectionController ConnectedObject { get; protected set; } = null;
+
+    #endregion
+
+    #region Protected Attributes
 
     /// <summary>
     /// Flag whether the connection is being cleared
@@ -78,6 +88,10 @@ public class ConnectionController : WaterObjectController
     /// Flag whether the parent object is movable
     /// </summary>
     protected bool isParentMovable = false;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Start is called before the first frame update
@@ -142,14 +156,9 @@ public class ConnectionController : WaterObjectController
         }
     }
 
-    /// <summary>
-    /// Moves the connection to fit the given Transform
-    /// </summary>
-    /// <param name="other"> the transform that this connection should fit to </param>
-    protected virtual void MoveAccordingly(Transform other)
-    {
-        // TODO
-    }
+    #endregion
+
+    #region Abstract class implementation
 
     public override void UpdateWaterPressure()
     {
@@ -165,6 +174,23 @@ public class ConnectionController : WaterObjectController
             parentObject.UpdateWaterPressure();
         }
     }
+
+    #endregion
+
+    #region Protected Methods
+
+    /// <summary>
+    /// Moves the connection to fit the given Transform
+    /// </summary>
+    /// <param name="other"> the transform that this connection should fit to </param>
+    protected virtual void MoveAccordingly(Transform other)
+    {
+        // TODO
+    }
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     /// If the water pressure is not updated via the connection
@@ -264,4 +290,7 @@ public class ConnectionController : WaterObjectController
         }
         isUnfixating = false;
     }
+
+    #endregion
+
 }

@@ -67,6 +67,7 @@ MonoBehaviour:
   handType: 1
   useAsFist: 0
   thumbMoveSpeed: 2
+  animator: {fileID: 200339888915061067}
 --- !u!1001 &3481599930403500681
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ using UnityEngine;
 [ExecuteAlways] // to update the line renderer in edit and play mode
 public class HoseController : WaterObjectController
 {
+
+    #region Serialized Fields
+
     /// <summary>
     /// The connections of the hose
     /// </summary>
@@ -31,6 +34,10 @@ public class HoseController : WaterObjectController
     [SerializeField, Tooltip("The positions of the line ends")]
     private Transform[] lineEnds = new Transform[2];
 
+    #endregion
+
+    #region Private Attributes
+
     /// <summary>
     /// The amount of water pressure that is lost in the hose
     /// </summary>
@@ -41,6 +48,10 @@ public class HoseController : WaterObjectController
     /// and save its index here
     /// </summary>
     private int inputConnectionIndex = -1;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Start is called before the first frame Update
@@ -76,6 +87,10 @@ public class HoseController : WaterObjectController
 
         UpdateWaterPressure();
     }
+
+    #endregion
+
+    #region Abstract class implementation
 
     public override void UpdateWaterPressure()
     {
@@ -114,5 +129,7 @@ public class HoseController : WaterObjectController
             }
         }
     }
+
+    #endregion
 
 }

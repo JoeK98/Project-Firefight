@@ -7284,6 +7284,10 @@ PrefabInstance:
       propertyPath: tM
       value: 
       objectReference: {fileID: 970369986}
+    - target: {fileID: 1738263659, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 977102946936226761, guid: 946c252699fe05a4b9234c6a245445da, type: 3}
       propertyPath: playOnAwake
       value: 1

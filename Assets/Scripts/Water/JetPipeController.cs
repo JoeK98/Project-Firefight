@@ -8,10 +8,17 @@ using System.Collections.Generic;
 /// </summary>
 public class JetPipeController : MovableParentWaterObject
 {
+
+    #region Constants
+
     /// <summary>
     /// minimal water pressure to start the particle system
     /// </summary>
     private const float MIN_WATER_PRESSURE = 0.5f;
+
+    #endregion
+
+    #region Serialized Fields
 
     [Header("Connection")]
 
@@ -51,6 +58,10 @@ public class JetPipeController : MovableParentWaterObject
     [SerializeField, Tooltip("Audiosource of the JetPipe")]
     private AudioSource waterSound;
 
+    #endregion
+
+    #region Private Attributes
+
     /// <summary>
     /// Queue for opening and closing animations
     /// </summary>
@@ -65,6 +76,10 @@ public class JetPipeController : MovableParentWaterObject
     /// Flag whether the pipe is opened or not
     /// </summary>
     private bool isActive = false;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Update is called once per frame
@@ -93,6 +108,10 @@ public class JetPipeController : MovableParentWaterObject
             waterSound.Stop();
         }
     }
+
+    #endregion
+
+    #region Abstract class implementation
 
     public override void UpdateWaterPressure()
     {
@@ -127,31 +146,9 @@ public class JetPipeController : MovableParentWaterObject
         }
     }
 
-    /// <summary>
-    /// Callback for the Activated Event of the XR Interactable
-    /// </summary>
-    public void OnActivate()
-    {
-        if (!isActive)
-        {
-            isActive = true;
+    #endregion
 
-            animationQueue.Enqueue(RotateOpener(true));
-        }
-    }
-
-    /// <summary>
-    /// Callback for the Deactivated Event of the XR Interactable
-    /// </summary>
-    public void OnDeactivate()
-    {
-        if (isActive)
-        {
-            isActive = false;
-
-            animationQueue.Enqueue(RotateOpener(false));
-        }
-    }
+    #region Private Methods
 
     /// <summary>
     /// Coroutine that handels the animation of opening and closing of the pipe
@@ -189,4 +186,37 @@ public class JetPipeController : MovableParentWaterObject
         // when the animation is finished, set the flag accordingly
         isOpeningOrClosing = false;
     }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Callback for the Activated Event of the XR Interactable
+    /// </summary>
+    public void OnActivate()
+    {
+        if (!isActive)
+        {
+            isActive = true;
+
+            animationQueue.Enqueue(RotateOpener(true));
+        }
+    }
+
+    /// <summary>
+    /// Callback for the Deactivated Event of the XR Interactable
+    /// </summary>
+    public void OnDeactivate()
+    {
+        if (isActive)
+        {
+            isActive = false;
+
+            animationQueue.Enqueue(RotateOpener(false));
+        }
+    }
+
+    #endregion
+
 }

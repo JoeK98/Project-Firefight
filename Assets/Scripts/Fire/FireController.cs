@@ -9,10 +9,16 @@ using UnityEngine;
 public class FireController : MonoBehaviour
 {
 
+    #region Constants
+
     /// <summary>
     /// Error margin for min and max fire hp
     /// </summary>
     private const float ERROR_MARGIN = 1.0f;
+
+    #endregion
+
+    #region Serialized Fields
 
     [Header("Fire values")]
 
@@ -57,6 +63,10 @@ public class FireController : MonoBehaviour
     [SerializeField, Tooltip("The sparks particle system")]
     private ParticleSystem sparksParticleSystem = null;
 
+    #endregion
+
+    #region Private Attributes
+
     /// <summary>
     /// The emission module of the smoke particle system
     /// </summary>
@@ -81,6 +91,10 @@ public class FireController : MonoBehaviour
     /// The ID of the alpha value of the used Material
     /// </summary>
     private int alphaID;
+
+    #endregion
+
+    #region MonoBehaviour implementation
 
     /// <summary>
     /// Awake is called before Start
@@ -152,22 +166,6 @@ public class FireController : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the visuals of the fire
-    /// </summary>
-    private void UpdateVisuals()
-    {
-        // calculate the multiplier (also the alpha value of the material) for the particles
-        float multiplier = fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f);
-
-        // Set the alpha value of the material
-        fireMaterial.SetFloat(alphaID, multiplier);
-
-        // Set the emission of both particle systems
-        smokeEmission.rateOverTime = new ParticleSystem.MinMaxCurve(multiplier * fireRulesVariables.maxSmokeParticles);
-        sparksEmission.rateOverTime = new ParticleSystem.MinMaxCurve(multiplier * fireRulesVariables.maxSparkParticles);
-    }
-
-    /// <summary>
     /// OnParticleCollision is called when a particle hits a collider
     /// </summary>
     /// <param name="other"> the gameobject that holds the particle system</param>
@@ -200,5 +198,27 @@ public class FireController : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Updates the visuals of the fire
+    /// </summary>
+    private void UpdateVisuals()
+    {
+        // calculate the multiplier (also the alpha value of the material) for the particles
+        float multiplier = fireHP.Map(fireRulesVariables.fireLowerBorder, fireRulesVariables.fireUpperBorder, 0.0f, 1.0f);
+
+        // Set the alpha value of the material
+        fireMaterial.SetFloat(alphaID, multiplier);
+
+        // Set the emission of both particle systems
+        smokeEmission.rateOverTime = new ParticleSystem.MinMaxCurve(multiplier * fireRulesVariables.maxSmokeParticles);
+        sparksEmission.rateOverTime = new ParticleSystem.MinMaxCurve(multiplier * fireRulesVariables.maxSparkParticles);
+    }
+
+    #endregion
 
 }

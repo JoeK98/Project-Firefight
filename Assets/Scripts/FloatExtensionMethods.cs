@@ -6,6 +6,9 @@ namespace ExtensionMethods
     /// </summary>
     public static class FloatExtensionMethods
     {
+
+        #region Public Methods
+
         /// <summary>
         /// Remaps a float value from one range to another
         /// </summary>
@@ -19,5 +22,8 @@ namespace ExtensionMethods
         {
             return (value - fromLow) / (fromUp - fromLow) * (toUp - toLow) + toLow;
         }
+
+        #endregion
+
     }
 }

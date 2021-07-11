@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     /// <summary>
-    /// Changed the actuelle Scene from Menue to the Forest Level
+    /// Changed the current Scene from Menue to the Forest Level
     /// </summary>
     public void OnPlayForest()
     {
@@ -18,7 +16,7 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Changed the actuelle Scene from Menue to the City Level
+    /// Changed the current Scene from Menue to the City Level
     /// </summary>
     public void OnPlayCity()
     {
@@ -26,7 +24,7 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Changed the actuelle Scene from one Level to the Menu
+    /// Changed the current Scene from one Level to the Menu
     /// </summary>
     public void OnBackToMenu()
     {
