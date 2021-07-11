@@ -4171,8 +4171,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8544503645537699595, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 583427067}
+    - target: {fileID: 8544503645537699595, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
       propertyPath: m_MaxRaycastDistance
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628114247318105284, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
+      propertyPath: m_UIPressUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628114247318105284, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
+      propertyPath: m_ActivateUsage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8751063760003188427, guid: 1bfc5b21d25429f4494c4116ca0ce8d0, type: 3}
       propertyPath: tM
@@ -9643,7 +9655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1363422411023155150, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1363422411023155150, guid: e57ff3f731724a241bb3426e7d50f392, type: 3}
       propertyPath: m_AnchorMax.x
