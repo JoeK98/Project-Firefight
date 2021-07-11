@@ -8,22 +8,28 @@ using UnityEngine;
 public class HoseController : WaterObjectController
 {
     /// <summary>
-    /// The size of the hose
-    /// </summary>
-    [SerializeField]
-    private HoseTypes hoseType = HoseTypes.C;
-
-    [SerializeField]
-    private LineRenderer lineRenderer = null;
-
-    [SerializeField]
-    private Transform[] lineEnds = new Transform[2];
-
-    /// <summary>
     /// The connections of the hose
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The connections of the hose")]
     private HoseConnectionController[] connections = new HoseConnectionController[2];
+
+    /// <summary>
+    /// The size of the hose
+    /// </summary>
+    [SerializeField, Tooltip("The size of the hose")]
+    private HoseTypes hoseType = HoseTypes.C;
+
+    /// <summary>
+    /// The line renderer
+    /// </summary>
+    [SerializeField, Tooltip("The line renderer")]
+    private LineRenderer lineRenderer = null;
+
+    /// <summary>
+    /// The positions of the line ends
+    /// </summary>
+    [SerializeField, Tooltip("The positions of the line ends")]
+    private Transform[] lineEnds = new Transform[2];
 
     /// <summary>
     /// The amount of water pressure that is lost in the hose

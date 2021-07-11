@@ -13,34 +13,42 @@ public class JetPipeController : MovableParentWaterObject
     /// </summary>
     private const float MIN_WATER_PRESSURE = 0.5f;
 
+    [Header("Connection")]
+
     /// <summary>
     /// The input connection of the jet pipe
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The input connection of the jet pipe")]
     private ConnectionController inputConnection = null;
+
+    [Header("Animation")]
 
     /// <summary>
     /// The animated lever that shows whether the pipe is opened or not
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The animated lever that shows whether the pipe is opened or not")]
     private Transform openerLever = null;
 
     /// <summary>
     /// How much time the opening or closing animation takes
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("How much time the opening or closing animation takes")]
     private float openingClosingAnimationLength = 0.1f;
+
+    [Header("Particles")]
 
     /// <summary>
     /// The water particle system
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The water particle system")]
     private ParticleSystem waterParticleSystem = null;
+
+    [Header("Sound")]
 
     /// <summary>
     /// The connection for the Audiosound
     /// </summary>
-    [SerializeField, Tooltip("Audiosource from the JetPipe")]
+    [SerializeField, Tooltip("Audiosource of the JetPipe")]
     private AudioSource waterSound;
 
     /// <summary>
@@ -60,15 +68,16 @@ public class JetPipeController : MovableParentWaterObject
 
     /// <summary>
     /// Update is called once per frame
-    /// if an animation is queued and none is already running -> start a new animation
     /// </summary>
     private void Update()
     {
+        // if an animation is queued and none is already running -> start a new animation
         if (!isOpeningOrClosing && animationQueue.Count > 0)
         {
             StartCoroutine(animationQueue.Dequeue());
         }
 
+        // if the jet pipe is active and has a minimal water pressure -> play the particle system and the sound
         if (isActive && OutputWaterPressure > MIN_WATER_PRESSURE)
         {
             waterParticleSystem.Play();
@@ -77,6 +86,7 @@ public class JetPipeController : MovableParentWaterObject
                 waterSound.Play();
             }
         }
+        // else -> stop the particle system and the sound
         else
         {
             waterParticleSystem.Stop();

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6251a77da833fe74c966bee01209617a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suctionBasket: {fileID: 5904844941982211736}
+  suctionStrainer: {fileID: 5904844941982211736}
 --- !u!65 &2461696394742816685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a5600eda6e4bf4d89491e8f5c226eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 0
   connectionSize: 0
   isMovable: 1
@@ -134,7 +133,7 @@ GameObject:
   - component: {fileID: 251858419356983628}
   - component: {fileID: 1733819559179948035}
   m_Layer: 0
-  m_Name: SuctionBasket
+  m_Name: SuctionStrainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,8 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8fd7b4818aca64a8b454debc2ce2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 251858419356983628}
   outputConnection: {fileID: 6714299696614411551}
+  connectedPressure: 3
 --- !u!65 &4730843036714880284
 BoxCollider:
   m_ObjectHideFlags: 0

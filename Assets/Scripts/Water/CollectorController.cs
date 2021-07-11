@@ -6,16 +6,18 @@ using UnityEngine;
 /// </summary>
 public class CollectorController : MovableParentWaterObject
 {
+    [Header("Connections")]
+
     /// <summary>
     /// Array including all input connections
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("Array including all input connections")]
     private ConnectionController[] inputConnections = new ConnectionController[2];
 
     /// <summary>
     /// The output connection
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The output connection")]
     private ConnectionController outputConnection = null;
 
     public override void UpdateWaterPressure()

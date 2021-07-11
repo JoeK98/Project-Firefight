@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class DistributorController : MovableParentWaterObject
 {
+    [Header("Connections")]
+
     /// <summary>
     /// The input connection
     /// </summary>
@@ -19,6 +21,8 @@ public class DistributorController : MovableParentWaterObject
     /// </summary>
     [SerializeField, Tooltip("Array of the output connections")]
     private ConnectionController[] outputConnections = new ConnectionController[3];
+
+    [Header("Animation")]
 
     /// <summary>
     /// Array of the objects that are animated when opening or closing a connection

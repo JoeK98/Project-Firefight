@@ -21,7 +21,7 @@ public class HydrantController : WaterObjectController
     /// <summary>
     /// The output connection of the hydrant
     /// </summary>
-    [SerializeField]
+    [SerializeField, Tooltip("The output connection of the hydrant")]
     private ConnectionController connection = null;
 
     #endregion

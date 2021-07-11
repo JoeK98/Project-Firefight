@@ -1,12 +1,32 @@
 using UnityEngine;
 
-public class SuctionBasketController : MovableParentWaterObject
+/// <summary>
+/// Class that controls the functionality of the suction strainer object
+/// <author> Joe Koelbel </author>
+/// </summary>
+public class SuctionStrainerController : MovableParentWaterObject
 {
-    [SerializeField]
+    /// <summary>
+    /// The output connection
+    /// </summary>
+    [SerializeField, Tooltip("The output connection")]
     private ConnectionController outputConnection = null;
 
+    /// <summary>
+    /// How much Pressure should the suction strainer have, when in the lake
+    /// </summary>
+    [SerializeField, Tooltip("How much Pressure should the suction strainer have, when in the lake")]
+    private float connectedPressure = 3.0f;
+
+    /// <summary>
+    /// Flag whether the suction strainer is in the lake
+    /// </summary>
     private bool isConnectedToLake = false;
 
+    /// <summary>
+    /// Sets the flag accordingly and updates the water pressure
+    /// </summary>
+    /// <param name="isConnected"> whether the suction strainer is in the lake </param>
     public void SetConnectionToLake(bool isConnected)
     {
         isConnectedToLake = isConnected;
@@ -31,7 +51,7 @@ public class SuctionBasketController : MovableParentWaterObject
 
     public override void UpdateWaterPressure()
     {
-        InputWaterPressure = isConnectedToLake ? 3.0f : 0.0f;
+        InputWaterPressure = isConnectedToLake ? connectedPressure : 0.0f;
         OutputWaterPressure = InputWaterPressure;
 
         outputConnection.UpdateWaterPressure(OutputWaterPressure);
