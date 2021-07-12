@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Objectpool Class for the Pylon 
+/// <author> Vincent Holtorf </author>
+/// </summary>
 public class PylonCloner : MonoBehaviour
 {
-    
+
+    /// <summary>
+    /// Connection for the Manager and the step the connection has in the tutprial
+    /// </summary>
     [SerializeField]
     private TutorialManager tM;
 
-
+    /// <summary>
+    /// Defined the pools that are used, the tag is for the diffrent pools, the Gameobject what Object are in the pool and the size how big the pool is
+    /// </summary>
     [System.Serializable]
     public class Pool
     {
@@ -17,9 +26,19 @@ public class PylonCloner : MonoBehaviour
         public int size;
     }
 
+    /// <summary>
+    /// A List of the pools in the Scene, at the moment only for the Pylon
+    /// </summary>
     public List<Pool> pools;
+
+    /// <summary>
+    /// In the Dictonary all objects from one pool are saved
+    /// </summary>
     private Dictionary<string, Queue<GameObject>> _poolDictionary;
 
+    /// <summary>
+    /// Filled the Dictonary with the Objects at the start of the Scene
+    /// </summary>
     void Start()
     {
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -39,6 +58,9 @@ public class PylonCloner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checked what instnce in the pool is the next to active
+    /// </summary>
     public GameObject GetPylonInstance()
     {
         foreach (KeyValuePair<string, Queue<GameObject>> entry in _poolDictionary)
@@ -58,6 +80,9 @@ public class PylonCloner : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Changed the progres for the Tutorial
+    /// </summary>
     public void OnGrabObject()
     {
         GetPylonInstance();
