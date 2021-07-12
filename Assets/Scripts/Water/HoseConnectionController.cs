@@ -46,6 +46,8 @@ public class HoseConnectionController : ConnectionController
     /// </summary>
     private bool setTransform = false;
 
+    private bool isFollowing = false;
+
     #endregion
 
     #region MonoBehaviour implementation
@@ -59,6 +61,14 @@ public class HoseConnectionController : ConnectionController
         if (!rigidBody)
         {
             rigidBody = GetComponent<Rigidbody>();
+        }
+    }
+
+    private void Update()
+    {
+        if (isFollowing)
+        {
+            MoveAccordingly(ConnectedObject.transform);
         }
     }
 
@@ -80,7 +90,7 @@ public class HoseConnectionController : ConnectionController
     /// <param name="other"> the other collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        // if not already connected and the other object is on the same layer ->
+        // if not already connected and the other object is on the same layer -> try to connect
         if (!ConnectedObject && other.gameObject.layer == gameObject.layer)
         {
             ConnectionController connection = other.GetComponent<ConnectionController>();
@@ -88,11 +98,25 @@ public class HoseConnectionController : ConnectionController
             {
                 ConnectedObject = connection;
 
-                setTransform = true;
+                if (ConnectedObject.GetType() == typeof(HoseConnectionController))
+                {
+                    HoseConnectionController connectedObjectAsHose = (HoseConnectionController)ConnectedObject;
 
-                MoveAccordingly(ConnectedObject.transform);
+                    if (!connectedObjectAsHose.isFollowing)
+                    {
+                        isFollowing = true;
 
-                rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                        setTransform = true;
+                    }
+                }
+                else
+                {
+                    MoveAccordingly(ConnectedObject.transform);
+
+                    setTransform = true;
+
+                    rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                }
 
                 UpdateWaterPressure();
             }
@@ -130,6 +154,40 @@ public class HoseConnectionController : ConnectionController
             parentObject.UpdateWaterPressure();
         }
         isClearing = false;
+    }
+
+    public void OnSelectEntered()
+    {
+        if (ConnectedObject && ConnectedObject.GetType() == typeof(HoseConnectionController))
+        {
+            ((HoseConnectionController)ConnectedObject).StartFollowing();
+        }
+    }
+
+    private void StartFollowing()
+    {
+        if (ConnectedObject.GetType() == typeof(HoseConnectionController))
+        {
+
+            if (!isFollowing)
+            {
+                ((HoseConnectionController)ConnectedObject).StopFollowing();
+            }
+            isFollowing = true;
+
+            setTransform = true;
+        }
+    }
+
+    private void StopFollowing()
+    {
+        if (ConnectedObject.GetType() == typeof(HoseConnectionController))
+        {
+
+            isFollowing = false;
+
+            setTransform = false;
+        }
     }
 
     #endregion
