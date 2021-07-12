@@ -71,6 +71,19 @@ public class SuctionStrainerController : MovableParentWaterObject
         }
     }
 
+    public override void UnFixate()
+    {
+        if (!isUnfixating)
+        {
+            base.UnFixate();
+
+            // Unfixate the connection
+            outputConnection.UnFixate();
+
+            isUnfixating = false;
+        }
+    }
+
     #endregion
 
     #region Public Methods

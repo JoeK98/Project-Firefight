@@ -131,6 +131,25 @@ public class DistributorController : MovableParentWaterObject
         }
     }
 
+
+    public override void UnFixate()
+    {
+        if (!isUnfixating)
+        {
+            base.UnFixate();
+
+            // Unfixate the connections
+            foreach (ConnectionController outputConnection in outputConnections)
+            {
+                outputConnection.UnFixate();
+            }
+
+            inputConnection.UnFixate();
+
+            isUnfixating = false;
+        }
+    }
+
     #endregion
 
     #region Private Methods

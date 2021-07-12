@@ -35,6 +35,8 @@ public abstract class MovableParentWaterObject : WaterObjectController
     /// </summary>
     protected Quaternion targetRotation;
 
+    protected bool isUnfixating = false;
+
     #endregion
 
     #region MonoBehaviour implementation
@@ -92,6 +94,15 @@ public abstract class MovableParentWaterObject : WaterObjectController
         // set position and rotation for the LateUpdate method
         targetPosition = transform.position;
         targetRotation = transform.rotation;
+    }
+
+    public virtual void UnFixate()
+    {
+        isUnfixating = true;
+
+        setTransform = false;
+
+        rigidBody.constraints = RigidbodyConstraints.None;
     }
 
     /// <summary>

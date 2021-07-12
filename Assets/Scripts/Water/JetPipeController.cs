@@ -146,6 +146,19 @@ public class JetPipeController : MovableParentWaterObject
         }
     }
 
+    public override void UnFixate()
+    {
+        if (!isUnfixating)
+        {
+            base.UnFixate();
+
+            // Unfixate the connection
+            inputConnection.UnFixate();
+
+            isUnfixating = false;
+        }
+    }
+
     #endregion
 
     #region Private Methods
