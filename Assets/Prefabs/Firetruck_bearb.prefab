@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 3
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!114 &3460735690470438334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,8 +26,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 14
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!114 &6091583768289805329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 14
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!114 &4117900470703331753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,8 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 11
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1 &2283573731580934474
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78641f56d1d80164dbc13c39fe26a84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutManger: {fileID: 0}
-  _tutorialNumber: 11
+  tutManger: {fileID: 0}
+  tutorialNumber: 0
 --- !u!1001 &1861672529004172553
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddfee28292b2284d9a9c15c7d37ae81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 494862870224701627}
   inputConnection: {fileID: 494862871038519830}
   outputConnections:
   - {fileID: 494862871061926629}
@@ -64,7 +65,6 @@ MonoBehaviour:
   - {fileID: 1523659712143642547}
   - {fileID: 5652310387118153093}
   openingClosingAnimationLength: 1
-  rigidBody: {fileID: 494862870224701627}
 --- !u!65 &20312261403264000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494862870224701620}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -292,7 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a5600eda6e4bf4d89491e8f5c226eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 0
   connectionSize: 1
   isMovable: 1
@@ -304,7 +303,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494862870901328997}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -354,7 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a5600eda6e4bf4d89491e8f5c226eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 1
   connectionSize: 1
   isMovable: 1
@@ -366,7 +364,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494862871038519824}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -416,7 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a5600eda6e4bf4d89491e8f5c226eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 0
   connectionSize: 2
   isMovable: 1
@@ -428,7 +425,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494862871061926655}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -478,7 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a5600eda6e4bf4d89491e8f5c226eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 0}
   waterPressureViaConnection: 0
   connectionSize: 2
   isMovable: 1
@@ -490,7 +486,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494862871474374268}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -700,7 +696,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2485962467315267848}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -945,7 +941,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2760871826040761318}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1156,7 +1152,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5726920385172928024}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: beeea11f754334e4f9dade71409d818d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
