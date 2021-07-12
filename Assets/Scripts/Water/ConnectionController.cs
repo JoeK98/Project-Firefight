@@ -286,6 +286,13 @@ public class ConnectionController : WaterObjectController
             {
                 ConnectedObject.UnFixate();
             }
+
+            // if the parent object is movable -> call its UnFixate method to unfixate the object
+            if (isParentMovable)
+            {
+                ((MovableParentWaterObject)parentObject).UnFixate();
+            }
+
             isFixated = false;
         }
         isUnfixating = false;

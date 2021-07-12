@@ -72,7 +72,15 @@ public class CollectorController : MovableParentWaterObject
             // Dont move the object to its fixed position anymore
             setTransform = false;
 
-            rigidBody.constraints = RigidbodyConstraints.None;
+            UnFixate();
+        }
+    }
+
+    public override void UnFixate()
+    {
+        if (!isUnfixating)
+        {
+            base.UnFixate();
 
             // Unfixate the connections
             foreach (ConnectionController inputConnection in inputConnections)
@@ -81,6 +89,8 @@ public class CollectorController : MovableParentWaterObject
             }
 
             outputConnection.UnFixate();
+
+            isUnfixating = false;
         }
     }
 
