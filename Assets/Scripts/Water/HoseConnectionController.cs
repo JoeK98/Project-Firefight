@@ -46,6 +46,9 @@ public class HoseConnectionController : ConnectionController
     /// </summary>
     private bool setTransform = false;
 
+    /// <summary>
+    /// Flag when two HoseConnections are connected to determine which connection follows the other
+    /// </summary>
     private bool isFollowing = false;
 
     #endregion
@@ -64,6 +67,10 @@ public class HoseConnectionController : ConnectionController
         }
     }
 
+    /// <summary>
+    /// Update is called once per frame
+    /// Updates the position when following another hose connection
+    /// </summary>
     private void Update()
     {
         if (isFollowing)
@@ -98,17 +105,17 @@ public class HoseConnectionController : ConnectionController
             {
                 ConnectedObject = connection;
 
+                // if the other connection is also a hose connection -> maybe set the object to following the other one
                 if (ConnectedObject.GetType() == typeof(HoseConnectionController))
                 {
-                    HoseConnectionController connectedObjectAsHose = (HoseConnectionController)ConnectedObject;
-
-                    if (!connectedObjectAsHose.isFollowing)
+                    if (!((HoseConnectionController)ConnectedObject).isFollowing)
                     {
                         isFollowing = true;
 
                         setTransform = true;
                     }
                 }
+                // else move the connection into position and freeze the rigidbody
                 else
                 {
                     MoveAccordingly(ConnectedObject.transform);
@@ -120,6 +127,42 @@ public class HoseConnectionController : ConnectionController
 
                 UpdateWaterPressure();
             }
+        }
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// When connected to another hose, set this connection to following and tell the other to stop following
+    /// </summary>
+    private void StartFollowing()
+    {
+        if (ConnectedObject.GetType() == typeof(HoseConnectionController))
+        {
+
+            if (!isFollowing)
+            {
+                ((HoseConnectionController)ConnectedObject).StopFollowing();
+            }
+            isFollowing = true;
+
+            setTransform = true;
+        }
+    }
+
+    /// <summary>
+    /// Stop following the connected hose
+    /// </summary>
+    private void StopFollowing()
+    {
+        if (ConnectedObject.GetType() == typeof(HoseConnectionController))
+        {
+
+            isFollowing = false;
+
+            setTransform = false;
         }
     }
 
@@ -156,37 +199,14 @@ public class HoseConnectionController : ConnectionController
         isClearing = false;
     }
 
+    /// <summary>
+    /// Callback for the SelectEntered Event of the XR Grabbable
+    /// </summary>
     public void OnSelectEntered()
     {
         if (ConnectedObject && ConnectedObject.GetType() == typeof(HoseConnectionController))
         {
             ((HoseConnectionController)ConnectedObject).StartFollowing();
-        }
-    }
-
-    private void StartFollowing()
-    {
-        if (ConnectedObject.GetType() == typeof(HoseConnectionController))
-        {
-
-            if (!isFollowing)
-            {
-                ((HoseConnectionController)ConnectedObject).StopFollowing();
-            }
-            isFollowing = true;
-
-            setTransform = true;
-        }
-    }
-
-    private void StopFollowing()
-    {
-        if (ConnectedObject.GetType() == typeof(HoseConnectionController))
-        {
-
-            isFollowing = false;
-
-            setTransform = false;
         }
     }
 

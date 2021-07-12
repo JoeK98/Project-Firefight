@@ -35,6 +35,9 @@ public abstract class MovableParentWaterObject : WaterObjectController
     /// </summary>
     protected Quaternion targetRotation;
 
+    /// <summary>
+    /// Flag to stop the recursion when unfixating the object
+    /// </summary>
     protected bool isUnfixating = false;
 
     #endregion
@@ -96,6 +99,9 @@ public abstract class MovableParentWaterObject : WaterObjectController
         targetRotation = transform.rotation;
     }
 
+    /// <summary>
+    /// Unfixate the object and tell the connections that they should also unfixate
+    /// </summary>
     public virtual void UnFixate()
     {
         isUnfixating = true;
