@@ -269,50 +269,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 833764327}
     m_Modifications:
-    - target: {fileID: 5823616531579296427, guid: 4930d802a585f8d498e6c98d383dc5e0, type: 3}
-      propertyPath: tutorialManager
-      value: 
-      objectReference: {fileID: 970369986}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[8]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: windows.Array.data[9]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3686488446453854613, guid: 4930d802a585f8d498e6c98d383dc5e0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -321,6 +277,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5823616531579296427, guid: 4930d802a585f8d498e6c98d383dc5e0, type: 3}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 970369986}
     - target: {fileID: 7782271839787919511, guid: 4930d802a585f8d498e6c98d383dc5e0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1749,10 +1709,6 @@ PrefabInstance:
     - target: {fileID: 1741738476, guid: 6c7f5fa7d40dd1d41974eabc85ef8947, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1741738477, guid: 6c7f5fa7d40dd1d41974eabc85ef8947, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4662583679818413027, guid: 6c7f5fa7d40dd1d41974eabc85ef8947, type: 3}
       propertyPath: m_Name
